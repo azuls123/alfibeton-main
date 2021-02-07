@@ -14,25 +14,25 @@ const io = require('socket.io')(ServerHTTP);
 
 // Cargar Rutas
 
-const BodegaRoutes = require('./Api/routes/bodega.routes');
-const CategoriaRoutes = require('./Api/routes/categoria.routes');
-const EmpresaRoutes = require('./Api/routes/empresa.routes');
-const IngresoRoutes = require('./Api/routes/ingreso.routes');
-const KardexRoutes = require('./Api/routes/kardex.routes');
-const ListaIngresoRoutes = require('./Api/routes/listaIngreso.routes');
-const ListaPedidoRoutes = require('./Api/routes/listaPedido.routes');
-// const MessageRoutes             = require('./Api/routes/message.routes');
-const PedidoRoutes = require('./Api/routes/pedido.routes');
-const PersonaRoutes = require('./Api/routes/persona.routes');
-const ProductoRoutes = require('./Api/routes/producto.routes');
-const ProductoCategoriaRoutes = require('./Api/routes/productoCategoria.routes');
-const StockRoutes = require('./Api/routes/stock.routes');
-const UsuarioRoutes = require('./Api/routes/usuario.routes');
-const VarianteRoutes = require('./Api/routes/variante.routes');
-const ProvinciaRoutes = require('./Api/routes/provincia.routes');
-const ParroquiaRoutes = require('./Api/routes/parroquia.routes');
-const CantonRoutes = require('./Api/routes/canton.routes');
-const CompareListRoutes = require('./Api/routes/compareList.routes');
+const BodegaRoutes = require('./api/routes/bodega.routes');
+const CategoriaRoutes = require('./api/routes/categoria.routes');
+const EmpresaRoutes = require('./api/routes/empresa.routes');
+const IngresoRoutes = require('./api/routes/ingreso.routes');
+const KardexRoutes = require('./api/routes/kardex.routes');
+const ListaIngresoRoutes = require('./api/routes/listaIngreso.routes');
+const ListaPedidoRoutes = require('./api/routes/listaPedido.routes');
+// const MessageRoutes             = require('./api/routes/message.routes');
+const PedidoRoutes = require('./api/routes/pedido.routes');
+const PersonaRoutes = require('./api/routes/persona.routes');
+const ProductoRoutes = require('./api/routes/producto.routes');
+const ProductoCategoriaRoutes = require('./api/routes/productoCategoria.routes');
+const StockRoutes = require('./api/routes/stock.routes');
+const UsuarioRoutes = require('./api/routes/usuario.routes');
+const VarianteRoutes = require('./api/routes/variante.routes');
+const ProvinciaRoutes = require('./api/routes/provincia.routes');
+const ParroquiaRoutes = require('./api/routes/parroquia.routes');
+const CantonRoutes = require('./api/routes/canton.routes');
+const CompareListRoutes = require('./api/routes/compareList.routes');
 // const cors = require('cors');
 // const corsOptions = {
 //     origin: 'http://localhost:4200',
