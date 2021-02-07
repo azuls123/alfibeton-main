@@ -1,0 +1,1745 @@
+{
+   "Ci" : "1009952345", 
+   "LastName" : "ABADIE FOSSATTI", 
+   "FirstName" : "MARIA INES", 
+   "Address":"Av. Tarquí, Parroquia Tarqui, Ecuador", 
+   "Phone":"0992996436", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Tarquí\",\"short_name\":\"Av. Tarquí\",\"types\":[\"route\"]},{\"long_name\":\"Parroquia Tarqui\",\"short_name\":\"Parroquia Tarqui\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av. Tarquí, Parroquia Tarqui, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5127819,\"west\":-78.0082683,\"north\":-1.5122933,\"east\":-78.0082008},\"location\":{\"lat\":-1.512538,\"lng\":-78.0082378},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.513886580291502,\"west\":-78.00958353029151,\"north\":-1.511188619708498,\"east\":-78.00688556970849}},\"place_id\":\"ChIJmWtp4HHe05ERjOcV-nDRGOg\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1012496093", 
+   "LastName" : "ABAL NICOLARI", 
+   "FirstName" : "RAQUEL ELIZABET", 
+   "Address":"Calle 24 de Mayo, Parroquia Tarqui, Ecuador", 
+   "Phone":"0992996437", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle 24 de Mayo\",\"short_name\":\"Calle 24 de Mayo\",\"types\":[\"route\"]},{\"long_name\":\"Parroquia Tarqui\",\"short_name\":\"Parroquia Tarqui\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle 24 de Mayo, Parroquia Tarqui, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5234135,\"west\":-78.0035422,\"north\":-1.5229134,\"east\":-78.0029151},\"location\":{\"lat\":-1.5231635,\"lng\":-78.0032287},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.524512430291502,\"west\":-78.00457763029151,\"north\":-1.521814469708498,\"east\":-78.00187966970849}},\"place_id\":\"ChIJIZxoLWLe05ERTGtj7gU9zcE\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1013855541", 
+   "LastName" : "ABALDE MARTINEZ", 
+   "FirstName" : "MARÍA ROSARIO", 
+   "Address":"Ca. Loja, Parroquia Tarqui, Ecuador", 
+   "Phone":"0992996438", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Loja\",\"short_name\":\"Ca. Loja\",\"types\":[\"route\"]},{\"long_name\":\"Parroquia Tarqui\",\"short_name\":\"Parroquia Tarqui\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Ca. Loja, Parroquia Tarqui, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5249286,\"west\":-78.00321199999999,\"north\":-1.5244659,\"east\":-78.0028306},\"location\":{\"lat\":-1.5246973,\"lng\":-78.0030213},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.526046230291502,\"west\":-78.0043702802915,\"north\":-1.523348269708498,\"east\":-78.00167231970848}},\"place_id\":\"ChIJiRgkGmLe05ERBsmW7wAzNMU\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1025433282", 
+   "LastName" : "ABALOS ROCHON", 
+   "FirstName" : "ALBERTO OSCAR", 
+   "Address":"Calle Cristobal Colon, Parroquia Tarqui, Ecuador", 
+   "Phone":"0992996439", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Cristobal Colon\",\"short_name\":\"Calle Cristobal Colon\",\"types\":[\"route\"]},{\"long_name\":\"Parroquia Tarqui\",\"short_name\":\"Parroquia Tarqui\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Cristobal Colon, Parroquia Tarqui, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5227778,\"west\":-78.00227,\"north\":-1.5225921,\"east\":-78.0014674},\"location\":{\"lat\":-1.5226596,\"lng\":-78.00184890000001},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.524033930291502,\"west\":-78.0032176802915,\"north\":-1.521335969708498,\"east\":-78.00051971970849}},\"place_id\":\"ChIJPXusYmHe05ERisRUvYZiiGQ\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1033268493", 
+   "LastName" : "ABARNO SILVA", 
+   "FirstName" : "ARIEL", 
+   "Address":"VÍA COMUNA SAN JACINTO, Parroquia Tarqui, Ecuador", 
+   "Phone":"0992996440", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"VÍA COMUNA SAN JACINTO\",\"short_name\":\"VÍA COMUNA SAN JACINTO\",\"types\":[\"route\"]},{\"long_name\":\"Parroquia Tarqui\",\"short_name\":\"Parroquia Tarqui\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"VÍA COMUNA SAN JACINTO, Parroquia Tarqui, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.528189,\"west\":-78.0015904,\"north\":-1.5245507,\"east\":-77.9982694},\"location\":{\"lat\":-1.5262865,\"lng\":-77.999923},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.528189,\"west\":-78.0015904,\"north\":-1.5245507,\"east\":-77.9982694}},\"place_id\":\"ChIJ4QaQX1ne05ERwDt3MSyJcGw\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1035884970", 
+   "LastName" : "ABASCAL BELOQUI", 
+   "FirstName" : "WINSTON FRANKLIN", 
+   "Address":"Entrada Escuela del Milenio, Puyo, Ecuador", 
+   "Phone":"0992996441", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Entrada Escuela del Milenio\",\"short_name\":\"Entrada Escuela del Milenio\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Entrada Escuela del Milenio, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5300833,\"west\":-78.0081581,\"north\":-1.5286178,\"east\":-78.00249409999999},\"location\":{\"lat\":-1.529656,\"lng\":-78.00551060000001},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.530699530291502,\"west\":-78.0081581,\"north\":-1.528001569708498,\"east\":-78.00249409999999}},\"place_id\":\"ChIJ5Rdp34je05ERYr8v2t3G3jU\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1019873040", 
+   "LastName" : "ABDALA SCHWARZ", 
+   "FirstName" : "PABLO DANIEL", 
+   "Address":"VÍA PUYO- MADRE TIERRA, Ecuador", 
+   "Phone":"0992996442", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"VÍA PUYO- MADRE TIERRA\",\"short_name\":\"VÍA PUYO- MADRE TIERRA\",\"types\":[\"route\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"VÍA PUYO- MADRE TIERRA, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5519832,\"west\":-78.0251753,\"north\":-1.549588,\"east\":-78.02230949999999},\"location\":{\"lat\":-1.5506154,\"lng\":-78.0235739},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.552134580291502,\"west\":-78.0251753,\"north\":-1.549436619708498,\"east\":-78.02230949999999}},\"place_id\":\"ChIJhxk_QRzc05EReFPtak6Uzms\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1014553225", 
+   "LastName" : "ABDALA SOSA", 
+   "FirstName" : "MERCEDES MARIA", 
+   "Address":"María Navarro 206, Shell, Ecuador", 
+   "Phone":"0992996443", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"206\",\"short_name\":\"206\",\"types\":[\"street_number\"]},{\"long_name\":\"María Navarro\",\"short_name\":\"María Navarro\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"María Navarro 206, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5009533,\"lng\":-78.0607564},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.502302280291502,\"west\":-78.06210538029151,\"north\":-1.499604319708498,\"east\":-78.0594074197085}},\"place_id\":\"ChIJ11vZapzd05ERkHtsx7UnEg0\",\"plus_code\":{\"compound_code\":\"FWXQ+JM Shell, Ecuador\",\"global_code\":\"67C3FWXQ+JM\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1012473697", 
+   "LastName" : "ABIN DE MARIA", 
+   "FirstName" : "JORGE MARIA", 
+   "Address":"Zenon Barahona, Shell, Ecuador", 
+   "Phone":"0992996444", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Zenon Barahona\",\"short_name\":\"Zenon Barahona\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Zenon Barahona, Shell, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.504326,\"west\":-78.05782250000001,\"north\":-1.5021445,\"east\":-78.05765629999999},\"location\":{\"lat\":-1.5032352,\"lng\":-78.0577394},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.504584230291502,\"west\":-78.05908838029151,\"north\":-1.501886269708498,\"east\":-78.0563904197085}},\"place_id\":\"ChIJZ056a5nd05ERCjx20MXjfes\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1035939563", 
+   "LastName" : "ABREU HERNANDEZ", 
+   "FirstName" : "ALCIDES", 
+   "Address":"Av. Luis Jácome, Ecuador", 
+   "Phone":"0992996445", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Luis Jácome\",\"short_name\":\"Avenida Luis Jácome\",\"types\":[\"route\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av. Luis Jácome, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5091598,\"west\":-78.05642639999999,\"north\":-1.5082245,\"east\":-78.054846},\"location\":{\"lat\":-1.5088471,\"lng\":-78.0557235},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.510041130291502,\"west\":-78.0569851802915,\"north\":-1.507343169708498,\"east\":-78.05428721970848}},\"place_id\":\"ChIJ4X_t5aLd05ERQHSDJySn5Vc\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1034496483", 
+   "LastName" : "ABREU NUÑEZ", 
+   "FirstName" : "MIRTA GRACIELA", 
+   "Address":"Bellavista, Ecuador", 
+   "Phone":"0992996446", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Bellavista\",\"short_name\":\"Bellavista\",\"types\":[\"route\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Bellavista, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5078991,\"west\":-78.0497014,\"north\":-1.5050525,\"east\":-78.047934},\"location\":{\"lat\":-1.5052909,\"lng\":-78.0493207},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.5078991,\"west\":-78.05016668029151,\"north\":-1.5050525,\"east\":-78.0474687197085}},\"place_id\":\"ChIJzUI2G5bd05ERejujtP9RFeA\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1010333685", 
+   "LastName" : "ABREU BONILLA", 
+   "FirstName" : "SERGIO", 
+   "Address":"VÍA SHELL, Ecuador", 
+   "Phone":"0992996447", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"VÍA SHELL\",\"short_name\":\"VÍA SHELL\",\"types\":[\"route\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"VÍA SHELL, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5414273,\"west\":-78.0585653,\"north\":-1.5091598,\"east\":-78.0372144},\"location\":{\"lat\":-1.5288878,\"lng\":-78.0550623},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.5414273,\"west\":-78.0585653,\"north\":-1.5091598,\"east\":-78.0372144}},\"place_id\":\"ChIJzy-IqLTd05ERFmGmTrAOAPA\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1011788338", 
+   "LastName" : "ABUCHALJA SEADE", 
+   "FirstName" : "DORITA", 
+   "Address":"Amador López 37, Shell, Ecuador", 
+   "Phone":"0992996448", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"37\",\"short_name\":\"37\",\"types\":[\"street_number\"]},{\"long_name\":\"Amador López\",\"short_name\":\"Amador López\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Amador López 37, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.502962,\"lng\":-78.0619201},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.504310980291502,\"west\":-78.0632690802915,\"north\":-1.501613019708498,\"east\":-78.0605711197085}},\"place_id\":\"ChIJr5Hbjp7d05ERv-3DyC7bZ3s\",\"plus_code\":{\"compound_code\":\"FWWQ+R6 Shell, Ecuador\",\"global_code\":\"67C3FWWQ+R6\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1006550001", 
+   "LastName" : "ACHUGAR FERRARI", 
+   "FirstName" : "HUGO JOSE", 
+   "Address":"Shell, Shell, Ecuador", 
+   "Phone":"0992996449", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"airport\",\"establishment\",\"point_of_interest\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Shell, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5049538,\"lng\":-78.0632687},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.506302780291502,\"west\":-78.0646176802915,\"north\":-1.503604819708498,\"east\":-78.0619197197085}},\"place_id\":\"ChIJOTajHKjd05ER2C7MhFH9n-M\",\"plus_code\":{\"compound_code\":\"FWWP+2M Shell, Ecuador\",\"global_code\":\"67C3FWWP+2M\"},\"types\":[\"airport\",\"establishment\",\"point_of_interest\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1038776700", 
+   "LastName" : "ACOSTA MADERA", 
+   "FirstName" : "JOSE BARTOLOME", 
+   "Address":"Amador López 100, Shell, Ecuador", 
+   "Phone":"0992996450", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"100\",\"short_name\":\"100\",\"types\":[\"street_number\"]},{\"long_name\":\"Amador López\",\"short_name\":\"Amador López\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Amador López 100, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5035393,\"lng\":-78.06220019999999},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.504888280291502,\"west\":-78.0635491802915,\"north\":-1.502190319708498,\"east\":-78.0608512197085}},\"place_id\":\"ChIJgV6o9Z7d05ERPIRhPoHzBjE\",\"plus_code\":{\"compound_code\":\"FWWQ+H4 Shell, Ecuador\",\"global_code\":\"67C3FWWQ+H4\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1016799603", 
+   "LastName" : "ACOSTA MARTINEZ", 
+   "FirstName" : "NELSON EDUARDO", 
+   "Address":"Unidad Nacional 108, Shell, Ecuador", 
+   "Phone":"0992996451", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"108\",\"short_name\":\"108\",\"types\":[\"street_number\"]},{\"long_name\":\"Unidad Nacional\",\"short_name\":\"Unidad Nacional\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Unidad Nacional 108, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5013935,\"lng\":-78.0644344},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.502742480291502,\"west\":-78.0657833802915,\"north\":-1.500044519708498,\"east\":-78.06308541970849}},\"place_id\":\"ChIJHfcX7p3d05ERbfjDQBjeUeA\",\"plus_code\":{\"compound_code\":\"FWXP+C6 Shell, Ecuador\",\"global_code\":\"67C3FWXP+C6\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1032052554", 
+   "LastName" : "ACOSTA PEREZ", 
+   "FirstName" : "JUAN CARLOS", 
+   "Address":"Unidad Nacional 108, Shell, Ecuador", 
+   "Phone":"0992996452", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"108\",\"short_name\":\"108\",\"types\":[\"street_number\"]},{\"long_name\":\"Unidad Nacional\",\"short_name\":\"Unidad Nacional\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Unidad Nacional 108, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5013935,\"lng\":-78.0644344},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.502742480291502,\"west\":-78.0657833802915,\"north\":-1.500044519708498,\"east\":-78.06308541970849}},\"place_id\":\"ChIJHfcX7p3d05ERbfjDQBjeUeA\",\"plus_code\":{\"compound_code\":\"FWXP+C6 Shell, Ecuador\",\"global_code\":\"67C3FWXP+C6\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1017931755", 
+   "LastName" : "ACOSTA PEREIRA", 
+   "FirstName" : "MARTHA VANDA", 
+   "Address":"María Navarro 314, Shell, Ecuador", 
+   "Phone":"0992996453", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"314\",\"short_name\":\"314\",\"types\":[\"street_number\"]},{\"long_name\":\"María Navarro\",\"short_name\":\"María Navarro\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"María Navarro 314, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5008193,\"lng\":-78.0621601},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.502168280291502,\"west\":-78.06350908029151,\"north\":-1.499470319708498,\"east\":-78.0608111197085}},\"place_id\":\"ChIJd4KnS5zd05ER6YdtB97pOns\",\"plus_code\":{\"compound_code\":\"FWXQ+M4 Shell, Ecuador\",\"global_code\":\"67C3FWXQ+M4\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1012502387", 
+   "LastName" : "ACOSTA SOSA", 
+   "FirstName" : "MABEL", 
+   "Address":"Av 10 de Noviembre 309, Shell, Ecuador", 
+   "Phone":"0992996454", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"309\",\"short_name\":\"309\",\"types\":[\"street_number\"]},{\"long_name\":\"Avenida 10 de Noviembre\",\"short_name\":\"Av 10 de Noviembre\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av 10 de Noviembre 309, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5012267,\"lng\":-78.06140529999999},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.502575680291502,\"west\":-78.0627542802915,\"north\":-1.499877719708498,\"east\":-78.0600563197085}},\"place_id\":\"ChIJu2ANOZzd05ER5mvpcdGyz9w\",\"plus_code\":{\"compound_code\":\"FWXQ+GC Shell, Ecuador\",\"global_code\":\"67C3FWXQ+GC\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1036946151", 
+   "LastName" : "ACUÑA CABRERA", 
+   "FirstName" : "EFRAIN ANDRES", 
+   "Address":"Ernesto Quiñonez &, Shell, Ecuador", 
+   "Phone":"0992996455", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"&\",\"short_name\":\"&\",\"types\":[\"street_number\"]},{\"long_name\":\"Ernesto Quiñonez\",\"short_name\":\"Ernesto Quiñonez\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Ernesto Quiñonez &, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5002614,\"lng\":-78.0622515},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.501610380291502,\"west\":-78.06360048029151,\"north\":-1.498912419708498,\"east\":-78.06090251970849}},\"place_id\":\"ChIJ8Zn9eFzd05ERobE2dIOhouc\",\"plus_code\":{\"compound_code\":\"FWXQ+V3 Shell, Ecuador\",\"global_code\":\"67C3FWXQ+V3\"},\"types\":[\"establishment\",\"lodging\",\"point_of_interest\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018876609", 
+   "LastName" : "ACUÑA GUTIERREZ", 
+   "FirstName" : "VICTOR ESTEBAN", 
+   "Address":"Canelos 101, Shell, Ecuador", 
+   "Phone":"0992996456", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"101\",\"short_name\":\"101\",\"types\":[\"street_number\"]},{\"long_name\":\"Canelos\",\"short_name\":\"Canelos\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Canelos 101, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4991923,\"lng\":-78.066065},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.500541280291502,\"west\":-78.06741398029149,\"north\":-1.497843319708498,\"east\":-78.06471601970848}},\"place_id\":\"ChIJ-YV0xXfd05ERvNTn98Sh2ck\",\"plus_code\":{\"compound_code\":\"GW2M+8H Shell, Ecuador\",\"global_code\":\"67C3GW2M+8H\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1017049984", 
+   "LastName" : "ADDIEGO PROSPERO", 
+   "FirstName" : "GERARDO", 
+   "Address":"Agustín Ruales 619, Shell, Ecuador", 
+   "Phone":"0992996457", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"619\",\"short_name\":\"619\",\"types\":[\"street_number\"]},{\"long_name\":\"Agustín Ruales\",\"short_name\":\"Agustín Ruales\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Agustín Ruales 619, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4993843,\"lng\":-78.0659739},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.500733280291502,\"west\":-78.06732288029151,\"north\":-1.498035319708498,\"east\":-78.06462491970849}},\"place_id\":\"ChIJWUzJz3fd05ERdwEvylxEFzA\",\"plus_code\":{\"compound_code\":\"GW2M+6J Shell, Ecuador\",\"global_code\":\"67C3GW2M+6J\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1009442790", 
+   "LastName" : "AGAZZI SARASOLA", 
+   "FirstName" : "ERNESTO", 
+   "Address":"Jaime Roldós Aguilera 409, Shell, Ecuador", 
+   "Phone":"0992996458", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"409\",\"short_name\":\"409\",\"types\":[\"street_number\"]},{\"long_name\":\"Jaime Roldós Aguilera\",\"short_name\":\"Jaime Roldós Aguilera\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Jaime Roldós Aguilera 409, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4946931,\"lng\":-78.0630754},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.496042080291502,\"west\":-78.06442438029151,\"north\":-1.493344119708498,\"east\":-78.0617264197085}},\"place_id\":\"ChIJ50p3WoLd05ERqiYqtRGowtI\",\"plus_code\":{\"compound_code\":\"GW4P+4Q Shell, Ecuador\",\"global_code\":\"67C3GW4P+4Q\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1041180087", 
+   "LastName" : "AGUERRE PEREIRO", 
+   "FirstName" : "STELLA SERRANA", 
+   "Address":"Av 10 de Noviembre 908, Shell, Ecuador", 
+   "Phone":"0992996459", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"908\",\"short_name\":\"908\",\"types\":[\"street_number\"]},{\"long_name\":\"Avenida 10 de Noviembre\",\"short_name\":\"Av 10 de Noviembre\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av 10 de Noviembre 908, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4974718,\"lng\":-78.0607467},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.498820780291502,\"west\":-78.0620956802915,\"north\":-1.496122819708498,\"east\":-78.0593977197085}},\"place_id\":\"ChIJVX8ptZzd05ERfDKc8OrERkE\",\"plus_code\":{\"compound_code\":\"GW3Q+2P Shell, Ecuador\",\"global_code\":\"67C3GW3Q+2P\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1013881823", 
+   "LastName" : "AGUERRE LOMBARDO", 
+   "FirstName" : "TABARE", 
+   "Address":"Rio Amazonas 316, Shell, Ecuador", 
+   "Phone":"0992996460", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"316\",\"short_name\":\"316\",\"types\":[\"street_number\"]},{\"long_name\":\"Rio Amazonas\",\"short_name\":\"Rio Amazonas\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Rio Amazonas 316, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5000861,\"lng\":-78.0600503},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.501435080291502,\"west\":-78.06139928029151,\"north\":-1.498737119708498,\"east\":-78.0587013197085}},\"place_id\":\"ChIJhUqEfJzd05ERT7k6rm0doA4\",\"plus_code\":{\"compound_code\":\"FWXQ+XX Shell, Ecuador\",\"global_code\":\"67C3FWXQ+XX\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1009615662", 
+   "LastName" : "AGUIAR AGUIAR", 
+   "FirstName" : "SILVIA", 
+   "Address":"Av 10 de Noviembre 108, Shell, Ecuador", 
+   "Phone":"0992996461", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"108\",\"short_name\":\"108\",\"types\":[\"street_number\"]},{\"long_name\":\"Avenida 10 de Noviembre\",\"short_name\":\"Av 10 de Noviembre\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av 10 de Noviembre 108, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5032377,\"lng\":-78.0624983},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.504586680291502,\"west\":-78.06384728029151,\"north\":-1.501888719708498,\"east\":-78.06114931970849}},\"place_id\":\"ChIJLaxUYJ7d05ERebsVpaiYXfI\",\"plus_code\":{\"compound_code\":\"FWWQ+P2 Shell, Ecuador\",\"global_code\":\"67C3FWWQ+P2\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1035817379", 
+   "LastName" : "AGUILAR PAIS", 
+   "FirstName" : "CLAUDIO MARTIN", 
+   "Address":"Carmen Alarcon 1-23, Shell, Ecuador", 
+   "Phone":"0992996462", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"1-23\",\"short_name\":\"1-23\",\"types\":[\"street_number\"]},{\"long_name\":\"Carmen Alarcon\",\"short_name\":\"Carmen Alarcon\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Carmen Alarcon 1-23, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5032784,\"lng\":-78.06162719999999},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.504627380291502,\"west\":-78.0629761802915,\"north\":-1.501929419708498,\"east\":-78.0602782197085}},\"place_id\":\"ChIJjX9ijZ7d05ERrGlyP8t93VE\",\"plus_code\":{\"compound_code\":\"FWWQ+M8 Shell, Ecuador\",\"global_code\":\"67C3FWWQ+M8\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1037119278", 
+   "LastName" : "AGUILAR AGUILAR", 
+   "FirstName" : "VICTOR HUGO", 
+   "Address":"Vía a Baños 204, Shell, Ecuador", 
+   "Phone":"0992996463", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"204\",\"short_name\":\"204\",\"types\":[\"street_number\"]},{\"long_name\":\"Vía a Baños\",\"short_name\":\"Vía a Baños\",\"types\":[\"route\"]},{\"long_name\":\"Shell\",\"short_name\":\"Shell\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Vía a Baños 204, Shell, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5050409,\"lng\":-78.0605289},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.506389880291502,\"west\":-78.0618778802915,\"north\":-1.503691919708498,\"east\":-78.0591799197085}},\"place_id\":\"ChIJdzabJJ_d05ER22BtPM-qFHc\",\"plus_code\":{\"compound_code\":\"FWVQ+XQ Shell, Ecuador\",\"global_code\":\"67C3FWVQ+XQ\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1012060923", 
+   "LastName" : "AGUIÑAGA CORBO", 
+   "FirstName" : "JOSE EDUARDO", 
+   "Address":"Av. Luis Jácome, Ecuador", 
+   "Phone":"0992996464", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Luis Jácome\",\"short_name\":\"Avenida Luis Jácome\",\"types\":[\"route\"]},{\"long_name\":\"Mera\",\"short_name\":\"Mera\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av. Luis Jácome, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4851782,\"west\":-78.0855627,\"north\":-1.4841192,\"east\":-78.08417709999999},\"location\":{\"lat\":-1.4847546,\"lng\":-78.0849469},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.485997680291502,\"west\":-78.08621888029151,\"north\":-1.483299719708498,\"east\":-78.08352091970849}},\"place_id\":\"ChIJif6ToYvn05ERXlHeYo08vaE\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1035894127", 
+   "LastName" : "AGUIRRE ", 
+   "FirstName" : "JOSE MARIA", 
+   "Address":"E30, Puyo, Ecuador", 
+   "Phone":"0992996465", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"E30\",\"short_name\":\"E30\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"E30, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5036365,\"west\":-78.02645890000001,\"north\":-1.5029161,\"east\":-78.0257697},\"location\":{\"lat\":-1.5032763,\"lng\":-78.0261143},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.504625280291502,\"west\":-78.02746328029151,\"north\":-1.501927319708498,\"east\":-78.0247653197085}},\"place_id\":\"ChIJXRmhx-bd05ERkEI-Q8bQ2gc\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018423438", 
+   "LastName" : "AGUIRRE SEPILOV", 
+   "FirstName" : "MARÍA ROSA", 
+   "Address":"Av Alberto Zambrano, Puyo, Ecuador", 
+   "Phone":"0992996466", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Alberto Zambrano\",\"short_name\":\"Avenida Alberto Zambrano\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av Alberto Zambrano, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5016236,\"west\":-78.0245899,\"north\":-1.4998985,\"east\":-78.02313819999999},\"location\":{\"lat\":-1.5007479,\"lng\":-78.0238799},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.502110030291502,\"west\":-78.0252130302915,\"north\":-1.499412069708498,\"east\":-78.02251506970849}},\"place_id\":\"ChIJPXnH6-Pd05ERhtyMDfv3PDQ\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018673142", 
+   "LastName" : "AGUIRRE DANIELE", 
+   "FirstName" : "CARLOS WALDEMAR", 
+   "Address":"Unnamed Road, Puyo, Ecuador", 
+   "Phone":"0992996467", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Unnamed Road, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5008665,\"lng\":-78.0217377},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.502215480291502,\"west\":-78.02308668029151,\"north\":-1.499517519708498,\"east\":-78.02038871970849}},\"place_id\":\"ChIJN3OYb0nd05ERWs_KZtHNd2o\",\"plus_code\":{\"compound_code\":\"FXXH+M8 Puyo, Ecuador\",\"global_code\":\"67C3FXXH+M8\"},\"types\":[\"establishment\",\"food\",\"point_of_interest\",\"restaurant\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1019418135", 
+   "LastName" : "AGUSTONI RIJO", 
+   "FirstName" : "ESTEBAN RAUL", 
+   "Address":"Calle B, Puyo, Ecuador", 
+   "Phone":"0992996468", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle B\",\"short_name\":\"Calle B\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle B, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5006363,\"west\":-78.01926759999999,\"north\":-1.4999027,\"east\":-78.0186351},\"location\":{\"lat\":-1.5002695,\"lng\":-78.01895139999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.501618480291502,\"west\":-78.0203003302915,\"north\":-1.498920519708498,\"east\":-78.0176023697085}},\"place_id\":\"ChIJfbjt2gne05ERlh0vv-L5yZk\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1034207345", 
+   "LastName" : "AIRALDI GOMEZ", 
+   "FirstName" : "ROBERTO", 
+   "Address":"Unnamed Road, Puyo, Ecuador", 
+   "Phone":"0992996469", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Unnamed Road, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5008665,\"lng\":-78.0217377},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.502215480291502,\"west\":-78.02308668029151,\"north\":-1.499517519708498,\"east\":-78.02038871970849}},\"place_id\":\"ChIJN3OYb0nd05ERWs_KZtHNd2o\",\"plus_code\":{\"compound_code\":\"FXXH+M8 Puyo, Ecuador\",\"global_code\":\"67C3FXXH+M8\"},\"types\":[\"establishment\",\"food\",\"point_of_interest\",\"restaurant\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1010572900", 
+   "LastName" : "AIZCORBE BARCIA", 
+   "FirstName" : "EDGARDO RAMON", 
+   "Address":"Manuel Santos, Puyo, Ecuador", 
+   "Phone":"0992996470", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Manuel Santos\",\"short_name\":\"Manuel Santos\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Manuel Santos, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4984101,\"west\":-78.02009389999999,\"north\":-1.4970164,\"east\":-78.01897679999999},\"location\":{\"lat\":-1.4977133,\"lng\":-78.0195354},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.499062230291502,\"west\":-78.0208843302915,\"north\":-1.496364269708498,\"east\":-78.01818636970849}},\"place_id\":\"ChIJx942HQje05ERTGb-NqZfu0M\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1016488008", 
+   "LastName" : "AKIKI BERHQUET", 
+   "FirstName" : "DENISE HAIFA", 
+   "Address":"De los Jutzos, Puyo, Ecuador", 
+   "Phone":"0992996471", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"De los Jutzos\",\"short_name\":\"De los Jutzos\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"De los Jutzos, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5028935,\"west\":-78.0153562,\"north\":-1.502823,\"east\":-78.01466789999999},\"location\":{\"lat\":-1.5028583,\"lng\":-78.01501209999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.504207230291502,\"west\":-78.0163610302915,\"north\":-1.501509269708498,\"east\":-78.0136630697085}},\"place_id\":\"ChIJ-QXB6wve05ERvkIZxp9Si6E\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1017856301", 
+   "LastName" : "ALANIZ ECHEVERRY", 
+   "FirstName" : "MIGUEL ANGEL", 
+   "Address":"Calle de los Anturios, Puyo, Ecuador", 
+   "Phone":"0992996472", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle de los Anturios\",\"short_name\":\"Calle de los Anturios\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle de los Anturios, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5069702,\"west\":-78.0151606,\"north\":-1.5048525,\"east\":-78.0148729},\"location\":{\"lat\":-1.5059114,\"lng\":-78.01501669999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.507260330291502,\"west\":-78.01636573029151,\"north\":-1.504562369708498,\"east\":-78.0136677697085}},\"place_id\":\"ChIJS_XzRgve05ERouxu-h6J0ag\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1034207107", 
+   "LastName" : "ALBISU AGUIAR", 
+   "FirstName" : "CARLOS", 
+   "Address":"Calle 4 21, Puyo, Ecuador", 
+   "Phone":"0992996473", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"21\",\"short_name\":\"21\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle 4\",\"short_name\":\"Calle 4\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle 4 21, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5050699,\"lng\":-78.0134032},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.506418880291502,\"west\":-78.01475218029151,\"north\":-1.503720919708498,\"east\":-78.01205421970849}},\"place_id\":\"ChIJR-yZmwze05ERgVchbOpC1EI\",\"plus_code\":{\"compound_code\":\"FXVP+XJ Puyo, Ecuador\",\"global_code\":\"67C3FXVP+XJ\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1035085207", 
+   "LastName" : "ALBISU BRITOS", 
+   "FirstName" : "MANUEL NARCISO", 
+   "Address":"De las Bugambillas 12, Puyo, Ecuador", 
+   "Phone":"0992996474", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"12\",\"short_name\":\"12\",\"types\":[\"street_number\"]},{\"long_name\":\"De las Bugambillas\",\"short_name\":\"De las Bugambillas\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"De las Bugambillas 12, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5019949,\"lng\":-78.01209419999999},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.503343880291502,\"west\":-78.01344318029149,\"north\":-1.500645919708498,\"east\":-78.01074521970848}},\"place_id\":\"ChIJfffHIAze05ERuKdymEe_6es\",\"plus_code\":{\"compound_code\":\"FXXQ+65 Puyo, Ecuador\",\"global_code\":\"67C3FXXQ+65\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1032186567", 
+   "LastName" : "ALBOA AGUIAR", 
+   "FirstName" : "RUBEN DARIO", 
+   "Address":"De los Lirios, Puyo, Ecuador", 
+   "Phone":"0992996475", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"De los Lirios\",\"short_name\":\"De los Lirios\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"De los Lirios, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5000433,\"west\":-78.01319149999999,\"north\":-1.4998244,\"east\":-78.0119871},\"location\":{\"lat\":-1.4999339,\"lng\":-78.01258930000002},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.501282830291502,\"west\":-78.0139382802915,\"north\":-1.498584869708498,\"east\":-78.01124031970849}},\"place_id\":\"ChIJlx1L3A7e05ERJm3wcS9265s\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1026370037", 
+   "LastName" : "ALBORNOZ DE MELLO", 
+   "FirstName" : "MARIO BERNABE", 
+   "Address":"De los Helechos 7, Puyo, Ecuador", 
+   "Phone":"0992996476", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"7\",\"short_name\":\"7\",\"types\":[\"street_number\"]},{\"long_name\":\"De los Helechos\",\"short_name\":\"De los Helechos\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"De los Helechos 7, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.498699,\"lng\":-78.0160673},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.500047980291502,\"west\":-78.01741628029151,\"north\":-1.497350019708498,\"east\":-78.0147183197085}},\"place_id\":\"ChIJpxSL8Qje05ERghpMy-vx8HY\",\"plus_code\":{\"compound_code\":\"GX2M+GH Puyo, Ecuador\",\"global_code\":\"67C3GX2M+GH\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018877487", 
+   "LastName" : "ALCANTARA SANCHEZ", 
+   "FirstName" : "YAMANDU", 
+   "Address":"Orquideas, Puyo, Ecuador", 
+   "Phone":"0992996477", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Orquideas\",\"short_name\":\"Orquideas\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Orquideas, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4992413,\"west\":-78.01326519999999,\"north\":-1.4982171,\"east\":-78.0128415},\"location\":{\"lat\":-1.4987292,\"lng\":-78.0130533},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.500078180291502,\"west\":-78.01440233029149,\"north\":-1.497380219708498,\"east\":-78.01170436970848}},\"place_id\":\"ChIJ9ZITOg_e05ERgnrXtfb7uoI\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018446981", 
+   "LastName" : "ALCARRAZ BARRIO", 
+   "FirstName" : "NILSON ANGEL", 
+   "Address":"Bolivar Feican, Puyo, Ecuador", 
+   "Phone":"0992996478", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Bolivar Feican\",\"short_name\":\"Bolivar Feican\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Bolivar Feican, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5029612,\"west\":-78.00698249999999,\"north\":-1.5023386,\"east\":-78.0022618},\"location\":{\"lat\":-1.5027494,\"lng\":-78.00463289999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.503998880291502,\"west\":-78.00698249999999,\"north\":-1.501300919708498,\"east\":-78.0022618}},\"place_id\":\"ChIJCfqCzxPe05ERQujWXZKVO_Q\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1035024465", 
+   "LastName" : "ALCINA PEÑA", 
+   "FirstName" : "ASUCENA", 
+   "Address":"Calle 13 de Abril, Puyo, Ecuador", 
+   "Phone":"0992996479", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle 13 de Abril\",\"short_name\":\"Calle 13 de Abril\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle 13 de Abril, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5035042,\"west\":-78.00704979999999,\"north\":-1.5028922,\"east\":-78.0023621},\"location\":{\"lat\":-1.5032844,\"lng\":-78.0047159},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.504547180291502,\"west\":-78.00704979999999,\"north\":-1.501849219708498,\"east\":-78.0023621}},\"place_id\":\"ChIJEbweMRLe05ER2gK_e3HxKe4\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1015469704", 
+   "LastName" : "ALDABE DINI", 
+   "FirstName" : "LUIS", 
+   "Address":"Calle Victor Peñaherrera, Puyo, Ecuador", 
+   "Phone":"0992996480", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Victor Peñaherrera\",\"short_name\":\"Calle Victor Peñaherrera\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Victor Peñaherrera, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5040763,\"west\":-78.0070777,\"north\":-1.5034036,\"east\":-78.0024715},\"location\":{\"lat\":-1.5038495,\"lng\":-78.00478939999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.505088930291502,\"west\":-78.0070777,\"north\":-1.502390969708498,\"east\":-78.0024715}},\"place_id\":\"ChIJO7LzrhPe05ER-OcchYqAItc\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1016714079", 
+   "LastName" : "ALDABE DINI", 
+   "FirstName" : "RICARDO", 
+   "Address":"Calle 9 de Octubre, Puyo, Ecuador", 
+   "Phone":"0992996481", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle 9 de Octubre\",\"short_name\":\"Calle 9 de Octubre\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle 9 de Octubre, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5056308,\"west\":-78.0027324,\"north\":-1.5040763,\"east\":-78.0024715},\"location\":{\"lat\":-1.5048535,\"lng\":-78.00260209999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.506202530291502,\"west\":-78.0039509302915,\"north\":-1.503504569708498,\"east\":-78.00125296970849}},\"place_id\":\"ChIJYQfQfRPe05ER7q5SabQcVe0\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1014336261", 
+   "LastName" : "ALDECOSEA PEDROZZA", 
+   "FirstName" : "DANIEL", 
+   "Address":"Calle Rafael Moya, Puyo, Ecuador", 
+   "Phone":"0992996482", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Rafael Moya\",\"short_name\":\"Calle Rafael Moya\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Rafael Moya, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.5021629,\"west\":-78.0019856,\"north\":-1.5020085,\"east\":-78.00104800000001},\"location\":{\"lat\":-1.5020857,\"lng\":-78.00151679999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.503434680291502,\"west\":-78.00286578029151,\"north\":-1.500736719708498,\"east\":-78.0001678197085}},\"place_id\":\"ChIJCzGmHhTe05ERalIqi51Yyns\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1043080372", 
+   "LastName" : "ALEGRETTI CAMMARANO", 
+   "FirstName" : "MIGUEL", 
+   "Address":"BEATRIZ ZURITA 12, Puyo, Ecuador", 
+   "Phone":"0992996483", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"12\",\"short_name\":\"12\",\"types\":[\"street_number\"]},{\"long_name\":\"BEATRIZ ZURITA\",\"short_name\":\"BEATRIZ ZURITA\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"BEATRIZ ZURITA 12, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.5028859,\"lng\":-77.9991634},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.504234880291502,\"west\":-78.0005123802915,\"north\":-1.501536919708498,\"east\":-77.99781441970849}},\"place_id\":\"ChIJx5iCyRXe05ER4lFjmmVJjTo\",\"plus_code\":{\"compound_code\":\"F2W2+R8 Puyo, Ecuador\",\"global_code\":\"67C4F2W2+R8\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1011607805", 
+   "LastName" : "ALEM DEACES", 
+   "FirstName" : "JOSE ANTONIO", 
+   "Address":"Casa Madre Selva, camping en Puyo, Padre Luis Jacome, Puyo, Ecuador", 
+   "Phone":"0992996484", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Casa Madre Selva, camping en Puyo\",\"short_name\":\"Casa Madre Selva, camping en Puyo\",\"types\":[\"campground\",\"establishment\",\"lodging\",\"park\",\"point_of_interest\"]},{\"long_name\":\"Padre Luis Jacome\",\"short_name\":\"Padre Luis Jacome\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Casa Madre Selva, camping en Puyo, Padre Luis Jacome, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4989153,\"lng\":-77.9983416},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.500264280291502,\"west\":-77.9996905802915,\"north\":-1.497566319708498,\"east\":-77.9969926197085}},\"place_id\":\"ChIJL7wOMCHf05ERux-zv7rEDTM\",\"plus_code\":{\"compound_code\":\"G222+CM Puyo, Ecuador\",\"global_code\":\"67C4G222+CM\"},\"types\":[\"campground\",\"establishment\",\"lodging\",\"park\",\"point_of_interest\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1015627394", 
+   "LastName" : "ALFARO MENDOZA", 
+   "FirstName" : "HUMBERTO RAMÀN", 
+   "Address":"Fray Sadoc Valladares, Puyo, Ecuador", 
+   "Phone":"0992996485", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Fray Sadoc Valladares\",\"short_name\":\"Fray Sadoc Valladares\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Fray Sadoc Valladares, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4965143,\"west\":-77.9982716,\"north\":-1.4963924,\"east\":-77.9976075},\"location\":{\"lat\":-1.4964534,\"lng\":-77.9979396},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.497802330291502,\"west\":-77.9992885302915,\"north\":-1.495104369708498,\"east\":-77.99659056970849}},\"place_id\":\"ChIJx0l0Fxje05ER3q5xcuoUqoY\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1030696427", 
+   "LastName" : "ALFARO CHIAPPA", 
+   "FirstName" : "JUAN CARLOS", 
+   "Address":"Miguel Pacheco, Puyo, Ecuador", 
+   "Phone":"0992996486", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Miguel Pacheco\",\"short_name\":\"Miguel Pacheco\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Miguel Pacheco, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4960822,\"west\":-77.999861,\"north\":-1.4949337,\"east\":-77.9996278},\"location\":{\"lat\":-1.495508,\"lng\":-77.9997444},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.496856930291502,\"west\":-78.00109338029151,\"north\":-1.494158969708498,\"east\":-77.9983954197085}},\"place_id\":\"ChIJJdSrsxne05ERpJddkkPEg2g\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1012090079", 
+   "LastName" : "ALGORTA RUSIÑOL", 
+   "FirstName" : "MARIA GABRIELA", 
+   "Address":"Calle 9 de Octubre, Puyo, Ecuador", 
+   "Phone":"0992996487", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle 9 de Octubre\",\"short_name\":\"Calle 9 de Octubre\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle 9 de Octubre, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4940957,\"west\":-78.0002006,\"north\":-1.4929356,\"east\":-77.9998136},\"location\":{\"lat\":-1.4935127,\"lng\":-78.000016},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.494864630291502,\"west\":-78.0013560802915,\"north\":-1.492166669708498,\"east\":-77.9986581197085}},\"place_id\":\"ChIJB-cDGRne05ERRkDnvquCiLg\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1042100090", 
+   "LastName" : "ALGORTA BRIT", 
+   "FirstName" : "FELIPE JOSE", 
+   "Address":"Calle Octavio Zurita, Puyo, Ecuador", 
+   "Phone":"0992996488", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Octavio Zurita\",\"short_name\":\"Calle Octavio Zurita\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Octavio Zurita, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4915223,\"west\":-77.998865,\"north\":-1.4907208,\"east\":-77.9986248},\"location\":{\"lat\":-1.4911216,\"lng\":-77.99874489999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.492470530291502,\"west\":-78.00009388029152,\"north\":-1.489772569708498,\"east\":-77.99739591970851}},\"place_id\":\"ChIJGZK_Fx_e05ERoPbiqdEESSA\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1019135525", 
+   "LastName" : "ALLES VEDAIN", 
+   "FirstName" : "VERONICA", 
+   "Address":"Calle Luciano Ortega, Puyo, Ecuador", 
+   "Phone":"0992996489", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Luciano Ortega\",\"short_name\":\"Calle Luciano Ortega\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Luciano Ortega, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4892304,\"west\":-78.0031425,\"north\":-1.4891124,\"east\":-78.00203069999999},\"location\":{\"lat\":-1.4891779,\"lng\":-78.0025872},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.490520380291502,\"west\":-78.0039355802915,\"north\":-1.487822419708498,\"east\":-78.00123761970849}},\"place_id\":\"ChIJi3SNdh7e05ERREO8-nIliYI\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1015121033", 
+   "LastName" : "ALMADA BLENGIO", 
+   "FirstName" : "MARÍA LUISA", 
+   "Address":"Pastaza Al Día, Av Francisco de Orellana, Puyo, Ecuador", 
+   "Phone":"0992996490", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Pastaza Al Día\",\"short_name\":\"Pastaza Al Día\",\"types\":[\"premise\"]},{\"long_name\":\"Avenida Francisco de Orellana\",\"short_name\":\"Av Francisco de Orellana\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Pastaza Al Día, Av Francisco de Orellana, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4867827,\"lng\":-78.00063639999999},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.488131680291502,\"west\":-78.0019853802915,\"north\":-1.485433719708498,\"east\":-77.9992874197085}},\"place_id\":\"ChIJD-yslqDg05ERazug_IpziPI\",\"types\":[\"premise\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1032910499", 
+   "LastName" : "ALMADA MONTANS", 
+   "FirstName" : "NESTOR DANIEL", 
+   "Address":"Avenida Manabi, Puyo, Ecuador", 
+   "Phone":"0992996491", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Manabi\",\"short_name\":\"Avenida Manabi\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Avenida Manabi, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4859882,\"west\":-78.0026189,\"north\":-1.4846373,\"east\":-78.00227319999999},\"location\":{\"lat\":-1.4853127,\"lng\":-78.0024461},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.486661730291502,\"west\":-78.0037950302915,\"north\":-1.483963769708498,\"east\":-78.00109706970849}},\"place_id\":\"ChIJq4I3w6Dg05ERssHE6uHCYCc\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1029562584", 
+   "LastName" : "ALMAGRO LEMES", 
+   "FirstName" : "LUIS LEONARDO", 
+   "Address":"Los Rios, Puyo, Ecuador", 
+   "Phone":"0992996492", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Los Rios\",\"short_name\":\"Los Rios\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Los Rios, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4851528,\"west\":-78.00341809999999,\"north\":-1.4845742,\"east\":-78.00338880000001},\"location\":{\"lat\":-1.4848635,\"lng\":-78.00340349999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.486212480291502,\"west\":-78.00475243029152,\"north\":-1.483514519708498,\"east\":-78.0020544697085}},\"place_id\":\"ChIJifiRxKbg05ER_gy3_1eqZP4\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1026340464", 
+   "LastName" : "ALMANZA DE LOS SANTOS", 
+   "FirstName" : "MARIA GRACIELA", 
+   "Address":"Avenida Galapagos, Puyo, Ecuador", 
+   "Phone":"0992996493", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Galapagos\",\"short_name\":\"Avenida Galapagos\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Avenida Galapagos, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4828417,\"west\":-78.0025702,\"north\":-1.4827219,\"east\":-78.0019303},\"location\":{\"lat\":-1.4827748,\"lng\":-78.0022515},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.484130780291502,\"west\":-78.0035992302915,\"north\":-1.481432819708498,\"east\":-78.00090126970849}},\"place_id\":\"ChIJ5TBXAaTg05ERItDzSGwoAuc\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1043064009", 
+   "LastName" : "ALMEDA MOREIRA", 
+   "FirstName" : "SILVANA JACQULINE", 
+   "Address":"Chimborazo, Puyo, Ecuador", 
+   "Phone":"0992996494", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Chimborazo\",\"short_name\":\"Chimborazo\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Chimborazo, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4805513,\"west\":-77.9983894,\"north\":-1.4804861,\"east\":-77.99791909999999},\"location\":{\"lat\":-1.4805443,\"lng\":-77.99814839999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.481867680291502,\"west\":-77.9995032302915,\"north\":-1.479169719708498,\"east\":-77.99680526970849}},\"place_id\":\"ChIJHQHmjKLg05ERxjhcxbnDjcs\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1014945159", 
+   "LastName" : "ALMEIDA BERDIÑAS", 
+   "FirstName" : "GERARDO", 
+   "Address":"Calle Cotopaxi 1961, Puyo, Ecuador", 
+   "Phone":"0992996495", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"1961\",\"short_name\":\"1961\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle Cotopaxi\",\"short_name\":\"Calle Cotopaxi\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Cotopaxi 1961, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4791484,\"lng\":-77.9980124},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.480497380291502,\"west\":-77.99936138029149,\"north\":-1.477799419708498,\"east\":-77.99666341970848}},\"place_id\":\"ChIJTRARv6Lg05ERMn0lnnTh8bc\",\"plus_code\":{\"compound_code\":\"G2C2+8Q Puyo, Ecuador\",\"global_code\":\"67C4G2C2+8Q\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1019367974", 
+   "LastName" : "ALMIRATI SAIBENE", 
+   "FirstName" : "GABRIELA", 
+   "Address":"Calle Loja &, Puyo, Ecuador", 
+   "Phone":"0992996496", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"&\",\"short_name\":\"&\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle Loja\",\"short_name\":\"Calle Loja\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Loja &, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4806365,\"lng\":-77.9983208},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.481985480291502,\"west\":-77.99966978029151,\"north\":-1.479287519708498,\"east\":-77.99697181970849}},\"place_id\":\"ChIJuesUhNjh05ER4h_ze3_lmho\",\"plus_code\":{\"compound_code\":\"G292+PM Puyo, Ecuador\",\"global_code\":\"67C4G292+PM\"},\"types\":[\"bakery\",\"establishment\",\"food\",\"point_of_interest\",\"store\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1025235888", 
+   "LastName" : "ALMIRON BELEN", 
+   "FirstName" : "ALEJANDRO ANDRES", 
+   "Address":"Avenida El Oro, Puyo, Ecuador", 
+   "Phone":"0992996497", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida El Oro\",\"short_name\":\"Avenida El Oro\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Avenida El Oro, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4818462,\"west\":-78.00290300000002,\"north\":-1.480722,\"east\":-78.0023606},\"location\":{\"lat\":-1.4812723,\"lng\":-78.002611},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.482633080291502,\"west\":-78.00398078029151,\"north\":-1.479935119708498,\"east\":-78.0012828197085}},\"place_id\":\"ChIJNSt_e6Tg05ERONk2_jku2jc\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1036798649", 
+   "LastName" : "ALMIRON FREDES", 
+   "FirstName" : "JOSE LUIS", 
+   "Address":"Latacunga, Puyo, Ecuador", 
+   "Phone":"0992996498", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Latacunga\",\"short_name\":\"Latacunga\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Latacunga, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4798815,\"west\":-78.0033021,\"north\":-1.4788645,\"east\":-78.0032592},\"location\":{\"lat\":-1.479373,\"lng\":-78.0032807},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.480721980291502,\"west\":-78.0046296302915,\"north\":-1.478024019708498,\"east\":-78.0019316697085}},\"place_id\":\"ChIJBeTRl6Tg05ERFNp29074vq8\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1014891441", 
+   "LastName" : "ALONSO CHIAPPARA", 
+   "FirstName" : "LEONARDO GUSTAVO", 
+   "Address":"Shushufindi, Puyo, Ecuador", 
+   "Phone":"0992996499", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Shushufindi\",\"short_name\":\"Shushufindi\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Shushufindi, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4813898,\"west\":-78.0057712,\"north\":-1.4807926,\"east\":-78.0050645},\"location\":{\"lat\":-1.4810912,\"lng\":-78.00541779999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.482440180291502,\"west\":-78.00676683029151,\"north\":-1.479742219708498,\"east\":-78.0040688697085}},\"place_id\":\"ChIJ1WFxraXg05ERBqdIUhuBnko\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1026085090", 
+   "LastName" : "ALONSO MONTAÑO", 
+   "FirstName" : "VERONICA MARIA", 
+   "Address":"Calle Quito, Puyo, Ecuador", 
+   "Phone":"0992996500", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Quito\",\"short_name\":\"Calle Quito\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Quito, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4777182,\"west\":-78.0043915,\"north\":-1.4772071,\"east\":-78.0043685},\"location\":{\"lat\":-1.4774627,\"lng\":-78.00438},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.478811630291502,\"west\":-78.00572898029151,\"north\":-1.476113669708498,\"east\":-78.00303101970849}},\"place_id\":\"ChIJH9ELM7vg05ERbBBXxsX_nvw\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1027950915", 
+   "LastName" : "ALONSO MAY", 
+   "FirstName" : "GONZALO", 
+   "Address":"Calle Washington Mason &, Puyo, Ecuador", 
+   "Phone":"0992996501", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"&\",\"short_name\":\"&\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle Washington Mason\",\"short_name\":\"Calle Washington Mason\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Washington Mason &, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4764404,\"lng\":-78.00197899999999},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.477789380291502,\"west\":-78.0033279802915,\"north\":-1.475091419708498,\"east\":-78.0006300197085}},\"place_id\":\"ChIJxYpIm7zg05ERFu91uh8FOlI\",\"plus_code\":{\"compound_code\":\"GXFX+C6 Puyo, Ecuador\",\"global_code\":\"67C3GXFX+C6\"},\"types\":[\"establishment\",\"point_of_interest\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1010455493", 
+   "LastName" : "ALONSO FIRPI", 
+   "FirstName" : "NOEMI LYDIA", 
+   "Address":"Pichincha, Puyo, Ecuador", 
+   "Phone":"0992996502", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Pichincha\",\"short_name\":\"Pichincha\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Pichincha, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4770585,\"west\":-78.0006806,\"north\":-1.4769526,\"east\":-78.0002669},\"location\":{\"lat\":-1.4770046,\"lng\":-78.000474},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.478354530291502,\"west\":-78.00182273029151,\"north\":-1.475656569708498,\"east\":-77.9991247697085}},\"place_id\":\"ChIJY7O_wbzg05ERkg0En5tfUWM\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1014288808", 
+   "LastName" : "ALONSO RODRIGUEZ", 
+   "FirstName" : "MARIA DEL CARMEN", 
+   "Address":"Calle Azuay, Puyo, Ecuador", 
+   "Phone":"0992996503", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Azuay\",\"short_name\":\"Calle Azuay\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Azuay, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4787284,\"west\":-77.99906,\"north\":-1.4778665,\"east\":-77.9990218},\"location\":{\"lat\":-1.4782975,\"lng\":-77.9990409},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.479646430291502,\"west\":-78.00038988029152,\"north\":-1.476948469708498,\"east\":-77.9976919197085}},\"place_id\":\"ChIJW14B06Lg05ERKJiMXdd-txw\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1020209238", 
+   "LastName" : "ALONSO HAUW", 
+   "FirstName" : "MARIA JIMENA", 
+   "Address":"Calle de las Nacionalidades &, 20 de Julio / Pasaje Kuwait, Puyo, Ecuador", 
+   "Phone":"0992996504", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]}],\"formatted_address\":\"Calle de las Nacionalidades &, 20 de Julio / Pasaje Kuwait, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4749683,\"lng\":-77.9988995},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.476317280291502,\"west\":-78.0002484802915,\"north\":-1.473619319708498,\"east\":-77.99755051970848}},\"place_id\":\"ChIJS7KH3T3h05ER28gSicC2orU\",\"plus_code\":{\"compound_code\":\"G2G2+2C Puyo, Ecuador\",\"global_code\":\"67C4G2G2+2C\"},\"types\":[\"establishment\",\"lodging\",\"point_of_interest\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1011770941", 
+   "LastName" : "ALONSO FLUMINI", 
+   "FirstName" : "MARY CRISTINA", 
+   "Address":"Calle B, Puyo, Ecuador", 
+   "Phone":"0992996505", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle B\",\"short_name\":\"Calle B\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle B, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4766403,\"west\":-77.9999725,\"north\":-1.4761874,\"east\":-77.9992755},\"location\":{\"lat\":-1.4761996,\"lng\":-77.9994895},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.477762830291502,\"west\":-78.00097298029151,\"north\":-1.475064869708498,\"east\":-77.99827501970849}},\"place_id\":\"ChIJ7-Ww4rzg05ERHG4mRqiMeu4\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1038227925", 
+   "LastName" : "ALPUY CASAS", 
+   "FirstName" : "ROSA M", 
+   "Address":"Sin Número, Puyo, Ecuador", 
+   "Phone":"0992996506", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Sin Número\",\"short_name\":\"Sin Número\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Sin Número, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4759935,\"west\":-78.00446529999999,\"north\":-1.4759856,\"east\":-78.0032599},\"location\":{\"lat\":-1.4759896,\"lng\":-78.00386259999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.477338530291502,\"west\":-78.0052115802915,\"north\":-1.474640569708498,\"east\":-78.0025136197085}},\"place_id\":\"ChIJy6WZCrvg05EROgzM2MWCHoM\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1040648406", 
+   "LastName" : "ALVAREZ DE LA FUENTE", 
+   "FirstName" : "RAMIRO", 
+   "Address":"Calle Quito, Puyo, Ecuador", 
+   "Phone":"0992996507", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Calle Quito\",\"short_name\":\"Calle Quito\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Quito, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4759935,\"west\":-78.0047321,\"north\":-1.4718344,\"east\":-78.00446529999999},\"location\":{\"lat\":-1.4739062,\"lng\":-78.0045908},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.4759935,\"west\":-78.00594768029151,\"north\":-1.4718344,\"east\":-78.0032497197085}},\"place_id\":\"ChIJnX2F0Lvg05ERfsqvmqSrZPE\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1010658938", 
+   "LastName" : "ALVAREZ FERNANDEZ", 
+   "FirstName" : "LUIS", 
+   "Address":"Selva Alegre, Puyo, Ecuador", 
+   "Phone":"0992996508", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Selva Alegre\",\"short_name\":\"Selva Alegre\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Selva Alegre, Puyo, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4688854,\"west\":-78.0015039,\"north\":-1.4683374,\"east\":-78.0007186},\"location\":{\"lat\":-1.4686801,\"lng\":-78.0011585},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.469960380291502,\"west\":-78.0024602302915,\"north\":-1.467262419708498,\"east\":-77.99976226970848}},\"place_id\":\"ChIJG7eDX7_g05ERCtruVBS14N0\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1011846493", 
+   "LastName" : "ALVAREZ RODRIGUEZ", 
+   "FirstName" : "JORGE ANTONIO", 
+   "Address":"Calle Teniente Hugo Ortíz e45, Puyo, Ecuador", 
+   "Phone":"0992996509", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"e45\",\"short_name\":\"e45\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle Teniente Hugo Ortíz\",\"short_name\":\"Calle Teniente Hugo Ortíz\",\"types\":[\"route\"]},{\"long_name\":\"Puyo\",\"short_name\":\"Puyo\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Teniente Hugo Ortíz e45, Puyo, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.4689575,\"lng\":-77.9959949},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.470306480291502,\"west\":-77.99734388029151,\"north\":-1.467608519708498,\"east\":-77.99464591970849}},\"place_id\":\"ChIJs0gHUpXg05ER8uCsH4cxGOA\",\"plus_code\":{\"compound_code\":\"G2J3+CJ Puyo, Ecuador\",\"global_code\":\"67C4G2J3+CJ\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1036191934", 
+   "LastName" : "ALVAREZ LOPEZ", 
+   "FirstName" : "PABLO EMILIANO", 
+   "Address":"Segunda, Ecuador", 
+   "Phone":"0992996510", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Segunda\",\"short_name\":\"Segunda\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Segunda, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.023499,\"west\":-77.8102919,\"north\":-1.0214224,\"east\":-77.80874790000001},\"location\":{\"lat\":-1.0224704,\"lng\":-77.8095328},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.023809680291502,\"west\":-77.81086888029151,\"north\":-1.021111719708498,\"east\":-77.8081709197085}},\"place_id\":\"ChIJS8X9x5Ol1pER2BTcnpbZ4Yk\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1026839263", 
+   "LastName" : "ALVAREZ MAUVEZIN", 
+   "FirstName" : "JUAN MARTIN", 
+   "Address":"Avenida Occidental, Ecuador", 
+   "Phone":"0992996511", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Occidental\",\"short_name\":\"Avenida Occidental\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Avenida Occidental, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0252596,\"west\":-77.8101425,\"north\":-1.0239762,\"east\":-77.80840150000002},\"location\":{\"lat\":-1.0246176,\"lng\":-77.80927310000001},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.025966880291502,\"west\":-77.81062098029152,\"north\":-1.023268919708498,\"east\":-77.80792301970851}},\"place_id\":\"ChIJ5dq3FpKl1pER1qYJ8upfirM\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1016931390", 
+   "LastName" : "ALVAREZ CORRAL", 
+   "FirstName" : "ANALIA", 
+   "Address":"Quinta, Ecuador", 
+   "Phone":"0992996512", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Quinta\",\"short_name\":\"Quinta\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Quinta, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0205241,\"west\":-77.8112706,\"north\":-1.0190368,\"east\":-77.8102254},\"location\":{\"lat\":-1.0197753,\"lng\":-77.8107406},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.021129430291502,\"west\":-77.8120969802915,\"north\":-1.018431469708498,\"east\":-77.8093990197085}},\"place_id\":\"ChIJyQVle5Sl1pERHu9ozcZmxYE\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1028699548", 
+   "LastName" : "ALVAREZ FERNANDEZ", 
+   "FirstName" : "ALVARO BOLIVAR", 
+   "Address":"Jaime Hurtado, Ecuador", 
+   "Phone":"0992996513", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Jaime Hurtado\",\"short_name\":\"Jaime Hurtado\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Jaime Hurtado, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0177198,\"west\":-77.80568459999999,\"north\":-1.0173948,\"east\":-77.80519009999999},\"location\":{\"lat\":-1.0175597,\"lng\":-77.80543580000001},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.018906280291502,\"west\":-77.80678633029149,\"north\":-1.016208319708498,\"east\":-77.80408836970848}},\"place_id\":\"ChIJ95TktZel1pERFpws7U4P6z0\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1038912625", 
+   "LastName" : "ALVAREZ BOGLIOLO", 
+   "FirstName" : "ALFREDO", 
+   "Address":"Cuarta, Ecuador", 
+   "Phone":"0992996514", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Cuarta\",\"short_name\":\"Cuarta\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Cuarta, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0184463,\"west\":-77.81264910000002,\"north\":-1.0155721,\"east\":-77.81059359999999},\"location\":{\"lat\":-1.017032,\"lng\":-77.8116549},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.0184463,\"west\":-77.81297033029152,\"north\":-1.0155721,\"east\":-77.8102723697085}},\"place_id\":\"ChIJodGCeZWl1pERggBpL9Itg5s\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018494182", 
+   "LastName" : "ALVAREZ IZETTA", 
+   "FirstName" : "ALEJANDRO", 
+   "Address":"Avenida Pano, Ecuador", 
+   "Phone":"0992996515", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Pano\",\"short_name\":\"Avenida Pano\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Avenida Pano, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0126045,\"west\":-77.8253708,\"north\":-1.0123594,\"east\":-77.8238623},\"location\":{\"lat\":-1.0124073,\"lng\":-77.824625},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.013830930291502,\"west\":-77.82596553029151,\"north\":-1.011132969708498,\"east\":-77.82326756970849}},\"place_id\":\"ChIJD8tVYMOl1pERWrRLTvkdGRs\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1037946340", 
+   "LastName" : "ALVAREZ ALONZO", 
+   "FirstName" : "FERNANDO TOMAS", 
+   "Address":"Calle Gabriel Espinoza y Jaime Roldos, Tena, Tena, Ecuador", 
+   "Phone":"0992996516", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]}],\"formatted_address\":\"Calle Gabriel Espinoza y Jaime Roldos, Tena, Tena, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.0107857,\"lng\":-77.81273139999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.012134680291502,\"west\":-77.8140803802915,\"north\":-1.009436719708498,\"east\":-77.8113824197085}},\"place_id\":\"ChIJ6U_JdRul1pER1nbyT7Me9zM\",\"plus_code\":{\"compound_code\":\"X5QP+MW Tena, Ecuador\",\"global_code\":\"67C4X5QP+MW\"},\"types\":[\"establishment\",\"point_of_interest\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1017291947", 
+   "LastName" : "ALVAREZ SALDIAS", 
+   "FirstName" : "HUGO", 
+   "Address":"Camillo Ponce Enriquez, Tena, Ecuador", 
+   "Phone":"0992996517", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Camillo Ponce Enriquez\",\"short_name\":\"Camillo Ponce Enriquez\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Camillo Ponce Enriquez, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0089738,\"west\":-77.8145048,\"north\":-1.0079391,\"east\":-77.8144365},\"location\":{\"lat\":-1.0084564,\"lng\":-77.8144707},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.009805430291502,\"west\":-77.8158196302915,\"north\":-1.007107469708498,\"east\":-77.8131216697085}},\"place_id\":\"ChIJB1Iljcel1pERrluT94dr5lg\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1018796716", 
+   "LastName" : "ALVAREZ MARTINEZ", 
+   "FirstName" : "ALICIA TERESITA", 
+   "Address":"Umbuni, Tena, Ecuador", 
+   "Phone":"0992996518", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Umbuni\",\"short_name\":\"Umbuni\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Umbuni, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0061652,\"west\":-77.8127828,\"north\":-1.0061599,\"east\":-77.8123726},\"location\":{\"lat\":-1.0061626,\"lng\":-77.81257769999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.007511530291502,\"west\":-77.81392668029152,\"north\":-1.004813569708498,\"east\":-77.8112287197085}},\"place_id\":\"ChIJ91KM8rel1pER2GXkB-BJDDg\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1017915692", 
+   "LastName" : "ALVAREZ ESCURSELL", 
+   "FirstName" : "GERARDO JAVIER", 
+   "Address":"Chontayaku, Ecuador", 
+   "Phone":"0992996519", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Chontayaku\",\"short_name\":\"Chontayaku\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Chontayaku, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0059235,\"west\":-77.8198668,\"north\":-1.0056292,\"east\":-77.8192814},\"location\":{\"lat\":-1.0057842,\"lng\":-77.81957799999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.007125330291502,\"west\":-77.82092308029151,\"north\":-1.004427369708498,\"east\":-77.8182251197085}},\"place_id\":\"ChIJMWk_Ss-l1pERZN61BbyRAl0\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1030561448", 
+   "LastName" : "ALVAREZ SAMUDIO", 
+   "FirstName" : "HUBERTO NILSON", 
+   "Address":"Calle Salinas 8, Tena, Ecuador", 
+   "Phone":"0992996520", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"8\",\"short_name\":\"8\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle Salinas\",\"short_name\":\"Calle Salinas\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Salinas 8, Tena, Ecuador\",\"geometry\":{\"location\":{\"lat\":-1.0055004,\"lng\":-77.815269},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-1.006849380291502,\"west\":-77.81661798029151,\"north\":-1.004151419708498,\"east\":-77.81392001970849}},\"place_id\":\"ChIJrQ35P8il1pERakmSwIptGwc\",\"plus_code\":{\"compound_code\":\"X5VM+QV Tena, Ecuador\",\"global_code\":\"67C4X5VM+QV\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1028825131", 
+   "LastName" : "ALVAREZ AGUIAR", 
+   "FirstName" : "ANTONIO", 
+   "Address":"Gabriel Espinosa, Tena, Ecuador", 
+   "Phone":"0992996521", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Gabriel Espinosa\",\"short_name\":\"Gabriel Espinosa\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Gabriel Espinosa, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0061652,\"west\":-77.8127828,\"north\":-1.0050264,\"east\":-77.8126898},\"location\":{\"lat\":-1.0055958,\"lng\":-77.81273630000001},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.006944780291502,\"west\":-77.8140852802915,\"north\":-1.004246819708498,\"east\":-77.81138731970849}},\"place_id\":\"ChIJ0SSKxrel1pERnsc9pIwnABU\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1007325764", 
+   "LastName" : "ALVES ORTIZ", 
+   "FirstName" : "MIGUEL ANGEL", 
+   "Address":"Aquiles Onate, Tena, Ecuador", 
+   "Phone":"0992996522", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Aquiles Onate\",\"short_name\":\"Aquiles Onate\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Aquiles Onate, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0066424,\"west\":-77.8107448,\"north\":-1.0061784,\"east\":-77.8107437},\"location\":{\"lat\":-1.0064104,\"lng\":-77.8107442},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.007759380291502,\"west\":-77.81209323029151,\"north\":-1.005061419708498,\"east\":-77.8093952697085}},\"place_id\":\"ChIJx8PIfrel1pERgrfnhG6YRtM\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1016727193", 
+   "LastName" : "ALVES DE SIMAS GRIMON", 
+   "FirstName" : "MARTHA ELIZABETH", 
+   "Address":"Riobamba, Tena, Ecuador", 
+   "Phone":"0992996523", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Riobamba\",\"short_name\":\"Riobamba\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Riobamba, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0041954,\"west\":-77.80981480000001,\"north\":-1.0038097,\"east\":-77.80834949999999},\"location\":{\"lat\":-1.0040398,\"lng\":-77.80907239999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.005351530291502,\"west\":-77.8104311302915,\"north\":-1.002653569708498,\"east\":-77.8077331697085}},\"place_id\":\"ChIJH7XE27al1pERoqPZLs-zKHQ\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1015173202", 
+   "LastName" : "ALVEZ IZQUIERDO", 
+   "FirstName" : "VICTOR RICARDO", 
+   "Address":"Ita, Tena, Ecuador", 
+   "Phone":"0992996524", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Ita\",\"short_name\":\"Ita\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Ita, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0001446,\"west\":-77.8089537,\"north\":-0.9992462,\"east\":-77.808904},\"location\":{\"lat\":-0.9996953999999998,\"lng\":-77.8089289},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.001044380291502,\"west\":-77.81027783029151,\"north\":-0.998346419708498,\"east\":-77.80757986970849}},\"place_id\":\"ChIJX3cwZbSl1pERKrdbW2GDzNI\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1020150570", 
+   "LastName" : "ALVEZ VIERA", 
+   "FirstName" : "RUBEN ARI", 
+   "Address":"Llanganates, Tena, Ecuador", 
+   "Phone":"0992996525", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Llanganates\",\"short_name\":\"Llanganates\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Llanganates, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0010753,\"west\":-77.8094326,\"north\":-1.0001788,\"east\":-77.80937039999999},\"location\":{\"lat\":-1.0006271,\"lng\":-77.80940149999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.001976030291502,\"west\":-77.8107504802915,\"north\":-0.9992780697084979,\"east\":-77.80805251970848}},\"place_id\":\"ChIJk6zvZ7Sl1pERhMViG_6OIJ8\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1016828848", 
+   "LastName" : "ALVEZ VIERA", 
+   "FirstName" : "ROQUE GASTON", 
+   "Address":"Calle Tena 34, Tena, Ecuador", 
+   "Phone":"0992996526", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"34\",\"short_name\":\"34\",\"types\":[\"street_number\"]},{\"long_name\":\"Calle Tena\",\"short_name\":\"Calle Tena\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle Tena 34, Tena, Ecuador\",\"geometry\":{\"location\":{\"lat\":-0.9974862,\"lng\":-77.8144239},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-0.998835180291502,\"west\":-77.8157728802915,\"north\":-0.9961372197084979,\"east\":-77.81307491970848}},\"place_id\":\"ChIJ4dgbrcql1pER9PYwHbY0_e0\",\"plus_code\":{\"compound_code\":\"253P+26 Tena, Ecuador\",\"global_code\":\"67F4253P+26\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1015804760", 
+   "LastName" : "ALVEZ AGUIAR", 
+   "FirstName" : "AMERICO", 
+   "Address":"Pasourco, Tena, Ecuador", 
+   "Phone":"0992996527", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Pasourco\",\"short_name\":\"Pasourco\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Pasourco, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.0001182,\"west\":-77.80845719999999,\"north\":-0.9991810000000001,\"east\":-77.8083369},\"location\":{\"lat\":-0.9996474999999999,\"lng\":-77.80838260000002},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.000998580291502,\"west\":-77.80974603029149,\"north\":-0.998300619708498,\"east\":-77.80704806970849}},\"place_id\":\"ChIJVUWSgLSl1pERaBzGEniJa5E\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1041126914", 
+   "LastName" : "ALVEZ HOURCADE", 
+   "FirstName" : "ANA CAROLINA", 
+   "Address":"Carlos Shiguango 320, Tena, Ecuador", 
+   "Phone":"0992996528", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"320\",\"short_name\":\"320\",\"types\":[\"street_number\"]},{\"long_name\":\"Carlos Shiguango\",\"short_name\":\"Carlos Shiguango\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Carlos Shiguango 320, Tena, Ecuador\",\"geometry\":{\"location\":{\"lat\":-0.9972579,\"lng\":-77.8087623},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-0.998606880291502,\"west\":-77.81011128029151,\"north\":-0.9959089197084979,\"east\":-77.8074133197085}},\"place_id\":\"ChIJx1-_Ukuk1pER5BNqC5H6jNg\",\"plus_code\":{\"compound_code\":\"253R+3F Tena, Ecuador\",\"global_code\":\"67F4253R+3F\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1025286677", 
+   "LastName" : "ALVEZ VILA", 
+   "FirstName" : "EVA MYRIAN", 
+   "Address":"Tarqui 218, Tena, Ecuador", 
+   "Phone":"0992996529", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"218\",\"short_name\":\"218\",\"types\":[\"street_number\"]},{\"long_name\":\"Tarqui\",\"short_name\":\"Tarqui\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Tarqui 218, Tena, Ecuador\",\"geometry\":{\"location\":{\"lat\":-0.9922862,\"lng\":-77.8132194},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-0.9936351802915021,\"west\":-77.81456838029149,\"north\":-0.990937219708498,\"east\":-77.81187041970848}},\"place_id\":\"ChIJseNq-kmk1pERHqf2wOYbcKk\",\"plus_code\":{\"compound_code\":\"255P+3P Tena, Ecuador\",\"global_code\":\"67F4255P+3P\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1042510659", 
+   "LastName" : "ALZA SASTRE", 
+   "FirstName" : "ALVARO MARTIN", 
+   "Address":"Av. Los Quichuas, Tena, Ecuador", 
+   "Phone":"0992996530", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Avenida Los Quichuas\",\"short_name\":\"Av. Los Quichuas\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Av. Los Quichuas, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-0.9893164999999999,\"west\":-77.8102822,\"north\":-0.9886204999999999,\"east\":-77.81000449999999},\"location\":{\"lat\":-0.9889684999999999,\"lng\":-77.8101433},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-0.990317480291502,\"west\":-77.8114923302915,\"north\":-0.9876195197084979,\"east\":-77.8087943697085}},\"place_id\":\"ChIJCxwYkkik1pERqhKZyFWJ3bo\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1029181889", 
+   "LastName" : "ALZA FIORELLI", 
+   "FirstName" : "MARISA DANIELA", 
+   "Address":"Avenida Las Palmas 238, Tena, Ecuador", 
+   "Phone":"0992996531", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"238\",\"short_name\":\"238\",\"types\":[\"street_number\"]},{\"long_name\":\"Avenida Las Palmas\",\"short_name\":\"Avenida Las Palmas\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Avenida Las Palmas 238, Tena, Ecuador\",\"geometry\":{\"location\":{\"lat\":-0.9861158999999999,\"lng\":-77.8153888},\"location_type\":\"ROOFTOP\",\"viewport\":{\"south\":-0.987464880291502,\"west\":-77.8167377802915,\"north\":-0.984766919708498,\"east\":-77.8140398197085}},\"place_id\":\"ChIJh08MXTik1pER_oLDpTdMkw8\",\"plus_code\":{\"compound_code\":\"257M+HR Tena, Ecuador\",\"global_code\":\"67F4257M+HR\"},\"types\":[\"street_address\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }
+},
+{
+   "Ci" : "1044609258", 
+   "LastName" : "ALZUGARAY SARALEGUI", 
+   "FirstName" : "JUAN PABLO", 
+   "Address":"Rio Verde Yacu, Tena, Ecuador", 
+   "Phone":"0992996532", 
+   "GPS":"{\"address_components\":[{\"long_name\":\"Rio Verde Yacu\",\"short_name\":\"Rio Verde Yacu\",\"types\":[\"route\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Tena\",\"short_name\":\"Tena\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Napo\",\"short_name\":\"Napo\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Rio Verde Yacu, Tena, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-0.9881062,\"west\":-77.8252021,\"north\":-0.987996,\"east\":-77.82476340000001},\"location\":{\"lat\":-0.9880511,\"lng\":-77.82498269999999},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-0.9894000802915021,\"west\":-77.82633173029151,\"north\":-0.986702119708498,\"east\":-77.82363376970851}},\"place_id\":\"ChIJS2yMqjqk1pERFkT58MKhjVM\",\"types\":[\"route\"]}", 
+    "Active" : true,
+   "HasAccount" : false, 
+   "isDueno" : false, 
+   "Created" : { 
+      "At" : "1605731445",
+      "By" : ObjectId("5f90e7d31bcc913f6815d889")
+   }, 
+   "Updated" : { 
+      "At" : "1605731445"
+   }}
