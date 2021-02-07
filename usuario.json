@@ -1,0 +1,21 @@
+{
+    "_id" : ObjectId("5f90e7d31bcc913f6815d889"),
+    "RepData" : {
+        "Placa" : "",
+        "Tipo" : ""
+    },
+    "Created" : {
+        "At" : "1603332050"
+    },
+    "Updated" : {
+        "At" : "1603924961",
+        "By" : ObjectId("5f90e7d31bcc913f6815d889")
+    },
+    "Password" : "$2a$10$nll9awIIpx29IgM4ulvHquMz/emTO0mLreSSxSlifbpt3JFL/RMV2",
+    "Email" : "demiansr96@gmail.com",
+    "Active" : true,
+    "Role" : "Admin",
+    "Repartidor" : false,
+    "Persona" : ObjectId("5f90e60f4733073e8cd3cbb7"),
+    "__v" : 0
+}

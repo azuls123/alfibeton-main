@@ -1,0 +1,21 @@
+{
+    "_id" : ObjectId("5f90e60f4733073e8cd3cbb7"),
+    "Created" : {
+        "At" : "1603331558"
+    },
+    "Updated" : {
+        "At" : "1612056937",
+        "By" : ObjectId("5f90e7d31bcc913f6815d889")
+    },
+    "Ci" : "1600783946",
+    "FirstName" : "Manuel Damián",
+    "LastName" : "Robalino Camino",
+    "Phone" : "0992996436",
+    "City" : ObjectId("5f92fd10a3ffee2ba04d106a"),
+    "Address" : "Calle al Subcentro, Ecuador",
+    "GPS" : "{\"address_components\":[{\"long_name\":\"Calle al Subcentro\",\"short_name\":\"Calle al Subcentro\",\"types\":[\"route\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"Pastaza\",\"short_name\":\"Pastaza\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"Ecuador\",\"short_name\":\"EC\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"Calle al Subcentro, Ecuador\",\"geometry\":{\"bounds\":{\"south\":-1.4287034,\"west\":-77.9994861,\"north\":-1.4280002,\"east\":-77.99861299999999},\"location\":{\"lat\":-1.428349,\"lng\":-77.999464},\"location_type\":\"GEOMETRIC_CENTER\",\"viewport\":{\"south\":-1.429700780291502,\"west\":-78.0003985302915,\"north\":-1.427002819708498,\"east\":-77.9977005697085}},\"place_id\":\"ChIJ4Vv5rEHh05ERZFURqpmg--g\",\"types\":[\"route\"]}",
+    "Active" : true,
+    "HasAccount" : false,
+    "isDueno" : false,
+    "__v" : 0
+}
