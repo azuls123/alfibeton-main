@@ -35,7 +35,7 @@ const CantonRoutes = require('./api/routes/canton.routes');
 const CompareListRoutes = require('./api/routes/compareList.routes');
 // const cors = require('cors');
 // const corsOptions = {
-//     origin: 'http://10.116.0.2:4200',
+//     origin: 'http://167.172.149.195:4200',
 //     credentials: true,
 // }
 // App.use(cors(corsOptions));
@@ -148,8 +148,8 @@ io.on('connection', async function (socket) {
     })
 })
 
-ServerHTTP.listen(3000, function () {
-    console.log('listening on localhost:3000');
+ServerHTTP.listen(3799, function () {
+    console.log('listening on localhost:3799');
 });
 
 // const mongo = require('mongodb').MongoClient;
