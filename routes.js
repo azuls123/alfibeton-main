@@ -35,7 +35,7 @@ const CantonRoutes = require('./api/routes/canton.routes');
 const CompareListRoutes = require('./api/routes/compareList.routes');
 // const cors = require('cors');
 // const corsOptions = {
-//     origin: 'http://localhost:4200',
+//     origin: 'http://10.116.0.2:4200',
 //     credentials: true,
 // }
 // App.use(cors(corsOptions));
