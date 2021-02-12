@@ -14,7 +14,7 @@ const Moment = require('moment');
 
         if (!params.City) noCi = "[City]";if (!params.By) noBy = "[In Charge]"; if (!params.Address) noAdd = "[Address]"; if (!params.Phone) noPh="[Phone]"; if (!params.Color) noCol="[Color]"; if (!params.Name) noName="[Name]";
         if (params.Address && params.Phone && params.Name) {
-            // bodega.City       = params.City        ; 
+            bodega.City       = 'Sin Uso'        ; 
             bodega.Address    = params.Address     ; 
             bodega.Name       = params.Name        ; 
             bodega.Phone      = params.Phone       ;
@@ -25,7 +25,7 @@ const Moment = require('moment');
             bodega.GPS      = params.GPS       ;
             bodega.Created.By = req.usuario.id    ;
             bodega.save((ErrorSave, stored) => {
-                if (ErrorSave) return res.status(500).send({Message: 'Error while save Bodega'});
+                if (ErrorSave) return res.status(500).send({Message: 'Error while save Bodega', ErrorSave});
                 if (stored && stored != null) {
                     return res.status(201).send({Message: 'Bodega Saved!', Bodega: stored});
                 } else return res.status(404).send({Message: 'Error: Bodega Saved null'});

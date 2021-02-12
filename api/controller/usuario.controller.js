@@ -73,7 +73,7 @@ function Login(req, res) {
         }
     }).exec((Error, usuario) => {
         if (Error) return res.status(500).send({ Message: 'Error while login process', Error });
-        // console.log(usuario);
+       //  console.log(usuario);
         if (usuario) {
             Bcrypt.compare(Password, usuario.Password, (ErrorPassword, check) => {
                 if (ErrorPassword) return res.status(500).send({ Message: 'Error while comparing passwords!!', ErrorPassword });

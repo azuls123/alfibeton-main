@@ -5,7 +5,7 @@ const Schema = Mongoose.Schema;
 const Moment = require('moment');
 
 const MainSchema = Schema({
-    City        : { type: Schema.ObjectId, ref: 'Parroquia', required: true },
+    // City        : { type: Schema.ObjectId, ref: 'Parroquia', required: true },
     Address     : { type: String, default: 'No Address', required: true },
     Name        : { type: String, default: 'No Name', required: true },
     Phone       : { type: String, default: 'No Phone', required: true },
