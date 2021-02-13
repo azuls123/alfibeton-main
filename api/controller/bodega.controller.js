@@ -14,7 +14,7 @@ const Moment = require('moment');
 
         if (!params.City) noCi = "[City]";if (!params.By) noBy = "[In Charge]"; if (!params.Address) noAdd = "[Address]"; if (!params.Phone) noPh="[Phone]"; if (!params.Color) noCol="[Color]"; if (!params.Name) noName="[Name]";
         if (params.Address && params.Phone && params.Name) {
-            bodega.City       = 'Sin Uso'        ; 
+            // bodega.City       = 'Sin Uso'        ; 
             bodega.Address    = params.Address     ; 
             bodega.Name       = params.Name        ; 
             bodega.Phone      = params.Phone       ;
