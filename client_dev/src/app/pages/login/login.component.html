@@ -1,0 +1,71 @@
+<div *ngIf="isOn == false" class="d-flex justify-content-center align-items-center w-100 h-100 login-container">
+    <div class="col-xl-4 col-md-6 col-10">
+        <div class="card border-0 box-shadow rounded-0">
+            <div class="card-header d-flex justify-content-center align-items-center border-0 box-shadow">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+            </div>
+            <div class="card-body text-center pb-1">
+                <h2>AlfiBeton</h2>
+                
+                <div *ngIf="alert" role="alert" class="alert alert-danger alert-dismissible fade show">
+                    <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                        <span aria-hidden="true">×</span>
+                    </button> -->
+                    <strong>Error!</strong> {{alert}}
+                </div>
+                <span *ngIf="!connected">
+                    Sin Conexión
+                    {{message}}
+                </span>
+                <!-- <a routerLink="/register" class="transition">Don't have an account? Sign up now!</a> -->
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="text-left mt-4">
+                    <div class="form-group">
+                        <input [formControl]="Email" class="form-control validation-field" placeholder="Correo Electrónico" type="text">                      
+                        <small class="text-danger" *ngIf="form.get('Email').touched && form.get('Email').hasError('required')">Correo Electr&oacute;nico Requerido</small>                              
+                        <small class="text-danger" *ngIf="form.get('Email').touched && form.get('Email').hasError('Email')">Correo Electr&oacute;nico Invalido</small>
+                    </div>
+                    <div class="form-group">
+                        <input [formControl]="Password" class="form-control validation-field" placeholder="Contraseña" type="password">
+                        <small class="text-danger" *ngIf="form.get('Password').touched && form.get('Password').hasError('required')">Contraseña Requerida</small>                              
+                        <small class="text-danger" *ngIf="form.get('Password').touched && form.get('Password').hasError('minlength')">Contraseña muy Corta o no Cumple los Requisitos</small>
+                    </div>
+                    <!-- <div class="form-group d-flex justify-content-between">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="login-checkbox">
+                            <label class="custom-control-label" for="login-checkbox">Keep me signed in.</label>
+                        </div>
+                        <a class="transition pull-right" href="javascript:void(0);">Forgot password?</a>                     
+                    </div> -->
+                    <div class="form-group">
+                        <button [disabled]="!form.valid" class="btn btn-block" type="submit">Iniciar Sesi&oacute;n</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="card-footer text-center bg-transparent">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x"></i>
+                        </span>
+                    </li>
+                    <li class="list-inline-item">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x"></i>
+                        </span>
+                    </li>
+                    <li class="list-inline-item">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-google fa-stack-1x"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+       

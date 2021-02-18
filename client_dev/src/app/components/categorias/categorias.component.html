@@ -1,0 +1,201 @@
+<div class="row">
+  <div class="col-md-5">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Formulario de Categorias
+          
+          <span *ngIf="categoria._id && categoria._id != ''"> - [Edición]</span>
+          <span *ngIf="!categoria._id || categoria._id == ''"> - [Ingreso]</span>
+        </h5>
+        <div class="widget-controls"> 
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div> 
+      </div>
+      <div class="card-body widget-body bg-light">
+        <form #Form=ngForm action="">
+          <div class="row container pl-4 pr-4">
+            <label for="" class="col-md-4 col-sm-12 label-form">Nombre:</label>
+            <input class="col-md-8 col-sm-12 mb-3 form-control" id="Name" name="Name" #Name=ngModel
+              [class.is-invalid]="Name.touched && !Name.valid && cp_correcta === false"
+              [class.is-valid]="Name.touched && Name.valid && cp_correcta === true"
+              minlength="4" maxlength="25"
+              required
+              pattern="[a-zA-Z ñÑáÁéÉíÍóÓúÚüÜ]{4,25}"
+              [(ngModel)]="categoria.Name" type="text"
+              (change)="cpUnica(Name.value)"
+              (keyup)="cpUnica(Name.value)">
+            <span *ngIf="cp_correcta === false" class="col-md-8 col-sm-12 offset-md-4 badge badge-danger">
+              | El nombre de la categoria ingresada ya Existe!
+            </span>
+            <label class="col-md-4 col-sm-12 mb-3 label-form" for="">Descripci&oacute;n:</label>
+            <textarea class="col-md-8 col-sm-12 form-control" id="Desc" name="Desc"  #Desc=ngModel
+              pattern="[A-Za-z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{3,100}"
+              [class.is-invalid]="Desc.touched && !Desc.valid"
+              [class.is-valid]="Desc.touched && Desc.valid"
+              minlength="3" maxlength="100"
+              [(ngModel)]="categoria.Description">
+            </textarea>
+          </div>
+          <br>
+          <div class="text-center">
+            <button class="btn btn-warning pull-left" (click)="initCategoria()">
+              <i class="fa fa-trash arrow"></i>&nbsp; 
+              Limpiar Datos
+            </button>
+            <button class="btn btn-success pull-right" [disabled]="!Form.form.valid" (click)="onSubmit()">
+              <i class="fa fa-save arrow"></i> Guardar Datos
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Listado de Categorias</h5>
+        <div class="widget-controls"> 
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div> 
+      </div>
+      <div class="card-body widget-body bg-light">
+        <div  *ngIf="bufferCategorias && bufferCategorias.length >=1" class="input-group mb-2">
+          <span class="input-group-prepend">
+            <span class="input-group-text bg-transparent border-0"><i class="fa fa-search ml-2 mr-1"></i></span>
+          </span>
+          <input class="form-control border-0" type="text" id=searchText name=searchText (change)="define();"
+            (keyup)="define();" [(ngModel)]="searchText" placeholder="{{searchTitle}}">
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle no-caret bg-transparent border-0 box-shadow-none"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
+              <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'all'; define();">Todo</a>
+              <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'name'; define();">Nombre</a>
+              <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'description'; define();">Descripci&oacute;n</a>
+            </div>
+          </div>
+        </div>
+        
+        <table *ngIf="categorias && categorias.length >=1" class="table  table-responsive-sm table-striped table-sm table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th [class.gray-highlight]="type != 'all' && type !='name'"     >Nombre</th>
+              <th [class.gray-highlight]="type != 'all' && type !='description'"  >Descripción</th>
+              <th width="10%" colspan="3">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let categoriaItem of categorias; let i=index">
+              <th [class.bg-deleted]="!categoriaItem.Active" scope="row">{{i+1}}</th>
+              <td [class.gray-highlight]="type != 'all' && type !='name'"      [class.bg-deleted]="!categoriaItem.Active">{{categoriaItem.Name}}</td>
+              <td [class.gray-highlight]="type != 'all' && type !='description'"   [class.bg-deleted]="!categoriaItem.Active">{{categoriaItem.Description}}</td>
+              <td [class.bg-deleted]="!categoriaItem.Active" class="text-center">
+                <button data-toggle="tooltip" data-html="true" title="Editar Cliente" [disabled]="role == 'Secretario'"
+                  class="btn btn-primary btn-sm" (click)="toUpdate(categoriaItem)"><i
+                    class="fa fa-edit"></i>
+                </button>
+              </td>
+              <td [class.bg-deleted]="!categoriaItem.Active" class="text-center">
+                <button class="btn btn-sm" data-toggle="tooltip" data-html="true"
+                  title="Activar/Desactivar Cliente" [class.btn-outline-warning]="categoriaItem.Active == true" [disabled]="role == 'Secretario'"
+                  [class.btn-warning]="categoriaItem.Active == false" (click)="Delete(categoriaItem)">
+                  <i *ngIf="categoriaItem.Active == false" class="fa fa-eye"></i>
+                  <i *ngIf="categoriaItem.Active == true" class="fa fa-eye-slash"></i>
+                </button>
+              </td>
+              <td [class.bg-deleted]="!categoriaItem.Active" class="text-center">
+                <button type="button" class="btn btn-info btn-sm" (click)="viewedCategoria=categoriaItem"
+                  data-toggle="modal" data-target="#info-modal">
+                  <i class="fa fa-info"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <pagination-controls id="categorias_tbl" class="text-center" maxSize="3" directionLinks="true" autoHide="true"
+          responsive="true" previousLabel="Atrás" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"
+          (pageBoundsCorrection)="paginationDataCategorias.currentPage = $event"
+          (pageChange)="paginationDataCategorias.currentPage = $event"></pagination-controls>
+
+        <div *ngIf="!categorias || categorias.length < 1" role="alert" class="alert alert-dismissible fade show"
+        [class.alert-danger]="searchText == ''" [class.alert-warning]="searchText != ''">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <span *ngIf="searchText != ''">
+            <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
+          </span>
+          <span *ngIf="searchText == ''">
+            <strong>Sin Categorias!</strong> Al parecer no se han Registrado Categorias en el Sistema o hubo un Error en el Servidor
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="info-modal" *ngIf="viewedCategoria" tabindex="-1" role="dialog"
+  aria-labelledby="modal-info-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label"><i class="fa fa-info"></i>Informacion de la Categoria:
+          {{viewedCategoria.FirstName}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <span *ngIf="viewedCategoria.Created.By">
+          <b>Ingresado Por:</b>
+          <span *ngIf="viewedCategoria.Created.By.FK_Persona">
+            {{viewedCategoria.Created.By.FK_Persona.FirstName + ' ' + viewedCategoria.Created.By.FK_Persona.LastName}} (
+          {{viewedCategoria.Created.By.Account}} )
+          </span>
+          <span *ngIf="!viewedCategoria.Created.By.FK_Persona">
+            {{viewedCategoria.Created.By.Account}} ({{viewedCategoria.Created.By.Email}})
+          </span>
+        </span>
+        <span *ngIf="!viewedCategoria.Created.By">
+          <b>Ingresado Por: </b>
+          Aplicativo Como (Administrador)
+        </span>
+        <br>
+        <span *ngIf="viewedCategoria.Created.At"><b>Ingresado El: </b>
+          {{(viewedCategoria.Created.At  | amFromUnix) | date: 'medium'}}
+        </span>
+        <hr *ngIf="viewedCategoria.Updated.By">
+        <span *ngIf="viewedCategoria.Updated.By">
+          <b>Editado Por:</b>
+          <span *ngIf="viewedCategoria.Updated.By.FK_Persona">
+            {{viewedCategoria.Updated.By.FK_Persona.FirstName + ' ' + viewedCategoria.Updated.By.FK_Persona.LastName}} (
+            {{viewedCategoria.Updated.By.Account}} )
+          </span>
+          <span *ngIf="!viewedCategoria.Updated.By.FK_Persona">
+            {{viewedCategoria.Updated.By.Account}} ({{viewedCategoria.Updated.By.Email}})
+          </span>
+        </span>
+        <br>
+        <span *ngIf="viewedCategoria.Updated.At && viewedCategoria.Updated.By"><b>Editado El: </b>
+          {{(viewedCategoria.Updated.At  | amFromUnix) | date: 'medium'}}
+        </span>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button> -->
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

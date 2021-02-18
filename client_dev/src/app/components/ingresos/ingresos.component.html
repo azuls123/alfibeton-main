@@ -1,0 +1,25 @@
+<div class="container row">
+  <div class="col-md-4">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparet border-0 text-muted">
+        <h5 class="mb-0">Mensajeria de Prueba</h5>
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div>
+      </div>
+      <div class="card-body widget-body">
+        <div class="row container">
+          <label for="" class="col-md-12">Nombre de Ejemplo</label>
+          <input type="text" class="form-control mb-2" [(ngModel)]="user.name">
+          <a [routerLink]="['/chat', user.name]" routerLinkActive="router-link-active"  class="btn btn-block btn-success">
+          Ir a la sala
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

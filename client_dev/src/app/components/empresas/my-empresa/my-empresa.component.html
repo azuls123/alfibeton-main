@@ -1,0 +1,60 @@
+<div class="card card-info border-0 box-shadow">
+  <div class="card-header text-white text-center">
+      <h4><span *ngIf="!edit">Datos de</span> <span *ngIf="edit">Editando </span> la Empresa
+        <button class="btn" (click)="edit = !edit">
+          <i class="fa fa-edit bold text-white">
+          </i>
+        </button>
+      </h4>
+  </div>
+  <div class="card-body bg-white">
+
+      <form class="content p-4 row">
+        <label for="" class="label-form col-md-1 pl-1 pr-0"><strong>Nombre:</strong></label>
+        <div class="input-group col-md-2 pl-0 pr-0 mb-2">
+          <span class="form-control control-disabled" *ngIf="!edit">
+            {{MyEmpresa.Name}}
+          </span>
+          <input *ngIf="edit" type="text" class="form-control" id="Nombre" name="Nombre" #Nombre=ngModel [(ngModel)]="MyEmpresa.Name">
+        </div>
+        <label for="" class="label-form col-md-1 pl-1 pr-0"><strong>RUC:</strong></label>
+        <div class="input-group col-md-2 pl-0 pr-0 mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              {{MyEmpresa.Representante.Ci}}
+            </span>
+          </div>
+          <span class="form-control control-disabled" *ngIf="!edit">
+            {{MyEmpresa.RUC}}
+          </span>
+          <input *ngIf="edit" type="text" class="form-control" id="RUC" name="RUC" #RUC=ngModel [(ngModel)]="MyEmpresa.RUC">
+        </div>
+        
+        <label for="" class="label-form col-md-1 pl-1 pr-0"><strong>Dirección:</strong></label>
+        <div class="input-group col-md-5 pl-0 pr-0 mb-2">
+          <span class="form-control control-disabled" *ngIf="!edit">
+            {{MyEmpresa.Address}}
+          </span>
+          <input *ngIf="edit" type="text" class="form-control" id="Address" name="Address" #Address=ngModel [(ngModel)]="MyEmpresa.Address">
+        </div>
+
+        <label for="" class="label-form col-md-2 pl-1 pr-0"><strong>Representante:</strong></label>
+        <div class="input-group col-md-4 pl-0 pr-0 mb-2">
+          <span class="form-control control-disabled">
+            {{MyEmpresa.Representante.FirstName + ' ' + MyEmpresa.Representante.LastName}}
+          </span>
+        </div>
+        <div class="text-center col-12" *ngIf="edit">
+          <button class="btn btn-warning pull-left" (click)="edit = !edit; MyEmpresa = BufferEmpresa" >
+            <i class="fa fa-trash"></i>
+            Cancelar
+          </button>
+          <button class="btn btn-success pull-right" (click)="onSubmit()">
+            <i class="fa fa-save"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+
+  </div>
+</div>

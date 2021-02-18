@@ -1,0 +1,190 @@
+<div class="card card-info border-0 box-shadow">
+    <div class="card-header text-white text-center">
+        <h4>Actualiza tus Datos</h4>
+    </div>
+    <div class="card-body bg-white">
+
+        <form [formGroup]="personalForm" (ngSubmit)="onSubmit(personalForm.value)" class="row">
+
+            <div class="form-group col-md-4"
+                [ngClass]="{'has-danger' : (personalForm.get('Ci').touched && personalForm.get('Ci').hasError('required') || personalForm.get('Ci').hasError('invalidCi')), 'has-success' : !personalForm.get('Ci').hasError('required') }">
+                <label class="form-control-label">C&eacute;dula de Identidad</label>
+                <!-- <input disabled minlength="10" maxlength="13" formControlName="Ci" class="form-control"
+                    [ngClass]="{'form-control-danger' :  (personalForm.get('Ci').hasError('required') || personalForm.get('Ci').hasError('invalidCi')), 'form-control-success' :  (!personalForm.get('Ci').hasError('required') && !personalForm.get('Ci').hasError('invalidCi')) }"
+                    type="text"> -->
+                    <span class="form-control form-control-success">
+                        {{identity.Persona.Ci}}
+                    </span>
+                <small class="text-danger"
+                    *ngIf="personalForm.get('Ci').touched && personalForm.get('Ci').hasError('required') ">Ingresar
+                    C&eacute;dula de Identidad</small>
+                <small class="text-danger" *ngIf="personalForm.get('Ci').hasError('invalidCi')">C&eacute;dula de
+                    Identidad Incorrecta</small>
+            </div>
+
+            <div class="form-group col-md-4"
+                [ngClass]="{'has-danger' : personalForm.get('FirstName').touched && personalForm.get('FirstName').hasError('required'), 'has-success' : !personalForm.get('FirstName').hasError('required') }">
+                <label class="form-control-label">Nombres</label>
+                <input formControlName="FirstName" class="form-control"
+                    [ngClass]="{'form-control-danger' :  personalForm.get('FirstName').hasError('required'), 'form-control-success' :  !personalForm.get('FirstName').hasError('required') }"
+                    type="text">
+                <small class="text-danger"
+                    *ngIf="personalForm.get('FirstName').touched && personalForm.get('FirstName').hasError('required')">Nombres
+                    Obligatorios</small>
+            </div>
+
+            <div class="form-group col-md-4"
+                [ngClass]="{'has-danger' : personalForm.get('LastName').touched && personalForm.get('LastName').hasError('required'), 'has-success' : !personalForm.get('LastName').hasError('required') }">
+                <label class="form-control-label">Apellidos</label>
+                <input formControlName="LastName" class="form-control"
+                    [ngClass]="{'form-control-danger' :  personalForm.get('LastName').hasError('required'), 'form-control-success' :  !personalForm.get('LastName').hasError('required') }"
+                    type="text">
+                <small class="text-danger"
+                    *ngIf="personalForm.get('LastName').touched && personalForm.get('LastName').hasError('required')">Last
+                    Name is required</small>
+            </div>
+
+            <div class="form-group col-md-4"
+                [ngClass]="{'has-danger' : personalForm.get('Phone').touched && personalForm.get('Phone').hasError('required'), 'has-success' : !personalForm.get('Phone').hasError('required') }">
+                <label class="form-control-label">Tel&eacute;fono</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span>
+                    </div>
+                    <input formControlName="Phone" class="form-control"
+                        [ngClass]="{'form-control-danger' :  personalForm.get('Phone').hasError('required'), 'form-control-success' :  !personalForm.get('Phone').hasError('required') }"
+                        type="number">
+                </div>
+                <small class="text-danger"
+                    *ngIf="personalForm.get('Phone').touched && personalForm.get('Phone').hasError('required')">Phone is
+                    required</small>
+            </div>
+            <div class="form-group col-md-4"
+                [ngClass]="{'has-danger' : (personalForm.get('Email').touched && personalForm.get('Email').hasError('required')) || (personalForm.get('Email').touched && personalForm.get('Email').hasError('invalidEmail')), 
+                                                         'has-success' : !personalForm.get('Email').hasError('required') && !personalForm.get('Email').hasError('invalidEmail')}">
+                <label class="form-control-label">Correo Electrónico</label>
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i
+                                class="fa fa-envelope"></i></span></div>
+                    <!-- <input disabled formControlName="Email" class="form-control"
+                        [ngClass]="{'form-control-danger' : (personalForm.get('Email').touched && personalForm.get('Email').hasError('required')) || (personalForm.get('Email').touched && personalForm.get('Email').hasError('invalidEmail')), 
+                                                                                    'form-control-success' :  !personalForm.get('Email').hasError('required') && !personalForm.get('Email').hasError('invalidEmail')}"
+                        type="text"> -->
+                        <span class="form-control form-control-success">
+                            {{identity.Email}}
+                        </span>
+                </div>
+                <small class="text-danger"
+                    *ngIf="personalForm.get('Email').touched && personalForm.get('Email').hasError('required')">Email is
+                    required</small>
+                <small class="text-danger"
+                    *ngIf="personalForm.get('Email').touched && personalForm.get('Email').hasError('invalidEmail')">Invalid
+                    email address</small>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="form-control-label">Configuración</label>
+                <div class="input-group">
+                    <!-- <app-cambiar-password class="btn btn-info btn-block"></app-cambiar-password> -->
+                    <button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#change-password">
+                        <i class="fa fa-lock"></i>
+                        &nbsp;
+                        Cambiar Contraseña
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="form-group col-md-4" [ngClass]="{'has-danger' : personalForm.get('City').touched && personalForm.get('City').hasError('required'), 'has-success' : !personalForm.get('City').hasError('required') }">
+                <label class="form-control-label">Select Country</label>
+                <select formControlName="City" class="form-control" [ngClass]="{'form-control-danger' : personalForm.get('City').touched && personalForm.get('City').hasError('required'), 'form-control-success' : !personalForm.get('City').hasError('required') }">
+                    <option value="usa" >USA</option>
+                    <option value="canada" >Canada</option>
+                    <option value="max" >Mexico</option>
+                    <option value="uk" >UK</option>
+                    <option value="franc" >France</option>
+                    <option value="irt" >Italy</option>
+                </select>
+                <small class="text-danger" *ngIf="personalForm.get('City').touched && personalForm.get('City').hasError('required')">Country is required</small>                             
+            </div> -->
+
+
+            <!-- <div class="form-group col-md-5">
+                <label class="form-control-label">Select State</label>
+                <select formControlName="state" class="form-control">
+                    <option>Arkansas</option>
+                    <option>Texas</option>
+                    <option>California</option>
+                    <option>Florida</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group col">
+                <label class="form-control-label">Address</label>
+                <textarea formControlName="Address" [ngClass]="{'form-control-danger' : personalForm.get('Address').touched && personalForm.get('Address').hasError('required'), 'form-control-success' : !personalForm.get('Address').hasError('required') }" class="form-control"></textarea>
+            </div>  -->
+
+            <div class="form-group col-12 pt-3 text-center">
+                <button [disabled]="!personalForm.valid" class="btn btn-success" type="submit">Actualizar</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="change-password" tabindex="-1" *ngIf="passwords" role="dialog" aria-labelledby="modal-info-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-info">
+                <h4 class="modal-title">
+                    <i class="fa fa-lock"></i> Cambio de Contraseña
+                </h4>
+                <button typeEmpleado="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body row pl-5 pr-5">
+
+                <label for="" class="label-form col-12">Contraseña Actual: </label>
+                <div class="input-group col-12">
+                    <span class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fas fa-lock-open"></i>
+                        </span>
+                    </span>
+                    <input type="password" class="form-control" id="oldsPassword" name="oldsPassword" #oldsPassword>
+                </div>
+                <label for="" class="label-form col-12">Nueva Contraseña: </label>
+                <div class="input-group col-12">
+                    <span class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </span>
+                    <input type="password" class="form-control" id="newPassword" name="newPassword" #newPassword>
+                </div>
+                <label for="" class="label-form col-12">Confirmar Contraseña: </label>
+                <div class="input-group col-12">
+                    <span class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-lock"></i>
+                        </span>
+                    </span>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" #confirmPassword>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-12">
+                    <button type="button" class="btn btn-primary pull-left" type="button" (click)="changePassword(oldsPassword.value, newPassword.value)" [disabled]="!checkPasswords(newPassword.value, confirmPassword.value)" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-edit"></i>
+                        &nbsp;
+                        Cambiar Contraseña
+                    </button>
+                    <button class="btn pull-right btn-danger" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times"></i>
+                        &nbsp;
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

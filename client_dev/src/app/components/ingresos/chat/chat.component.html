@@ -1,0 +1,134 @@
+<div class="content row">
+  <div class="col-md-12 mb-4">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparet border-0 text-muted">
+        <h5 class="mb-0">Google Maps</h5>
+        <span *ngIf="currPosition">
+          {{currPosition.address_components[0].long_name}} -
+          {{currPosition.address_components[1].long_name}} -
+          {{currPosition.address_components[2].long_name}} -
+          {{currPosition.address_components[3].long_name}} <span *ngIf="currPosition.address_components[4]">
+          - {{currPosition.address_components[4].long_name}}
+
+          </span>
+        </span>
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div>
+      </div>
+      <div class="card-body widget-body mb-2">
+        <div class="content row">
+          <div id="floating-panel" class="col-12 input-group">
+            <div class="input-group-prepend">
+              <button class="btn btn-success" id="GetAddress">
+                <i class="fas fa-map-marked-alt"></i>
+                Buscar!
+              </button>
+            </div>
+            <input id="address" type="textbox" class="form-control" value="Puyo, Pastaza, Pastaza, Ecuador" />
+            <!-- <input id="GetAddress" type="button" value="Geocode" /> -->
+          </div>
+          <span *ngIf="currPosition && currPosition.formatted_address">"Address": "{{currPosition.formatted_address}}"</span>
+          <span>"GPS": 
+            <br>
+            {{JSONStringify(currPosition)}} </span>
+          <div name=MyGoogleMap id=MyGoogleMap class="col-md-8 form-group" style="width: 100%; height: 500px;" ></div>
+          <div id="right-panel" class="col-md-4 m-0">
+            <div>
+              <b>Start:</b>
+              <select id="start">
+                <option value="Urdaneta, Guayaquil, Ecuador">Urdaneta</option>
+                <option value="Boston, MA">Boston, MA</option>
+                <option value="New York, NY">New York, NY</option>
+                <option value="Miami, FL">Miami, FL</option>
+              </select>
+              <br />
+              <b>Waypoints:</b> <br />
+              <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br />
+              <select multiple id="waypoints">
+                <option value="montreal, quebec">Montreal, QBC</option>
+                <option value="toronto, ont">Toronto, ONT</option>
+                <option value="chicago, il">Chicago</option>
+                <option value="winnipeg, mb">Winnipeg</option>
+                <option value="fargo, nd">Fargo</option>
+                <option value="calgary, ab">Calgary</option>
+                <option value="spokane, wa">Spokane</option>
+              </select>
+              <br />
+              <b>End:</b>
+              <select id="end">
+                <option value="Puyo, Ecuador">Puyo</option>
+                <option value="Seattle, WA">Seattle, WA</option>
+                <option value="San Francisco, CA">San Francisco, CA</option>
+                <option value="Los Angeles, CA">Los Angeles, CA</option>
+              </select>
+              <br />
+              <input type="submit" id="GetRoute" />
+            </div>
+            <div id="directions-panel"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div hidden class="col-md-12 mb-4">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparet border-0 text-muted">
+        <h5 class="mb-0">Google Maps</h5>
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div>
+      </div>
+      <div class="card-body widget-body mb-2">
+        <!-- <div name=MyGoogleMap id=MyGoogleMap style="width: 500px; height: 500px;" ></div> -->
+        <button class="btn btn-success left" (click)="getCurrentPosition()">
+          <i class="fas fa-map-marker-alt"></i> Seleccionar Posicion Actual
+        </button>
+        estilo: 
+        <select name="" id="" [(ngModel)]="mapTypeId" class="form-control">
+          <option value="terrain">Terrain</option>
+          <option value="satellite">Satellite</option>
+          <option value="hybrid">Hybrid </option>
+          <option value="roadmap">roadmap </option>
+        </select>
+        <agm-map 
+          [latitude]="lat" 
+          [longitude]="lng" 
+          [zoom]="zoom" 
+          [mapTypeId]="mapTypeId" 
+          [fitBounds]="true"
+          (mapClick)="getMapClick($event)" 
+          (mapReady)="getCurrentPosition()"
+          >
+          <agm-direction [origin]="origin" [destination]="destination" [waypoints]="waypoints"></agm-direction>
+          <agm-marker *ngFor="let pais of paises" [latitude]="pais.latlng[0]" [longitude]="pais.latlng[1]"  [agmFitBounds]="true"
+            [iconUrl]="{
+              url: pais.flag, 
+              scaledSize: {
+                height: 15,
+                width:  20
+              }
+            }">
+            <agm-info-window>
+              <h3>{{pais.translations.es}}</h3>
+              <p>Capital: {{pais.capital}} </p>
+              <p>Poblacion: {{pais.population}} </p>
+              <p>Moneda: {{pais.currencies[0].name}} </p>
+
+            </agm-info-window>
+          </agm-marker>
+
+        </agm-map>
+
+      </div>
+    </div>
+  </div>
+</div>

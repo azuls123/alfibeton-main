@@ -1,0 +1,438 @@
+<div class="row">
+    <div class="col-md-5 col-sm-12">
+        <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h5 class="mb-0">Formulario de Productos
+                    <span *ngIf="producto && producto._id && producto._id != ''"> - [Edición]</span>
+                    <span *ngIf="!producto || !producto._id || producto._id == ''"> - [Ingreso]</span>
+                </h5>
+                <div class="widget-controls">
+                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+                    <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+                    <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+                    <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+                </div>
+            </div>
+            <div class="card-body widget-body">
+                <div class="row">
+                    <div *ngFor="let step of steps; let last = last" class="col-md-6 col-sm-6 col-12 step text-center">
+                        <div class="d-flex justify-content-center align-items-center text-white pl-2 pr-2 mb-2 rounded step-content"
+                            [class.bg-success]="step.valid" [class.bg-danger]="step.active">
+                            <i class="fa {{ step.icon }} mr-2" aria-hidden="true"></i>
+                            <span class="step-name">{{step.name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let step of steps" [hidden]="!step.active" class="col">
+                    <div class="row">
+                        <h4 class="mt-3 mb-3"><i class="fa {{ step.icon }}"></i> {{step.name}}</h4>
+                    </div>
+                    <!-- <small class="text-danger" *ngIf="step.hasError && accountForm.get('username').hasError('required')">Username is
+                    required</small> -->
+                    <form *ngIf="step.name=='Información del Producto'" #Form=ngForm class="p-4 bg-light">
+                        <div class="row">
+                            <label for="" class="col-md-4 col-sm-12 label-form">Nombre:*</label>
+                            <div class="input-group col-sm-12 col-md-8 mb-2">
+                                <input class="form-control" id="nameProd" name="nameProd" #nameProd=ngModel
+                                    [class.is-invalid]="nameProd.touched && !nameProd.valid || np_correcta === false"
+                                    [class.is-valid]="nameProd.touched && nameProd.valid && np_correcta === true"
+                                    minlength="4" maxlength="25" required pattern="[a-zA-Z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{4,25}"
+                                    [(ngModel)]="producto.Name" type="text" (change)="npUnica(nameProd.value)"
+                                    (keyup)="npUnica(nameProd.value)">
+                                    <span *ngIf="np_correcta === false" class="col-md-12 col-sm-12 badge badge-danger">El nombre del producto ingresado ya Existe!</span>
+                            </div>
+                            <label for="" class="col-md-4 col-sm-12 label-form">Descripci&oacute;n:*</label>
+                            <div class="input-group col-sm-12 col-md-8 mb-2">
+                                <input class="form-control" id="descProd" name="descProd" #descProd=ngModel
+                                    [class.is-invalid]="descProd.touched && !descProd.valid"
+                                    [class.is-valid]="descProd.touched && descProd.valid" required minlength="4" maxlength="45"
+                                    pattern="[a-zA-Z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{4,45}" [(ngModel)]="producto.Description"
+                                    type="text">
+                            </div>
+                            <label for="" class="col-md-4 col-sm-12 label-form">Es Alfibeton?:</label>
+                            <div class="input-group col-md-8 col-sm-12 mb-2">
+                                <div class="input-group-prepend">
+                                    <button class="btn" (click)="otherBrand = !otherBrand;" [class.btn-warning]="otherBrand" [class.btn-info]="!otherBrand" >
+                                        <i *ngIf="!otherBrand" class="fa fa-check-square"></i>
+                                        <i *ngIf="otherBrand" class="fa fa-square"></i>
+                                    </button>
+                                </div>
+                                <input *ngIf="otherBrand" id="Brand" name="Brand" #Brand=ngModel [(ngModel)]="producto.Brand" type="text" class="form-control">
+                                <input *ngIf="!otherBrand" disabled type="text" value="AlfiBeton" class="form-control">
+                                <!-- <button class="btn btn-info col"></button> -->
+                            </div>
+                        </div>
+                        <!-- <button class="btn btn-success" (click)="onSubmit()"
+                            [disabled]="!Form.form.valid || np_correcta === false">
+                            <span *ngIf="!producto._id">
+                                <i class="fa fa-save arrow"></i> Registrar Producto
+                            </span>
+                            <span *ngIf="producto._id">
+                                <i class="fa fa-edit arrow"></i> Editar Producto
+                            </span>
+                        </button>
+                        <button class="btn btn-danger pull-right" (click)="initProducto()">
+                            <i class="fa fa-trash"></i> Cancelar
+                        </button> -->
+                    </form>
+
+                    <form *ngIf="step.name=='Variaciones y Categorías'" class="bg-light">
+                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="card card-primary border-0 rounded-1 mb-2">
+                                <div class="card-header" role="tab" id="primaryHeading">
+                                    <h5 class="mb-0">
+                                        <a class="collapsed text-white" data-toggle="collapse" href="#primaryCollapse"
+                                            aria-expanded="false" aria-controls="primaryCollapse">
+                                            <i class="fa fa-paint-brush"></i>
+                                            Variaciones
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="primaryCollapse" class="collapse bg-light" data-parent="#accordion" role="tabpanel"
+                                    aria-labelledby="primaryHeading">
+                                    <div class="card-body bg-light">
+                                        <div class="row p-1" *ngFor="let item of Variantes; let i=index">
+                                            <!-- New Row 12 -->
+                                            <label for="" class="col-lg-3">Variaci&oacute;n {{i+1}}: </label>
+                                            <!-- New Row 7 -->
+                                            <input class="col-lg-6 form-control" id="color{{i}}"
+                                                name="color{{i}}" #color=ngModel
+                                                pattern="[A-Za-z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{3,25}"
+                                                [class.is-invalid]="color.touched && !color.valid"
+                                                [class.is-valid]="color.touched && color.valid" minlength="3"
+                                                maxlength="25" [(ngModel)]="item.Variante" type="text">
+                                            &nbsp;
+                                            <button class="btn btn-danger mr-2 pull-right" *ngIf="i >=1" [disabled]="item._id"
+                                                (click)="deleteVariantes(i)">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                            <button class="btn btn-success mr-2" *ngIf="i == (Variantes.length -1)"
+                                                (click)="addVariantes()">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <br>
+                                        <button hidden class="btn btn-success" data-toggle="modal"
+                                            data-target="#Confirm-modal">
+                                            <i class="fa fa-save"></i> Guardar Variantes
+                                        </button>
+                                        <button class="btn btn-warning mb-2 pull-right" (click)="cleanVariantes()">
+                                            <i class="fa fa-times-rectangle"></i> Eliminar Variantes
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-info border-0 rounded-1">
+                                <div class="card-header" role="tab" id="infoHeading">
+                                    <h5 class="mb-0">
+                                        <a class="collapsed text-white" data-toggle="collapse" href="#infoCollapse"
+                                            aria-expanded="false" aria-controls="infoCollapse">
+                                            <i class="fa fa-tag"></i>
+                                            Categor&iacute;as
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="infoCollapse" class="collapse bg-light" data-parent="#accordion" role="tabpanel"
+                                    aria-labelledby="infoHeading">
+                                    <div class="card-body">
+                                        <div class=" mb-4" *ngIf="CategoriesOptions && CategoriesOptions.length >=1">
+                                            <label for="" class="col-lg-3">Categor&iacute;as</label>
+                                            <ss-multiselect-dropdown name="select" [options]="CategoriesOptions"
+                                                [texts]="myTexts" [settings]="mySettings" [(ngModel)]="CategoriesModel"
+                                                (ngModelChange)="onChange()"></ss-multiselect-dropdown>
+                                        </div>
+                                        <br>
+                                        <button hidden class="btn btn-success" data-toggle="modal"
+                                            data-target="#ConfirmCat-modal">
+                                            <i class="fa fa-save"></i> Guardar Categorías
+                                        </button>
+                                        <button class="btn btn-warning pull-right" (click)="deleteCats()">
+                                            <i class="fa fa-times-rectangle"></i> Eliminar Categorías
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <button class="btn btn-primary pull-left" *ngIf="!steps[0].active" (click)="prev()"><i
+                                class="fa fa-chevron-left arrow"></i>&nbsp; Atrás</button>
+                        <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
+                            <i class="fa fa-trash arrow"></i>&nbsp; 
+                            Limpiar Datos
+                        </button>
+                        <button *ngIf="!steps[steps.length-1].active" [disabled]="!checkProduct()"
+                            class="btn btn-primary pull-right" (click)="next()">Siguiente
+                            &nbsp;<i class="fa fa-chevron-right arrow"></i></button>
+                        <button *ngIf="steps[steps.length-1].active" data-toggle="modal"
+                        data-target="#Confirm-modal"
+                            class="btn btn-success pull-right">
+                            <i class="fa fa-save arrow"></i> Guardar Datos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7 col-sm-12">
+        <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h5 class="mb-0">Listado de Productos</h5>
+                <div class="widget-controls">
+                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+                    <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+                    <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+                    <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+                </div>
+            </div>
+            <div class="card-body widget-body bg-light">
+                <div class="input-group mb-2">
+                    <span class="input-group-prepend">
+                        <span class="input-group-text bg-transparent border-0">
+                            <i class="fa fa-search ml-2 mr-1"></i>
+                        </span>
+                    </span>
+                    <input class="form-control border-0" type="text" id=searchText name=searchText
+                        (change)="define();" (keyup)="define();" [(ngModel)]="searchText"
+                        placeholder="{{searchTitle}}">
+                    <div class="btn-group">
+                        <button type="button"
+                            class="btn dropdown-toggle no-caret bg-transparent border-0 box-shadow-none"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
+                            <a class="dropdown-item" href="javascript:void(0);"
+                                (click)="type = 'all'; define();">Todo</a>
+                            <a class="dropdown-item" href="javascript:void(0);"
+                                (click)="type = 'name'; define();">Nombre</a>
+                            <a class="dropdown-item" href="javascript:void(0);"
+                                (click)="type = 'desc'; define();">Descripci&oacute;n</a>
+                            <a class="dropdown-item" href="javascript:void(0);"
+                                (click)="type = 'color'; define();">Variante</a>
+                            <a class="dropdown-item" href="javascript:void(0);"
+                                (click)="type = 'marca'; define();">Marca</a>
+                            <a class="dropdown-item" href="javascript:void(0);"
+                                (click)="type = 'categ'; define();">Categorias</a>
+                        </div>
+                    </div>
+                </div>
+
+                <table *ngIf="productos && productos.length >=1" class="table table-responsive-sm table-striped table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <!-- <th>#</th> -->
+                            <th [class.gray-highlight]="type != 'all' && type !='name'">Nombre</th>
+                            <th [class.gray-highlight]="type != 'all' && type !='desc'">Descripci&oacute;n</th>
+                            <th [class.gray-highlight]="type != 'all' && type !='color'">Variante</th>
+                            <th [class.gray-highlight]="type != 'all' && type !='marca'">Marca</th>
+                            <th [class.gray-highlight]="type != 'all' && type !='categ'">Categorias</th>
+                            <th colspan="3">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of productos; let i=index">
+                            <!-- <th  [class.bg-deleted]="!personaItem.Active" scope="row">{{i+1}}</th> -->
+                            <td [class.gray-highlight]="type != 'all' && type !='name'"
+                                [class.bg-deleted]="!item.Active">
+                                {{item.Name}}</td>
+                            <td [class.gray-highlight]="type != 'all' && type !='desc'"
+                                [class.bg-deleted]="!item.Active">
+                                {{item.Description}}</td>
+                            <td [class.gray-highlight]="type != 'all' && type !='color'"
+                                [class.bg-deleted]="!item.Active">
+                                <span *ngFor="let color of VarianteProductos; let i=index">
+                                    <span class="badge badge-success mr-1" *ngIf="item && item._id && color.Producto._id == item._id">
+                                        {{color.Variante}} </span>
+                                </span>
+                            </td>
+                            <td [class.gray-highlight]="type != 'all' && type !='marca'"
+                            [class.bg-deleted]="!item.Active">
+                                <span *ngIf="item.Brand || item.Brand != 'AlfiBeton'"> {{item.Brand}} </span>
+                                <span *ngIf="!item.Brand || item.Brand == 'AlfiBeton'"> AlfiBeton </span>
+                            </td>
+                            <td [class.gray-highlight]="type != 'all' && type !='categ'"
+                                [class.bg-deleted]="!item.Active">
+                                <span *ngFor="let cat of Categories; let i=index">
+                                    <span class="badge badge-primary mr-1" *ngIf="cat.Producto._id == item._id">
+                                        {{cat.Categoria.Name}} </span>
+                                </span>
+                            </td>
+                            <!-- <td [class.gray-highlight]="type != 'all' && type !='lastname'"  [class.bg-deleted]="!personaItem.Active">{{personaItem.VARIANTESPersona.LastName + ' ' +  personaItem.VARIANTESPersona.MothersName}}</td> -->
+                            <td [class.bg-deleted]="!item.Active" class="text-center">
+                                <button data-toggle="tooltip" data-html="true" title="Editar Usuario" [disabled]="role == 'Secretario'"
+                                    class="btn btn-primary option-button tt mb-1 mr-1"
+                                    (click)="toUpdate(item); npUnica(producto.Name)"><i class="fa fa-edit"></i>
+                                </button>
+                            </td>
+                            <td [class.bg-deleted]="!item.Active" class="text-center">
+                                <button class="btn option-button" data-toggle="tooltip" data-html="true" [disabled]="role == 'Secretario'"
+                                    title="Activar/Desactivar Usuario"
+                                    [class.btn-outline-secondary]="item.Active == true"
+                                    [class.btn-secondary]="item.Active == false" (click)="Delete(item)">
+                                    <i *ngIf="item.Active == false" class="fa fa-eye"></i>
+                                    <i *ngIf="item.Active == true" class="fa fa-eye-slash"></i>
+                                </button>
+                            </td>
+                            <td [class.bg-deleted]="!item.Active" class="text-center">
+                                <button type="button" class="btn btn-info mr-1 option-button "
+                                    (click)="infoProducto(item)" data-toggle="modal" data-target="#view-modal">
+                                    <i class="fa fa-info"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="!productos || productos.length < 1" role="alert" class="alert alert-dismissible fade show"
+                [class.alert-danger]="searchText == ''" [class.alert-warning]="searchText != ''">
+                  <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <span *ngIf="searchText != ''">
+                    <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
+                  </span>
+                  <span *ngIf="searchText == ''">
+                    <strong>Sin Productos!</strong> Al parecer no se han Registrado Productos en el Sistema o hubo un Error en el Servidor
+                  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="Confirm-modal" tabindex="-1" role="dialog" aria-labelledby="modal-warning-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-warning">
+                <h4 class="modal-title" id="modal-warning-label"><i class="fa fa-info"></i>Confirmaci&oacute;n de
+                    Ingreso</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <h4 class="col-12"> <strong>Datos del Producto a Ingresar: </strong></h4>
+                    <strong class="col-md-4 col-sm-12">
+                        Nombre:
+                    </strong>
+                    <label for="" class="col-md-8 col-sm-12">
+                        {{producto.Name}}
+                    </label>
+                    <strong class="col-md-4 col-sm-12">
+                        Descripcion:
+                    </strong>
+                    <label for="" class="col-md-8 col-sm-12">
+                        {{producto.Description}}
+                    </label>
+                    <strong class="col-md-4 col-sm-12">
+                        Marca:
+                    </strong>
+                    <label for="" class="col-md-8 col-sm-12">
+                        <span *ngIf="otherBrand">{{producto.Brand}}</span>
+                        <span *ngIf="!otherBrand">AlfiBeton</span>
+                    </label>
+
+                </div>
+                <small>*Esta informaci&oacute;n estar&aacute; disponible mas tarde para futuras transacciones. </small>
+                <hr>
+
+                <div class="container row">
+                    <h4 class="col-12"><strong>Variantes:</strong></h4>
+                    <span class="col-12 mb-3" *ngFor="let variante of Variantes"> {{variante.Variante}} </span>
+                    <h4 class="col-12"><strong>Categorías:</strong></h4>
+                    <span class="col-12 mb-3" *ngFor="let categoria of CategoriesModel"> {{getCategoria(categoria).Name}} </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal"
+                    (click)="onSubmit()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ConfirmCat-modal" tabindex="-1" role="dialog" aria-labelledby="modal-warning-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-warning">
+                <h4 class="modal-title" id="modal-warning-label"><i class="fa fa-info"></i>Confirmaci&oacute;n de
+                    Ingreso</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                ¿Esta seguro de ingresar las Categorias de este Producto?.
+                <br>
+                <small>*Esta informaci&oacute;n estar&aacute; disponible mas tarde para futuras transacciones. </small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal"
+                    >Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="view-modal" tabindex="-1" *ngIf="viewedProducto" role="dialog" aria-labelledby="modal-warning-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header state modal-warning">
+                <h4 class="modal-title" id="modal-warning-label"><i class="fa fa-info"></i>{{viewedProducto.Name}}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <h4 class="col-12"> <strong>Datos del Producto a Ingresar: </strong></h4>
+                    <strong class="col-md-4 col-sm-12">
+                        Nombre:
+                    </strong>
+                    <label for="" class="col-md-8 col-sm-12">
+                        {{viewedProducto.Name}}
+                    </label>
+                    <strong class="col-md-4 col-sm-12">
+                        Descripcion:
+                    </strong>
+                    <label for="" class="col-md-8 col-sm-12">
+                        {{viewedProducto.Description}}
+                    </label>
+                    <strong class="col-md-4 col-sm-12">
+                        Marca:
+                    </strong>
+                    <label for="" class="col-md-8 col-sm-12">
+                        <span *ngIf="otherBrand">{{viewedProducto.Brand}}</span>
+                        <span *ngIf="!otherBrand">AlfiBeton</span>
+                    </label>
+                    <div class="col-12 container"> 
+                        <hr>
+                    </div>
+                    <h4 class="col-12"><strong>Variantes:</strong></h4>
+                    <span class="col-12" *ngFor="let variante of VarianteProductos"> 
+                        <span *ngIf="viewedProducto._id == variante.Producto._id">
+                            {{variante.Variante}} 
+                        </span>
+                    </span>
+                    <div class="col-12 container"> 
+                        <hr>
+                    </div>
+                    <h4 class="col-12"><strong>Categorías:</strong></h4>
+                    <span class="col-12" *ngFor="let cat of Categories; let i=index">
+                        <span *ngIf="cat.Producto._id == viewedProducto._id">
+                            {{cat.Categoria.Name}} </span>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-success" data-dismiss="modal"
+                    (click)="onSubmit()">Guardar</button> -->
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,199 @@
+<div widget class="card border-0 box-shadow">
+  <div class="card-header transparent border-0 text-muted">
+    <h5 class="mb-0">Listado de Ingresos</h5>
+    <div class="widget-controls"> 
+      <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+      <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+      <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+      <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
+      <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+    </div>  
+  </div>
+  <div class="card-body widget-body">
+    <table *ngIf="!(!Ingresos || Ingresos.length < 1)" class="table table-bordered table-responsive-sm table-hover table-striped"> 
+      <thead>
+        <tr>
+          <th>
+            <i class="fas selectable"
+            [class.fa-sort-numeric-up-alt]='!OrderAsc' 
+            [class.fa-sort-numeric-down-alt]='OrderAsc' 
+            (click)="OrderAsc = !OrderAsc ;sortByOrder()"></i>
+            &nbsp;
+            Orden N°
+          </th>
+          <th>
+            <i class="fas selectable"
+            [class.fa-sort-amount-up-alt]='!DateAsc' 
+            [class.fa-sort-amount-down-alt]='DateAsc' 
+            (click)="DateAsc = !DateAsc ;sortByDate()"></i>
+            &nbsp;
+            Fecha y Horario
+          </th>
+          <th>
+            <i class="fas selectable"
+            [class.fa-sort-alpha-up-alt]='!BodegaAsc' 
+            [class.fa-sort-alpha-down-alt]='BodegaAsc' 
+            (click)="BodegaAsc = !BodegaAsc ;sortByBodega()"></i>
+            &nbsp;
+            Bodega
+          </th>
+          <th>
+            <i class="fas selectable"
+            [class.fa-sort-amount-up-alt]='!EstadoAsc' 
+            [class.fa-sort-amount-down-alt]='EstadoAsc' 
+            (click)="EstadoAsc = !EstadoAsc ;sortByEstado()"></i>
+            &nbsp;
+            Estado
+          </th>
+          <th width="5%" >Ver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ingreso of Ingresos | paginate: paginationDataIngresos">
+          <td>{{ingreso.Number}}</td>
+          <td>{{ingreso.SuggestedDate | date: 'dd MMMM yyyy'}} al rededor de {{ingreso.SuggestedTime}}</td>
+          <td>{{ingreso.Bodega.Name}}, Dirección: {{ingreso.Bodega.Address}}, En: {{ingreso.Bodega.City.Name}} - {{ingreso.Bodega.City.Canton.Name}} - {{ingreso.Bodega.City.Canton.Provincia.Name}} </td>
+          <td>
+            <span *ngIf="ingreso.Estado" class="badge"
+            [class.badge-danger]="ingreso.Estado == 'Pendiente'"
+            [class.badge-warning]="ingreso.Estado == 'Incompleto'"
+            [class.badge-success]="ingreso.Estado == 'Completado'">
+              {{ingreso.Estado}}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-info" (click)="selectIngreso(ingreso)" data-toggle="modal" data-target="#info-modal">
+              <i class="fa fa-info"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+          
+    <pagination-controls id="ingresos_tbl" class="text-center" maxSize="3" directionLinks="true" autoHide="true"
+    responsive="true" previousLabel="Atrás" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"
+    (pageBoundsCorrection)="paginationDataIngresos.currentPage = $event"
+    (pageChange)="paginationDataIngresos.currentPage = $event"></pagination-controls>
+
+
+    <div *ngIf="(!Ingresos || Ingresos.length < 1) && role != 'Encargado de Bodega'" role="alert" class="alert alert-dismissible fade show alert-danger">
+      <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+        <span aria-hidden="true">×</span>
+      </button>
+      <strong>Sin Ingresos!</strong> Al parecer no se han Registrado Ingresos de Inventario en el Sistema o hubo un Error en el Servidor
+    </div>
+    <div *ngIf="(!Ingresos || Ingresos.length < 1) && role == 'Encargado de Bodega'" role="alert" class="alert alert-dismissible fade show alert-warning">
+      <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+        <span aria-hidden="true">×</span>
+      </button>
+      <strong>Sin Ingresos en tu Bodega!</strong> Al parecer no se han Registrado Ingresos de Inventario en tu Bodega
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" *ngIf="SelectedIngreso" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label">
+          <i class="fa fa-info"></i>Ingreso N° {{SelectedIngreso.Number}} /// Estado: 
+          <span *ngIf="SelectedIngreso.Estado" class="badge"
+            [class.badge-danger]="SelectedIngreso.Estado == 'Pendiente'"
+            [class.badge-warning]="SelectedIngreso.Estado == 'Incompleto'"
+            [class.badge-success]="SelectedIngreso.Estado == 'Completado'">
+              {{SelectedIngreso.Estado}}
+            </span>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container row">
+          <label for="" class="label-form col-md-6">
+            <strong>Fecha estimada de Entrega:</strong>
+            <br>
+            {{SelectedIngreso.SuggestedDate | date: 'dd MMMM yyyy'}}. 
+            <br>
+            <strong>Horario Estimado de Entrega: </strong>
+            <br>
+            {{SelectedIngreso.SuggestedTime}}
+          </label>
+          <label for="" class="label-form col-md-6">
+            <strong>Bodega de Destino: </strong>
+            <br>
+            {{SelectedIngreso.Bodega.Name}}
+            <br>
+            <strong>Dirección: </strong>
+            <br>
+            {{SelectedIngreso.Bodega.Address}}, En: {{SelectedIngreso.Bodega.City.Name}} - {{SelectedIngreso.Bodega.City.Canton.Name}} - {{SelectedIngreso.Bodega.City.Canton.Provincia.Name}}
+          </label>
+
+          <table class="table table-bordered table-responsive-sm table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Unds. Solicitadas</th>
+                <th>Unds. Recibidas</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let listaIngreso of SelectedListaIngreso">
+                <td>
+                  {{listaIngreso.ProductoVariante.Producto.Name}}
+                  <span *ngIf="listaIngreso.ProductoVariante.Variante != 'Sin Variantes'">  - {{listaIngreso.ProductoVariante.Variante}}</span>
+                </td>
+                <td class="text-center">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-box"></i>
+                      </span>
+                    </div>
+                    <span class="form-control control-disabled">
+                      {{listaIngreso.Units}}
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-box-open"></i>
+                      </span>
+                    </div>
+                    <input *ngIf="!(listaIngreso.Received == 'Completado')" id="UnitsReceiveds" name="UnitsReceiveds" [disabled]="role == 'Administrador'" #UnitsReceiveds=ngModel [(ngModel)]="listaIngreso.UnitsReceiveds" type="number" min="0" max="{{listaIngreso.Units}}" class="form-control">
+                    <span *ngIf="listaIngreso.Received == 'Completado'" class="form-control control-disabled"> {{listaIngreso.UnitsReceiveds}} </span>
+                    <div *ngIf="!(listaIngreso.Received == 'Completado')" title="Guardar el Ingreso de estas Unidades" class="input-group-append">
+                      <button [disabled]="role == 'Administrador'" (click)="ReceiveUnits(listaIngreso)" type="button" class="btn btn-outline-success">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span *ngIf="listaIngreso.Received" class="badge"
+                  [class.badge-danger]="listaIngreso.Received == 'Pendiente'"
+                  [class.badge-warning]="listaIngreso.Received == 'Incompleto'"
+                  [class.badge-success]="listaIngreso.Received == 'Completado'">
+                    {{listaIngreso.Received}}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning pull-right" data-dismiss="modal">
+          <i class="fa fa-times"></i> Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,334 @@
+<div widget class="card border-0 box-shadow">
+  <div class="card-header transparent border-0 text-muted">
+    <h5 class="mb-0">Formulario de Solicitud de Traslado de Inventario</h5>
+    <div class="widget-controls"> 
+        <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+        <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+        <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+        <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
+    </div>        
+  </div>
+  <div class="card-body widget-body">
+    <form *ngIf="NewIngreso" action="" class="content p-2 row">
+      <label for="" class="label-form offset-md-2 col-md-1 mb-2 pl-0 pr-0" title="*el Número del Ingreso se Establecerá de Forma automática al Momento de Ingresarse en el Sistema" >
+        Nuevo Traslado
+      </label>
+      <label for="date" title="Fecha" class="label-form col-md-1">
+        Fecha:
+      </label>
+      <div class="input-group col-md-3 mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fa fa-clock-o"></i>
+          </div>
+        </div>
+        <input type="date" id="date" name="date" #Date=ngModel [(ngModel)]="NewIngreso.SuggestedDate" class="form-control">
+      </div>
+      <label for="horario" class="label-form col-md-1">Horario:</label>
+      <div class="input-group col-md-2 mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fa fa-clock-o"></i>
+          </div>
+        </div>
+        <select class="form-control" name="horario" id="horario" #horario=ngModel [(ngModel)]="NewIngreso.SuggestedTime">
+          <option value="Mañana">Mañana</option>
+          <option value="Medio Día">Medio Día</option>
+          <option value="Tarde">Tarde</option>
+          <option value="Noche">Noche</option>
+        </select>
+      </div>
+      <label for="bodega" class="label-form offset-md-1 col-md-2" title="Bodega en la que se Ingresarán los Productos">Bodega a Recibir:</label>
+      <div class="input-group col-md-3 mb-2"  title="Bodega en la que se Ingresarán los Productos">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fa fa-industry"></i>
+          </div>
+        </div>
+        <select name="bodega" id="bodega" (change)="clearBodegaTraslado();loadSelectedData()"   #bodega=ngModel [(ngModel)]="NewIngreso.Bodega" class="form-control">
+          <option value="{{bodega._id}}" *ngFor="let bodega of Bodegas" (click)="NewIngreso.BodegaTraslado = ''" >{{bodega.Name}}</option>
+        </select>
+      </div>
+      <label for="bodega" class="label-form col-md-2" title="Bodega en la que se Ingresarán los Productos">Bodega de Origen:</label>
+      <div class="input-group col-md-3 mb-2"  title="Bodega en la que se Ingresarán los Productos">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fa fa-industry"></i>
+          </div>
+        </div>
+        <select name="bodegaOrigen" id="bodegaOrigen" (change)="loadSelectedData()" #bodegaOrigen=ngModel [(ngModel)]="NewIngreso.BodegaTraslado" class="form-control">
+          <option value="{{bodega.Bodega._id}}" *ngFor="let bodega of StockByBodegas" [hidden]="bodega.Bodega._id == NewIngreso.Bodega" >{{bodega.Bodega.Name}}</option>
+        </select>
+      </div>
+      <label hidden for="" class="label-form col-md-1" title="Empleado o Usuario quien Recibirá el Ingreso">Recibido:</label>
+      <button hidden class="btn col-sm-1 p-0" title="Empleado o Usuario quien Recibió el Ingreso" data-toggle="modal" [class.btn-success]="SelectedReceived"  [class.btn-info]="!SelectedReceived"
+      data-target="#received-modal" >
+        <span *ngIf="!SelectedReceived">Seleccionar</span>
+        <span *ngIf="SelectedReceived">Seleccionado</span>
+      </button>
+
+      <table class="table table-bordered table-responsive-sm table-hover table-striped">
+        <thead>
+          <tr>
+            <th width="25%">
+              Producto
+            </th>
+            <th width="15%">
+              Variante
+            </th>
+            <th hidden width="40%">
+              Descripción
+            </th>
+            <th width="15%">
+              Unidades
+            </th>
+            <th colspan="2" width="5%" >
+              Opciones
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ListaIngresos; let i = index">
+            <td>
+              <select [disabled]="!NewIngreso.BodegaTraslado" name="producto{{i}}" id="producto{{i}}" #Producto=ngModel [(ngModel)]="item.Producto" (change)="item.MaxValue = 0; item.Units = 0 ;item.ProductoVariante = ''" class="form-control">
+                <option value="{{producto._id}}" *ngFor="let producto of Productos">{{producto.Name}}</option>
+              </select>
+            </td>
+            <td>
+              <select *ngIf="Variantes && Variantes.length >= 1" (change)="item.MaxValue = 0; item.Units = 0;getMaxValue(i)" [disabled]="!item.Producto" name="variante{{i}}" id="variante{{i}}"  #Variante=ngModel [(ngModel)]="item.ProductoVariante" class="form-control">
+                <option value="{{variante.Variante._id}}" *ngFor="let variante of Variantes" [hidden]="variante.Variante.Producto._id != item.Producto" > 
+                  {{variante.Variante.Variante}}. Unds: {{variante.Units}} 
+                </option>
+              </select>
+              <span *ngIf="!(Variantes && Variantes.length >= 1)" class="form-control control-disabled">
+                Sin Variantes Disponibles
+              </span>
+            </td>
+            <td hidden>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut temporibus voluptatibus nobis!
+            </td>
+            <td>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-box"></i>
+                  </span>
+                </div>
+                <span *ngIf="!item.ProductoVariante || !item.MaxValue" class="form-control control-disabled">Seleccionar Variante</span>
+                <input *ngIf="item.MaxValue && item.ProductoVariante" [disabled]="!item.ProductoVariante " min="1" minlength="1" max="{{item.MaxValue}}"  maxlength="{{item.MaxValue}}" type="number" id="unidades{{i}}" name="unidades{{i}}" #Unidades=ngModel [(ngModel)]="item.Units" class="form-control">
+              </div>
+            </td>
+            <td>
+              <button title="Borrar Este Producto" class="btn"
+                [disabled]="i == 0" 
+                [class.btn-warning]="!(i==0)" 
+                [class.btn-gray]="i == 0" 
+                (click)="deleteListaIngreso(i)" >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+            <td>
+              <button title="Agregar Otro Producto" class="btn"
+                [disabled]="ListaIngresos.length != (i+1)" 
+                [class.btn-success]="!(ListaIngresos.length != (i+1))" 
+                [class.btn-gray]="ListaIngresos.length != (i+1)"  
+                (click)="addListaIngreso()" >
+                <i class="fa fa-plus"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <div class="content p-2">
+      <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
+        <i class="fa fa-trash arrow"></i>&nbsp; 
+        Limpiar Datos
+      </button>
+      <button class="btn btn-success pull-right" (click)="loadSelectedData(); SelectedIngreso = undefined" data-target="#confirm-modal" data-toggle="modal" >
+          <i class="fa fa-save arrow"></i> Guardar Datos
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="received-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info" >
+  <div class="modal-dialog modal-xl" role="document" >
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="user-modal-label">
+          Usuario quien Recibió
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body widget-body m-3">
+
+        <div class="input-group mb-2">
+          <span class="input-group-prepend">
+            <span class="input-group-text bg-transparent border-0">
+              <i class="fa fa-search"></i>
+            </span>
+          </span>
+          <input type="text" id=searchText name=searchText [(ngModel)]="searchTextReceived" placeholder="{{searchTitleReceived}}" (change)="defineReceived();"
+            (keyup)="defineReceived();" class="form-control border-0">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle no-caret bg-transparent border-0 shadow-none" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'all'; defineReceived()" >Todo</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'role'; defineReceived()" >Rol</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'mail'; defineReceived()" >Correo Electr&oacute;nico</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'ci'; defineReceived()" >C&eacute;dula</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'name'; defineReceived()" >Nombre</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'lastname'; defineReceived()" >Apellido</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'phone'; defineReceived()" >Télefono</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="typeReceived = 'address'; defineReceived()" >Direcci&oacute;n</a>
+            </div>
+          </div>
+        </div>
+        <table *ngIf="Usuarios && Usuarios.length >= 1" class="table table-hover table-bordered table-striped table-responsive-sm">
+          <thead>
+            <tr>
+              <th>
+                &nbsp;
+              </th>
+              <th width="30%">
+                Correo
+              </th>
+              <th width="15%">
+                Rol
+              </th>
+              <th width="45%">
+                Datos
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="selectable" *ngFor="let usuario of Usuarios" [class.bg-success-ligth]="SelectedReceived && SelectedReceived._id == usuario._id"  (click)="SelectedReceived = usuario" >
+              <td>
+                <i *ngIf="SelectedReceived && SelectedReceived._id == usuario._id" class="fa fa-check-square-o text-success"></i>
+                <i *ngIf="!SelectedReceived || SelectedReceived._id != usuario._id" class="fa fa-square-o text-primary"></i>
+              </td>
+              <td [class.bg-deleted]="!usuario.Active">
+                {{usuario.Email}}
+              </td>
+              <td [class.bg-deleted]="!usuario.Active">
+                {{usuario.Role}}
+              </td>
+              <td [class.bg-deleted]="!usuario.Active">
+                <span *ngIf="usuario.Persona.Ci">
+                  <strong>Cedula: </strong> {{usuario.Persona.Ci}}
+                </span>
+                <strong>Tel&eacute;fono: </strong>{{usuario.Persona.Phone}}
+                <strong>Nombres: </strong>{{usuario.Persona.FirstName}} {{usuario.Persona.LastName}}
+                <br>
+                <strong>Direcci&oacute;n: </strong>{{usuario.Persona.Address}}. <strong>En:</strong>
+               <!--  {{usuario.Persona.City.Name}} - {{usuario.Persona.City.Canton.Name}} -
+                {{usuario.Persona.City.Canton.Provincia.Name}} -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="!Usuarios || Usuarios.length < 1" role="alert" class="alert alert-dismissible fade show"
+          [class.alert-danger]="searchTextReceived == ''" [class.alert-warning]="searchTextReceived != ''">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <span *ngIf="searchTextReceived != ''">
+            <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
+          </span>
+          <span *ngIf="searchTextReceived == ''">
+            <strong>Sin Usuarios!</strong> Al parecer no se han Registrado Usuarios en el Sistema
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  data-dismiss="modal"> <i class="fa fa-save"></i> Guardar Datos</button>
+        <button class="btn btn-warning pull-right" (click)="SelectedReceived = undefined">
+          <i class="fa fa-trash"></i> Quitar Seleccionado
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="modal fade" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="warning-modal" >
+  <div class="modal-dialog" role="document" >
+    <div class="modal-content">
+      <div class="modal-header state modal-warning">
+        <h4 id="confirm-modal-label" class="modal-title">
+         <span *ngIf="!SelectedIngreso">Confirmacion de</span> Solicitud <span *ngIf="!SelectedIngreso">de Ingreso</span>  <span *ngIf="SelectedIngreso && SelectedIngreso.Number"> N°: {{SelectedIngreso.Number}} - [Ingresada]</span>  
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body widget-body mr-3 ml-3 mb-3">
+        <div class="content row">
+          <label for="" class="label-form col-md-4">
+            <strong>Fecha: </strong> {{NewIngreso.SuggestedDate | date: 'dd MMMM yyyy'}}.
+            <strong>Eje Horario: </strong> {{NewIngreso.SuggestedTime}}
+          </label>
+          <label *ngIf="SelectedBodega" for="" class="label-form col-md-4">
+            <strong>Bodega a Recibir: </strong> {{SelectedBodega.Name}}
+            <strong>Dirección: </strong> {{SelectedBodega.Address}} 
+            <strong>En: </strong> {{SelectedBodega.City.Name + ' - ' + SelectedBodega.City.Canton.Name + ' - ' + SelectedBodega.City.Canton.Provincia.Name}}
+          </label>
+          <label *ngIf="SelectedBodegaTraslado" for="" class="label-form col-md-4">
+            <strong>Bodega de Origen: </strong> {{SelectedBodegaTraslado.Name}}
+            <strong>Dirección: </strong> {{SelectedBodegaTraslado.Address}} 
+            <strong>En: </strong> {{SelectedBodegaTraslado.City.Name + ' - ' + SelectedBodegaTraslado.City.Canton.Name + ' - ' + SelectedBodegaTraslado.City.Canton.Provincia.Name}}
+          </label>
+          <table class="table table-bordered table-responsive-sm table-hover table-striped">
+            <thead>
+              <tr>
+                <th width="25%">
+                  Producto
+                </th>
+                <th width="15%">
+                  Unidades
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of ListaIngresos; let i = index">
+                <td>
+                  <span *ngFor="let variante of Variantes" [hidden]="variante.Variante._id != item.ProductoVariante" class="form-control">
+                    {{variante.Variante.Producto.Name}}<span *ngIf="variante.Variante.Variante != 'Sin Variantes'">  - {{variante.Variante.Variante}}</span>
+                  </span>
+                  <!-- <select name="producto{{i}}" id="producto{{i}}" #Producto=ngModel [(ngModel)]="item.Producto" class="form-control">
+                    <option value="{{producto._id}}" *ngFor="let producto of Productos">{{producto.Name}}</option>
+                  </select> -->
+                </td>
+                <td>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-box"></i>
+                      </span>
+                    </div>
+                    <label for="" class="input-group-text">{{item.Units}}</label>
+                    <!-- <input [disabled]="!item.ProductoVariante" min="1" minlength="1" type="number" id="unidades{{i}}" name="unidades{{i}}" #Unidades=ngModel [(ngModel)]="item.Units" class="form-control"> -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning pull-left" data-dismiss="modal" >
+          <i class="fa fa-times"></i>Cerrar
+        </button>
+        <button class="btn btn-success pull-right"  *ngIf="!(SelectedIngreso && SelectedIngreso.Number)" (click)="onSubmit()">
+          <i class="fa fa-save"></i> Guardar Datos
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

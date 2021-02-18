@@ -1,0 +1,138 @@
+<nav class="navbar box-shadow app-header" [class.fixed-top]="settings.theme.navbarIsFixed" [class.logo-visible]="showInfoContent">
+    <div class="d-flex flex-column w-100">
+        <div id="info-content" class="panel-collapse collapse">
+            <a class="close" data-toggle="collapse" href="#info-content" (click)="showInfoContent = !showInfoContent" [class.show]="showInfoContent">
+                <span aria-hidden="true">&times;</span>
+            </a>
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="d-flex justify-content-center align-items-center pt-md-0 pt-3 info">
+                        <img src="assets/img/users/default-user.jpg" class="rounded-circle user-img"> 
+                        <div *ngIf="identity" class="d-flex flex-column pl-3">
+                            <h5 class="mb-0"> {{identity.Persona.FirstName + ' ' + identity.Persona.LastName}} <i class="fa fa-check-circle fs-13 text-success ml-2"></i></h5>
+                            <span> {{identity.Email}} </span>
+                            <span> {{identity.Role}} </span>
+                            <div class="pt-3">
+                                <!-- <a routerLink="/profile" class="btn btn-success mr-1">Mi Perfil</a>  -->
+                                <a routerLink="/profile/user-info" class="btn btn-gray">Editar Mi Perfil</a> 
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="row py-4">                        
+                        <div class="col-lg-7 col-sm-8 col-12 left-border">
+                            <div class="info w-280p mx-auto text-center">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Recipients">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Subject">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control form-control-sm" placeholder="Message" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-sm btn-gray"><i class="fa fa-paper-plane mr-2"></i>Enviar</button>
+                                </form>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-start align-items-center top-navbar">                  
+            
+            <a class="logo" routerLink="/" (click)="closeSubMenus()">
+                <span class="ng">A</span><span class="start">lfi</span><span class="ng">B</span><span class="start">eton</span>
+            </a>
+
+            <span class="navbar-text menu-icon transition ml-3 mr-3" [ngClass]="{'open': settings.theme.showMenu}"
+                (click)="settings.theme.showMenu = !settings.theme.showMenu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </span>
+
+            <div class="ml-2 mr-2 d-none d-sm-block">
+                 <a id="info-content-icon" data-toggle="collapse" href="#info-content" (click)="showInfoContent = !showInfoContent" class="d-flex" [class.show]="showInfoContent">
+                    <div [@showInfo]="showInfoContent" class="triangle"></div>
+                </a>
+            </div>
+
+            <app-favorites class="d-none d-lg-inline-block"></app-favorites>
+            <!-- &nbsp;&nbsp;<strong >Conectado como:</strong>&nbsp; 
+            <div class="input-group col-2">
+                <div class="input-group-prepend" (click)="editRole = !editRole">
+                    <button class="btn btn-outline-secondary">
+                        <i *ngIf="!editRole" class="fa fa-edit"></i>
+                        <i *ngIf="editRole" class="fa fa-times"></i>
+                    </button>
+                </div>
+                <span *ngIf="!editRole" class="form-control control-disabled" >{{identity.Role}}</span>
+                <select *ngIf="editRole" name="Rol" id="Rol" #Rol=ngModel [(ngModel)]="identity.Role"
+                    class="form-control ">
+                    <option value="Admin">Admin</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Secretario">Secretario</option>
+                    <option value="Encargado de Bodega">Encargado de Bodega</option>
+                    <option value="Encargado de Repartidores">Encargado de Repartidores</option>
+                    <option value="Motorizado">Motorizado</option>
+                </select>
+                <div *ngIf="editRole" class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="updateRole()" >
+                        <i class="fa fa-save"></i>
+                    </button>
+                </div>
+            </div> -->
+            <section id="reproductor">
+                <audio id="audios" loop autoplay preload="auto"
+                [muted]="muted">
+                    <source src='assets/music/invencible.mp3' type="audio/mp3" />
+                    Tu navegador no soporta la reproduccion de <code>audio</code>.
+                </audio>
+                <nav>
+                    <div id="botonera">
+                        <button id="mute" class="btn btn-outline-secondary border-0 pl-1 pr-1 pt-0 pb-0" (click)="muting()" >
+                            <i class="fas fa-volume-mute" *ngIf="muted"></i>
+                            <i class="fas fa-volume-up" *ngIf="!muted"></i>
+                        </button>
+                    </div>
+                </nav>
+            </section>
+            <div class="top-rigth-icons ml-auto">
+                <span class="d-none d-sm-inline-block">
+                    <!-- <app-flags-menu></app-flags-menu> -->
+                </span> 
+                <span class="d-none d-sm-inline-block">
+                    <app-fullscreen></app-fullscreen>
+                </span> 
+                <span class="d-none d-sm-inline-block">
+                    <!-- <app-applications></app-applications> -->
+                </span> 
+                <span class="d-none d-sm-inline-block">
+                    <!-- <app-messages></app-messages> -->
+                </span>               
+                <span class="d-none d-sm-inline-block pl-2 pr-2" (click)="settings.theme.showSideChat = !settings.theme.showSideChat">
+                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                </span> 
+                <span class="d-none d-sm-inline-block">
+                    <app-user-menu></app-user-menu>
+                </span> 
+                <span class="pl-2 pr-2">
+                    <button class="btn no-caret bg-transparent border-0" (click)="logout()">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
+                    </button>                   
+                </span> 
+            </div> 
+
+        </div>
+
+        <div class="horizontal-menu-outer" *ngIf="settings.theme.menu == 'horizontal'">                   
+            <app-horizontal-menu *ngIf="showHorizontalMenu"  [menuItems]="menuItems"></app-horizontal-menu>        
+            <app-vertical-menu *ngIf="!showHorizontalMenu"  [menuItems]="menuItems"></app-vertical-menu>
+        </div>
+
+    </div>
+</nav>

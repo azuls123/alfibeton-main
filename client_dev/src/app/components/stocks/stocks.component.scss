@@ -1,0 +1,38 @@
+.ingresos {
+    background-color: rgb(252, 214, 165);
+    &.pendiente {
+        background-color: rgb(255, 241, 223);
+    }
+    &:hover {
+        background-color: rgb(228, 210, 186);
+    }
+}
+.traslados {
+    background-color: rgb(46, 187, 238);
+    &.pendiente {
+        background-color: rgb(168, 218, 237);
+    }
+    &:hover {
+        background-color: rgb(157, 190, 202);
+    }
+}
+.repartos {
+
+    background-color: rgb(255, 150, 150);
+    &.pendiente {
+        background-color: rgb(255, 190, 190);
+    }
+    &:hover {
+        background-color: rgb(197, 155, 155);
+    }
+}
+.inventario {
+
+    background-color: rgb(176, 255, 186);
+    &.pendiente {
+        background-color: rgb(207, 255, 213);
+    }
+    &:hover {
+        background-color: rgb(183, 214, 187);
+    }
+}

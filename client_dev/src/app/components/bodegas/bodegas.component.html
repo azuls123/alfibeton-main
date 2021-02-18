@@ -1,0 +1,430 @@
+<div class="row">
+  <div class="col-md-4 col-sm-12">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Formulario de Bodegas
+          <span *ngIf="bodega._id && bodega._id != ''"> - [Edición]</span>
+          <span *ngIf="!bodega._id || bodega._id == ''"> - [Ingreso]</span></h5>
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div>
+      </div>
+      <div class="card-body widget-body bg-light">
+        <form action="" class="p-4" #Form=ngForm>
+          <div class="row" hidden>
+            <label class="col-md-4 label-form col-sm-12" for="">test Id</label>
+            <input class="col-lg-8" required name="_id" id=_id #_id=ngModel [(ngModel)]=bodega._id type="text">
+          </div>
+          <br hidden>
+          <div class="row">
+            <label class="col-md-4 label-form col-sm-12" for="">Nombre*</label>
+            <input class="col-md-8 col-sm-12 form-control" required #Name=ngModel
+              pattern="[A-Za-z ñÑáÁéÉíÍóÓúÚüÜ]{3,35}" [class.is-invalid]="Name.touched && !Name.valid && nbod_correcta === false"
+              [class.is-valid]="Name.touched && Name.valid && nbod_correcta === true" minlength="3" maxlength="35"
+              placeholder="Nombre de la Bodega*" name="Name" id=Name #Name=ngModel [(ngModel)]=bodega.Name type="text"
+              (change)="bodUnica(Name.value)" (keyup)="bodUnica(Name.value)">
+              <span *ngIf="nbod_correcta === false" class="col-md-8 col-sm-12 offset-4 badge badge-danger">
+                | El nombre de Bodega ya Existe!
+              </span>
+          </div>
+          <!-- <br hidden >
+          <div hidden class="row">
+            <label class="col-md-4 label-form col-sm-12" for="CurrProvincia">Provincia*</label>
+            <select id="CurrProvincia" name="CurrProvincia" #CurrProvincia=ngModel (click)="LoadCantones()"
+              (change)="LoadCantones()" [(ngModel)]="Provincia" class="col-md-8 col-sm-12 form-control">
+              <option value="" selected disabled>Seleccionar Provincia</option>
+              <option *ngFor="let provincia of Provincias" value="{{provincia._id}}"> {{provincia.Name}} </option>
+            </select>
+          </div>
+          <br hidden >
+          <div hidden class="row">
+            <label class="col-md-4 col-sm-12 label-form" for="CurrCanton">Cat&oacute;n*</label>
+            <select [disabled]="!Provincia" id="CurrCanton" name="CurrCanton" (click)="LoadParroquias()"
+              (change)="LoadParroquias()" #CurrCanton=ngModel [(ngModel)]="Canton"
+              class="col-md-8 col-sm-12 form-control">
+              <option value="" selected disabled>Seleccionar Cat&oacute;n</option>
+              <option *ngFor="let canton of Cantones" value="{{canton._id}}"> {{canton.Name}} </option>
+            </select>
+          </div>
+          <br hidden >
+          <div hidden class="row">
+            <label class="col-md-4 col-sm-12 label-form" for="CurrParr">Parroquia*</label>
+            <select [disabled]="!Canton" id="CurrParr" name="CurrParr" #CurrParr=ngModel [(ngModel)]="bodega.City"
+              class="col-md-8 col-sm-12 form-control">
+              <option value="" selected disabled>Seleccionar Parroquia</option>
+              <option *ngFor="let parroquia of Parroquias" value="{{parroquia._id}}"> {{parroquia.Name}} </option>
+            </select>
+          </div> -->
+          <br>
+          <div class="row">
+            <label class="col-md-4 label-form col-sm-12" for="">Dirección*</label>
+            <button (click)="initMap()" class="btn col-md-8 btn-block" [class.btn-info]="!bodega.GPS" [class.btn-success]="bodega.GPS" id="toEdit" data-toggle="modal" data-target="#maps-modal">
+              <i class="fas fa-map-marker-alt"></i>
+              &nbsp;
+              <span *ngIf="!bodega.GPS">Elegir Dirección</span>
+              <span *ngIf="bodega.GPS">{{JSONParse(bodega.GPS).formatted_address}}</span>
+            </button>
+            <!-- <input class="col-md-8 col-sm-12 form-control" required placeholder="Dirección de la Bodega*" type="text"
+              name="Address" id=Address #Address=ngModel pattern="[A-Za-z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{3,65}"
+              [class.is-invalid]="Address.touched && !Address.valid" [class.is-valid]="Address.touched && Address.valid"
+              minlength="3" maxlength="65" [(ngModel)]=bodega.Address> -->
+          </div>
+          <br>
+          <div class="row">
+            <label class="col-md-4 col-sm-12 label-form" for="">Teléfono*</label>
+            <input class="col-md-8 col-sm-12 form-control" placeholder="Teléfono de la Persona" pattern="[0-9]{9,13}" name=Phone
+              id=Phone #Phone=ngModel [class.is-invalid]="Phone.touched && !Phone.valid && ph_correcta === false"
+              [class.is-valid]="(Phone.touched && Phone.valid && ph_correcta === true)" (change)="telfUnica(Phone.value)"
+              (keyup)="telfUnica(Phone.value)" minlength="9" maxlength="10" required [(ngModel)]=bodega.Phone type="number">
+              <span *ngIf="ph_correcta === false" class="col-md-8 col-sm-12 offset-4 badge badge-danger">
+                | El telefono ingresado ya Existe!
+              </span><span *ngIf="Phone.touched && !Phone.valid" class="col-md-8 col-sm-12 offset-4 badge badge-danger">
+                | El telefono esta mal ingresado!
+              </span>
+              
+          </div>
+          <br>
+          <div hidden class="row">
+            <label class="col-md-4 label-form col-sm-12" for="">A cargo: </label>
+            <button type="button" class="col-lg-8 btn" [class.btn-info]="!Usuario._id" [class.btn-success]="Usuario._id"
+              data-toggle="modal" data-target="#emp-modal">
+              <i *ngIf="!Usuario._id" class="fa fa-info"></i>
+              <i *ngIf="Usuario._id" class="fa fa-check"></i>
+              &nbsp;
+              <span *ngIf="!Usuario._id">Seleccionar Usuario</span>
+              <span *ngIf="Usuario._id"> {{Usuario.Persona.FirstName}} {{Usuario.Persona.LastName}} </span>
+            </button>
+            <!-- <input class="col-lg-8" type="text"> -->
+          </div>
+          <br hidden>
+          <div hidden class="row">
+            <label class="col-md-4 label-form col-sm-12" for="">Color</label>
+            <input class="col-md-8 col-sm-12 form-control" placeholder="Color Representativo de la Bodega*" type="text"
+              name="Color" id=Color #Color=ngModel [class.is-invalid]="Color.touched && !Color.valid"
+              [class.is-valid]="Color.touched && Color.valid" minlength="4" maxlength="45" [(ngModel)]=bodega.Color>
+          </div>
+          <br>
+          <button class="btn btn-warning pull-left" (click)="initBodega()">
+            <i class="fa fa-trash arrow"></i>&nbsp;
+            Limpiar Datos</button>
+          <button class="btn btn-success pull-right" [disabled]="ph_correcta === false || !Phone.valid || !bodega.GPS || nbod_correcta === false" (click)="onSubmit()">
+            <i class="fa fa-save arrow"></i> Guardar Datos
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-8 col-sm-12">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Listado de Bodegas</h5>
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div>
+      </div>
+      <div class="card-body widget-body bg-light">
+        <div *ngIf="bufferBodegas && bufferBodegas.length >= 1" class="input-group mb-2">
+          <span class="input-group-prepend">
+            <span class="input-group-text bg-transparent border-0"><i class="fa fa-search ml-2 mr-1"></i></span>
+          </span>
+          <input class="form-control border-0" type="text" id=searchText name=searchText (change)="define();"
+            (keyup)="define();" [(ngModel)]="searchText" placeholder="{{searchTitle}}">
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle no-caret bg-transparent border-0 box-shadow-none"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
+              <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'all'; define();">Todo</a>
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="type = 'phone'; define();">Tel&eacute;fono</a>
+              <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'name'; define();">Nombre</a>
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="type = 'address'; define();">Direcci&oacute;n</a>
+              <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'charge'; define();">A Cargo</a>
+              <!-- <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'city'; define();">Ciudad</a> -->
+            </div>
+          </div>
+        </div>
+
+        <table *ngIf="bodegas && bodegas.length >= 1"
+          class="table  table-responsive-sm table-striped table-sm table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <!-- <th>Ciudad</th> -->
+              <th>Nombre</th>
+              <th>Dirección</th>
+              <th>A Cargo</th>
+              <th>Teléfono</th>
+              <!-- <th>Color</th> -->
+              <th colspan="3">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bodegasItems of bodegas | paginate: paginationDataBodegas; let i = index" [class.bg-deleted]="!bodegasItems.Active">
+              <th class="" scope="row">{{i+1}}</th>
+              <!-- <td> {{JSONParse(bodegasItems.Address)}}</td> -->
+              <td>{{bodegasItems.Name}}</td>
+              <td>
+                <span *ngIf="bodegasItems.GPS">
+                  {{JSONParse(bodegasItems.GPS).address_components[0].long_name}},
+                  {{JSONParse(bodegasItems.GPS).address_components[1].long_name}} -
+                  {{JSONParse(bodegasItems.GPS).address_components[2].long_name}} -
+                  {{JSONParse(bodegasItems.GPS).address_components[3].long_name}} 
+                  <span *ngIf="JSONParse(bodegasItems.GPS).address_components[4]">
+                    - {{JSONParse(bodegasItems.GPS).address_components[4].long_name}} 
+                  </span>
+                  <span *ngIf="JSONParse(bodegasItems.GPS).address_components[5]">
+                    - {{JSONParse(bodegasItems.GPS).address_components[5].long_name}} 
+                  </span>
+                  <span *ngIf="JSONParse(bodegasItems.GPS).address_components[6]">
+                    - {{JSONParse(bodegasItems.GPS).address_components[6].long_name}} 
+                  </span>
+                </span>
+
+              </td>
+              <td>
+                <span *ngIf="bodegasItems.By">
+                  {{bodegasItems.By.Email}} -
+                  {{bodegasItems.By.Persona.FirstName + ' ' + bodegasItems.By.Persona.LastName}}
+                </span>
+                <span *ngIf="!bodegasItems.By">
+                  Sin Empleado A Cargo
+                </span>
+              </td>
+              <td>{{bodegasItems.Phone}}</td>
+              <!-- <td  [class.bg-deleted]="!bodegasItems.Active" >{{bodegasItems.Color}}</td> -->
+              <td class="text-center">
+                <button class="btn btn-primary btn-sm" (click)="toUpdate(bodegasItems)"><i class="fa fa-edit"></i>
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-sm" [class.btn-outline-warning]="bodegasItems.Active == true"
+                  [class.btn-warning]="bodegasItems.Active == false" (click)="Delete(bodegasItems)">
+                  <i *ngIf="bodegasItems.Active == false" class="fa fa-eye"></i>
+                  <i *ngIf="bodegasItems.Active == true" class="fa fa-eye-slash"></i>
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-info btn-sm " (click)="infoBodega(bodegasItems)"
+                  data-toggle="modal" data-target="#info-modal">
+                  <i class="fa fa-info"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        
+        <pagination-controls id="bodegas_tbl" class="text-center" maxSize="3" directionLinks="true" autoHide="true"
+          responsive="true" previousLabel="Atrás" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"
+          (pageBoundsCorrection)="paginationDataBodegas.currentPage = $event"
+          (pageChange)="paginationDataBodegas.currentPage = $event"></pagination-controls>
+
+
+        <div *ngIf="!bodegas || bodegas.length < 1" role="alert" class="alert alert-dismissible fade show"
+          [class.alert-danger]="!searchText || searchText == ''" [class.alert-warning]="searchText && searchText != ''">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <span *ngIf="searchText && searchText != ''">
+            <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
+          </span>
+          <span *ngIf="!searchText || searchText == ''">
+            <strong>Sin Bodegas!</strong> Al parecer no se han Registrado Bodegas en el Sistema o hubo un Error en el
+            Servidor
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="info-modal" *ngIf="viewedBodega" tabindex="-1" role="dialog"
+  aria-labelledby="modal-info-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label"><i class="fa fa-info"></i>Informacion de la Bodega:
+          {{viewedBodega.Name}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div name=MyGoogleMapInfo id=MyGoogleMapInfo style="width: 100%; height: 500px;" class="modal-body">
+        <!-- <div></div> -->
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button> -->
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="emp-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label"><i class="fa fa-info"></i>Seleccionar Personas</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body widget-body">
+        <div class="input-group">
+          <span class="input-group-prepend">
+            <span class="input-group-text bg-transparent border-0"><i class="fa fa-search ml-2 mr-1"></i></span>
+          </span>
+          <input class="form-control border-0" type="text" id=searchTextPersona name=searchTextPersona
+            (change)="defineUsuario();" (keyup)="defineUsuario();" [(ngModel)]="searchTextPersona"
+            placeholder="{{searchTitlePersona}}">
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle no-caret bg-transparent border-0 box-shadow-none"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="typePerson = 'all'; defineUsuario();">Todo</a>
+              <a class="dropdown-item" href="javascript:void(0);" (click)="typePerson = 'mail'; defineUsuario();">Correo
+                Electrónico</a>
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="typePerson = 'phone'; defineUsuario();">Tel&eacute;fono</a>
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="typePerson = 'name'; defineUsuario();">Nombres</a>
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="typePerson = 'lastname'; defineUsuario();">Apellidos</a>
+              <a class="dropdown-item" href="javascript:void(0);"
+                (click)="typePerson = 'ci'; defineUsuario();">C&eacute;dula</a>
+            </div>
+          </div>
+        </div>
+        <table class="table  table-responsive-sm table-striped table-sm table-hover">
+          <thead>
+            <tr>
+              <th>&nbsp;&nbsp;</th>
+              <th [class.gray-highlight]="typePerson != 'all' && typePerson !='mail'">Correo Electrónico</th>
+              <th [class.gray-highlight]="typePerson != 'all' && typePerson !='phone'">Teléfono</th>
+              <th [class.gray-highlight]="typePerson != 'all' && typePerson !='name'">Nombres</th>
+              <th [class.gray-highlight]="typePerson != 'all' && typePerson !='lastname'">Apellidos</th>
+              <th [class.gray-highlight]="typePerson != 'all' && typePerson !='ci'">Cédula</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="Usuarios">
+            <tr *ngFor="let personaItem of Usuarios; let i=index" class="selectable" (click)="setUsuario(personaItem)"
+              [class.bg-success-ligth]="bodega.By == personaItem._id">
+              <th scope="row">
+                <button class="btn">
+                  <i *ngIf="bodega.By == personaItem._id" class="fa fa-check-square-o text-success"></i>
+                  <i *ngIf="bodega.By != personaItem._id" class="fa fa-square-o text-primary"></i>
+                </button>
+              </th>
+              <td [class.gray-highlight]="typePerson != 'all' && typePerson !='mail'">{{personaItem.Email}}</td>
+              <td [class.gray-highlight]="typePerson != 'all' && typePerson !='phone'">{{personaItem.Persona.Phone}}
+              </td>
+              <td [class.gray-highlight]="typePerson != 'all' && typePerson !='name'">{{personaItem.Persona.FirstName}}
+              </td>
+              <td [class.gray-highlight]="typePerson != 'all' && typePerson !='lastname'">
+                {{personaItem.Persona.LastName}}</td>
+              <td [class.gray-highlight]="typePerson != 'all' && typePerson !='ci'">{{personaItem.Persona.Ci}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Listo!</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="maps-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label">
+          <i class="fas fa-map-marked-alt"></i>
+          <span *ngIf="!bodega.Address">
+            Seleccionar Dirección
+          </span>
+          <span *ngIf="bodega.Address">
+            {{bodega.Address}}
+          </span>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body widget-body">
+        <div class="content row pr-3 pl-3">
+          <div id="floating-panel" class="col-12 input-group mb-2">
+            <div class="input-group-prepend">
+              <button class="btn btn-success" id="GetAddress">
+                <i class="fas fa-map-marked-alt"></i>
+                Buscar!
+              </button>
+            </div>
+            <input id="address" type="textbox" class="form-control"
+              placeholder="Buscar dirección, ciudad, cantón, provincia o pais" />
+            <!-- <input id="GetAddress" type="button" value="Geocode" /> -->
+          </div>
+          <div class="col-12 mb-2">
+            <div name=MyGoogleMap id=MyGoogleMap style="width: 100%; height: 500px; border-radius: 5px;"></div>
+          </div>
+          <div class="col-12">
+            <div *ngIf="currPosition && currPosition.address_components && currPosition.address_components[0]" role="alert" class="alert alert-success alert-dismissible fade show">
+              <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                <span aria-hidden="true">×</span>
+              </button> -->
+              <strong>Ubicación Localizada!</strong>
+              {{currPosition.address_components[0].long_name}},
+              {{currPosition.address_components[1].long_name}} -
+              {{currPosition.address_components[2].long_name}} -
+              {{currPosition.address_components[3].long_name}}
+              <span *ngIf="currPosition.address_components[4]">
+                - {{currPosition.address_components[4].long_name}}
+              </span>
+              <span *ngIf="currPosition.address_components[5]">
+                - {{currPosition.address_components[5].long_name}}
+              </span>
+              <span *ngIf="currPosition.address_components[6]">
+                - {{currPosition.address_components[6].long_name}}
+              </span>
+            </div>
+            <div *ngIf="!currPosition" role="alert" class="alert alert-danger alert-dismissible fade show">
+              <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                <span aria-hidden="true">×</span>
+              </button> -->
+              <strong>Alerta!</strong> 
+              No se ha encontrado la Dirección, prueba ingresandola en el buscador o seleccionandola manualmente. 
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer widget-body">
+        <div class="content row">
+          <div class="col-12">
+            <button id="setCurrentPosition" data-dismiss="modal" aria-label="Close"  class="btn btn-success pull-left" [disabled]="!currPosition">
+              <i class="fa fa-save"></i>
+              Guardar
+            </button>
+            <button id="clearInfowidow"  data-dismiss="modal" aria-label="Close" class="btn btn-warning pull-right ml-3" (click)="currPosition = undefined">
+              <i class="fa fa-trash"></i>
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

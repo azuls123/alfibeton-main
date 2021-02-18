@@ -1,0 +1,506 @@
+<div class="row">
+  <div widget class=" mb-2 card border-0 box-shadown col-md-12">
+    <div class="card-header transparent border-0 text-muted">
+      <h5 class="mb-0">Mapa de Rutas</h5>
+      <div class="widget-controls">
+        <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+        <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+        <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+        <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a> 
+      </div>
+    </div>
+    <div name=routeMap id=routeMap style="width: 100%; height: 500px;" class="card-body widget-body bg-light">
+
+    </div>
+  </div>
+  <div widget class="card border-0 box-shadow col-md-12">
+    <div class="card-header transparent border-0 text-muted">
+      <h5 class="mb-0">Listado de Pedidos</h5>
+      <div class="widget-controls">
+        <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+        <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+        <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+        <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a> 
+      </div>
+    </div>
+    <div class="card-body widget-body bg-light">
+      <table class="table table-bordered table-responsive-sm table-hover table-striped">
+        <thead>
+          <tr>
+            <th>
+              <i class="fas selectable"
+              [class.fa-sort-numeric-up-alt]='!OrderAsc' 
+              [class.fa-sort-numeric-down-alt]='OrderAsc' 
+              (click)="OrderAsc = !OrderAsc ;sortByOrder()"></i>
+              &nbsp;
+              Orden N°
+            </th>
+            <th>
+              <i class="fas selectable"
+              [class.fa-sort-amount-up-alt]='!DateAsc' 
+              [class.fa-sort-amount-down-alt]='DateAsc' 
+              (click)="DateAsc = !DateAsc ;sortByDate()"></i>
+              &nbsp;
+              Fecha y Horario
+            </th>
+            <th>
+              <i class="fas selectable"
+              [class.fa-sort-alpha-up-alt]='!BodegaAsc' 
+              [class.fa-sort-alpha-down-alt]='BodegaAsc' 
+              (click)="BodegaAsc = !BodegaAsc ;sortByBodega()"></i>
+              &nbsp;
+              Bodega
+            </th>
+            <th>
+              <i class="fas selectable"
+              [class.fa-sort-amount-up-alt]='!EstadoAsc' 
+              [class.fa-sort-amount-down-alt]='EstadoAsc' 
+              (click)="EstadoAsc = !EstadoAsc ;sortByEstado()"></i>
+              &nbsp;
+              Estado
+            </th>
+            <th width="5%" >Ver</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pedido of Pedidos">
+            <td>
+              {{pedido.Number}}
+            </td>
+            <td>
+              {{pedido.OrderDate | date: 'dd MMMM yyyy'}} al rededor de {{pedido.OrderTime}}
+            </td>
+            <td>
+              {{pedido.Bodega.Name}}, Dirección: 
+              <span *ngIf="pedido.Bodega.GPS">
+                {{JSONParse(pedido.Bodega.GPS).address_components[0].long_name}},
+                {{JSONParse(pedido.Bodega.GPS).address_components[1].long_name}} -
+                {{JSONParse(pedido.Bodega.GPS).address_components[2].long_name}} -
+                {{JSONParse(pedido.Bodega.GPS).address_components[3].long_name}} 
+                <span *ngIf="JSONParse(pedido.Bodega.GPS).address_components[4]">
+                  - {{JSONParse(pedido.Bodega.GPS).address_components[4].long_name}} 
+                </span>
+                <span *ngIf="JSONParse(pedido.Bodega.GPS).address_components[5]">
+                  - {{JSONParse(pedido.Bodega.GPS).address_components[5].long_name}} 
+                </span>
+                <span *ngIf="JSONParse(pedido.Bodega.GPS).address_components[6]">
+                  - {{JSONParse(pedido.Bodega.GPS).address_components[6].long_name}} 
+                </span>
+              </span> 
+            </td>
+            <td>
+              <i class="fas fa-exclamation-triangle text-danger mr-2" *ngIf="pedido.State && pedido.State == 'En Espera de Repartidor'" ></i>
+              <span *ngIf="pedido.State" class="badge"
+              [class.badge-danger]=" pedido.State == 'Pendiente' || pedido.State == 'En Espera de Repartidor'"
+              [class.badge-warning]="pedido.State == 'Incompleto'"
+              [class.badge-success]="pedido.State == 'Completado'">
+              {{pedido.State}}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-info"  (click)="selectPedido(pedido)" data-toggle="modal" data-target="#info-modal">
+                <i class="fa fa-info"></i>
+              </button>
+              <button class="btn btn-danger" *ngIf=" pedido.State == 'Pendiente' || pedido.State == 'En Espera de Repartidor'" (click)="pedidoToDelete = pedido; delMsg = null" data-toggle="modal" data-target="#delete-modal">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="modal fade" *ngIf="SelectedPedido" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label">
+          <i class="fa fa-info"></i> Pedido N° {{SelectedPedido.Number}} /// Estado:
+          <i class="fas fa-exclamation-triangle text-danger mr-2" *ngIf="SelectedPedido.State && SelectedPedido.State == 'En Espera de Repartidor'" ></i>
+          <span *ngIf="SelectedPedido.State" class="badge"
+          [class.badge-danger]=" SelectedPedido.State == 'Pendiente'"
+          [class.badge-danger]=" SelectedPedido.State == 'En Espera de Repartidor'"
+          [class.badge-warning]="SelectedPedido.State == 'Incompleto'"
+          [class.badge-success]="SelectedPedido.State == 'Completado'">
+          {{SelectedPedido.State}}
+          </span>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container row m-0">
+          <label for="" class="label-form col-md-4">
+            <strong>Fecha estimada de Entrega:</strong>
+            <br>
+            {{SelectedPedido.OrderDate | date: 'dd MMMM yyyy'}}.
+            <br>
+            <strong>Horario estimado de Entrega:</strong>
+            <br>
+            {{SelectedPedido.OrderTime}}
+            <br>
+            <strong>Lugar de Entrega:</strong>
+            <br>
+            <span *ngIf="SelectedPedido.GPS">
+              {{JSONParse(SelectedPedido.GPS).address_components[0].long_name}},
+              {{JSONParse(SelectedPedido.GPS).address_components[1].long_name}} -
+              {{JSONParse(SelectedPedido.GPS).address_components[2].long_name}} -
+              {{JSONParse(SelectedPedido.GPS).address_components[3].long_name}} 
+              <span *ngIf="JSONParse(SelectedPedido.GPS).address_components[4]">
+                - {{JSONParse(SelectedPedido.GPS).address_components[4].long_name}} 
+              </span>
+              <span *ngIf="JSONParse(SelectedPedido.GPS).address_components[5]">
+                - {{JSONParse(SelectedPedido.GPS).address_components[5].long_name}} 
+              </span>
+              <span *ngIf="JSONParse(SelectedPedido.GPS).address_components[6]">
+                - {{JSONParse(SelectedPedido.GPS).address_components[6].long_name}} 
+              </span>
+            </span>
+            <br>
+            <strong>GPS de Entrega:</strong>
+            <br>
+            <span *ngIf="SelectedPedido && SelectedPedido.GPS">
+              {{JSONStringify(JSONParse(SelectedPedido.GPS).geometry.location) }}
+            </span>
+          </label>
+          <label for="" class="label-form col-md-4">
+            <strong>Bodega de Salida:</strong>
+            <br>
+            {{SelectedPedido.Bodega.Name}}
+            <br>
+            <strong>Dirección:</strong>
+            <br>
+            <!-- {{SelectedPedido.Bodega.Address}}, En:  -->
+            
+            <span *ngIf="SelectedPedido.Bodega.GPS">
+              {{JSONParse(SelectedPedido.Bodega.GPS).address_components[0].long_name}},
+              {{JSONParse(SelectedPedido.Bodega.GPS).address_components[1].long_name}} -
+              {{JSONParse(SelectedPedido.Bodega.GPS).address_components[2].long_name}} -
+              {{JSONParse(SelectedPedido.Bodega.GPS).address_components[3].long_name}} 
+              <span *ngIf="JSONParse(SelectedPedido.Bodega.GPS).address_components[4]">
+                - {{JSONParse(SelectedPedido.Bodega.GPS).address_components[4].long_name}} 
+              </span>
+              <span *ngIf="JSONParse(SelectedPedido.Bodega.GPS).address_components[5]">
+                - {{JSONParse(SelectedPedido.Bodega.GPS).address_components[5].long_name}} 
+              </span>
+              <span *ngIf="JSONParse(SelectedPedido.Bodega.GPS).address_components[6]">
+                - {{JSONParse(SelectedPedido.Bodega.GPS).address_components[6].long_name}} 
+              </span>
+            </span>
+          </label>
+          <label for="" class="label-form col-md-4">
+            <strong>Empresa de Reparto:</strong>
+            <br>
+            {{SelectedPedido.Deliverer.Name}}
+            <br>
+            <strong>Dirección:</strong>
+            <br>
+            {{SelectedPedido.Deliverer.Address}}
+            <br>
+            <strong>Costo de Envío: </strong>
+            <br>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  $
+                </span>
+              </div>
+              <input 
+              [disabled]="!GetAccess(SelectedPedido)" 
+              type="number" 
+              min="0" 
+              (change)="SelectedPedido.Total = (SelectedPedido.SubTotal - SelectedPedido.TotalDiscount) + SelectedPedido.SendCost" 
+              step="0.05" 
+              id="SendCost"
+              name="SendCost" 
+              #SendCost=ngModel 
+              [(ngModel)]="SelectedPedido.SendCost" 
+              class="form-control">
+              <div class="input-group-append">
+                <button *ngIf="GetAccess(SelectedPedido)" class="btn btn-success" (click)="savePedido()">
+                  <i class="fa fa-edit"></i>
+                </button>
+              </div>
+            </div>
+          </label>
+          <div class="col-md-4" style="width: 100%; height: auto;" id="MyGoogleMapInfo">
+
+          </div>
+          <label for="" class="label-form col-md-4">
+            <strong>Cliente: </strong>
+            <br>
+            {{SelectedPedido.Client.FirstName}} {{SelectedPedido.Client.LastName}}
+            <br>
+            <strong>Teléfono:</strong>
+            <br>
+            {{SelectedPedido.Client.Phone}}
+            <br>
+            <strong>Cédula:</strong>
+            <br>
+            <span *ngIf="SelectedPedido.Client.Ci">{{SelectedPedido.Client.Ci}}</span>
+            <span *ngIf="!SelectedPedido.Client.Ci">Sin Cédula</span>
+            <br>
+            <strong>Dirección</strong>
+            <br>
+            {{SelectedPedido.Client.Address}}
+            
+          </label>
+          <label for="" class="label-form col-md-4">
+            <strong>Repartidor:</strong> &nbsp;
+            <button *ngIf="GetAccess(SelectedPedido)" (click)="changeDeliveredBy = !changeDeliveredBy" class="btn btn-outline-info btn-sm">
+              <i class="fa fa-edit"></i>
+            </button>
+            <br>
+            <span *ngIf=" SelectedDeliveredBy" >{{SelectedDeliveredBy.Persona.FirstName}} {{SelectedDeliveredBy.Persona.LastName}}</span>
+            <span *ngIf="!SelectedDeliveredBy" >Sin Repartidor</span>
+            <br>
+            <strong>Teléfono:</strong>
+            <br>
+            <span *ngIf="SelectedDeliveredBy" >{{SelectedDeliveredBy.Persona.Phone}}</span>
+            <span *ngIf="!SelectedDeliveredBy" >Sin Repartidor</span>
+            <br>
+            <strong>Cédula:</strong>
+            <br>
+            <span *ngIf="SelectedDeliveredBy" >
+              <span *ngIf="SelectedDeliveredBy.Persona.Ci">{{SelectedDeliveredBy.Persona.Ci}}</span>
+              <span *ngIf="!SelectedDeliveredBy.Persona.Ci">Sin Cédula</span>
+            </span>
+            <span *ngIf="!SelectedDeliveredBy" >Sin Repartidor</span>
+            <br>
+            <strong>Dirección:</strong>
+            <br>
+            <span *ngIf="SelectedDeliveredBy" >{{SelectedDeliveredBy.Persona.Address}}</span>
+            <span *ngIf="!SelectedDeliveredBy" >Sin Repartidor</span>
+          </label>
+          <div *ngIf="changeDeliveredBy && GetAccess(SelectedPedido)" class="input-group mb-2">
+            <span class="input-group-prepend">
+              <span class="input-group-text bg-transparent border-0"><i class="fa fa-search ml-2 mr-1"></i></span>
+            </span>
+            <input class="form-control border-0" type="text" id=searchTextUsers name=searchTextUsers (change)="defineUsers();"
+              (keyup)="defineUsers();" [(ngModel)]="searchTextUsers" placeholder="{{searchTitleUsers}}">
+            <div class="btn-group">
+              <button type="button" class="btn dropdown-toggle no-caret bg-transparent border-0 box-shadow-none"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'all'     ; defineUsers();">Todo</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'mail'    ; defineUsers();">Tel&eacute;fono</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'phone'   ; defineUsers();">Tel&eacute;fono</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'name'    ; defineUsers();">Nombres</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'lastname'; defineUsers();">Apellidos</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'ci'      ; defineUsers();">C&eacute;dula</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="typeUsers = 'address' ; defineUsers();">Direcci&oacute;n</a>
+              </div>
+              <button *ngIf="SelectedPedido.Delivery && SelectedPedido.Delivery.By != ''" class="ml-1 btn no-caret bg-transparent border-0  btn-sm" (click)="SelectedPedido.Delivery && SelectedPedido.Delivery.By = ''" >
+                Borrar Repartidor
+              </button>
+            </div>
+          </div>
+
+          <table *ngIf="changeDeliveredBy && GetAccess(SelectedPedido)" class="table table-striped table-bordered table-sm table-responsive-sm" >
+            <thead>
+              <tr>
+                <th>&nbsp;</th>
+                <th [class.gray-highlight]="typeUsers != 'all' && typeUsers !='phone'">Télefono</th>
+                <th [class.gray-highlight]="typeUsers != 'all' && typeUsers !='mail'">Correo Electrónico</th>
+                <th [class.gray-highlight]="typeUsers != 'all' && typeUsers !='name'">Nombres</th>
+                <th [class.gray-highlight]="typeUsers != 'all' && typeUsers !='lastname'">Apellidos</th>
+                <th [class.gray-highlight]="typeUsers != 'all' && typeUsers !='ci'">Cédula</th>
+                <th [class.gray-highlight]="typeUsers != 'all' && typeUsers !='address'">Dirección</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usuario of Usuarios; let i=index" class="selectable"
+                  [class.bg-success-ligth]="SelectedPedido.DeliveredBy == usuario._id"
+                  (click)="SelectedPedido.DeliveredBy = usuario._id; SelectedDeliveredBy = usuario">
+                  <th [class.bg-deleted]="!usuario.Active"
+                    (click)="SelectedPedido.DeliveredBy = usuario._id; SelectedDeliveredBy = usuario" scope="row">
+                    <button class="btn">
+                      <i *ngIf="SelectedPedido.DeliveredBy == usuario._id"
+                        class="fa fa-check-square-o text-success"></i>
+                      <i *ngIf="SelectedPedido.DeliveredBy != usuario._id" class="fa fa-square-o text-primary"></i>
+                    </button>
+                  </th>
+                  <td [class.gray-highlight]="typeUsers != 'all' && typeUsers !='phone'"
+                    [class.bg-deleted]="!usuario.Active">{{usuario.Persona.Phone}}</td>
+                  <td [class.gray-highlight]="typeUsers != 'all' && typeUsers !='mail'"
+                    [class.bg-deleted]="!usuario.Active">{{usuario.Email}}</td>
+                  <td [class.gray-highlight]="typeUsers != 'all' && typeUsers !='name'"
+                    [class.bg-deleted]="!usuario.Active">{{usuario.Persona.FirstName}}</td>
+                  <td [class.gray-highlight]="typeUsers != 'all' && typeUsers !='lastname'"
+                    [class.bg-deleted]="!usuario.Active">{{usuario.Persona.LastName}}</td>
+                  <td [class.gray-highlight]="typeUsers != 'all' && typeUsers !='ci'"
+                    [class.bg-deleted]="!usuario.Active">{{usuario.Persona.Ci}}</td>
+                  <td [class.gray-highlight]="typeUsers != 'all' && typeUsers !='address'"
+                    [class.bg-deleted]="!usuario.Active">
+                    {{usuario.Persona.Address}}.
+                    <br>
+                    <!-- {{usuario.Persona.City.Name}} - {{usuario.Persona.City.Canton.Name}} -
+                    {{usuario.Persona.City.Canton.Provincia.Name}} -->
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+          <div *ngIf="changeDeliveredBy  && role == 'Encargado de Repartidores'" class="container">
+            <button class="btn btn-warning pull-left" (click)="SelectedPedido.Delivery && SelectedPedido.Delivery.By = ''">
+              <i class="fa fa-trash"></i>
+              Cancelar
+            </button>
+            <button class="btn btn-success pull-right" (click)="savePedido()">
+              <i class="fa fa-save"></i>
+              Guardar
+            </button>
+          </div>
+          <table *ngIf="SelectedPedido.DeliveredBy || role != 'Encargado de Repartidores'" class="table table-bordered table-sm table-responsive-sm table-hover table-striped col-12">
+            <thead>
+              <tr>
+                <th rowspan="2" class="text-center p-0">Producto</th>
+                <th colspan="4" class="text-center p-0">Unidades</th>
+                <th colspan="2" class="text-center p-0">Costos</th>
+                <th rowspan="2" class="text-center p-0">Estado</th>
+              </tr>
+              <tr>
+                <th class="text-center p-0" width="5%" >Vend</th>
+                <th class="text-center p-0" width="5%" >Prom</th>
+                <th class="text-center p-0" width="5%" >Total</th>
+                <th class="text-center p-0" width="10%" >Entre</th>
+                <th class="text-center p-0" width="5%" >Total</th>
+                <th class="text-center p-0" width="10%" >Recib</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lista of SelectedListaPedido; let i = index">
+                <td class="text-center p-0">
+                  <span class="form-control control-disabled">
+                    {{lista.ProductoVariante.Producto.Name}} - {{lista.ProductoVariante.Variante}}
+                  </span>  
+                </td>
+                <td class="text-center p-0">
+                  <span class="form-control control-disabled">
+                    {{lista.UnitsSell}}
+                  </span>
+                </td>
+                <td class="text-center p-0">
+                  <span class="form-control control-disabled">
+                    {{lista.UnitsFree}}
+                  </span>
+                </td>
+                <td class="text-center p-0">
+                  <span class="form-control control-disabled">
+                    {{lista.UnitsProx}}
+                  </span>
+                </td>
+                <td class="text-center p-0">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text pl-1 pr-1">
+                        <i class="fas fa-box-open"></i>
+                      </span>
+                    </div>
+                    <span *ngIf="!(lista.UnitsProx != lista.Units)" class="form-control control-disabled">
+                      {{lista.Units}}
+                    </span>
+                    <input *ngIf="lista.UnitsProx != lista.Units" min="0" type="number" max="{{lista.UnitsProx}}" id="Units{{i}}" name="Units{{i}}" #Units=ngModel [(ngModel)]="lista.Units" class="form-control">
+                    <div *ngIf="!(lista.Received == 'Completado')" title="Guardar la Entrega de estas Unidades" class="input-group-append pl-1 pr-1">
+                      <button [disabled]="role != 'Admin' && role != 'Secretario' && role != 'Motorizado'" (click)="ReceiveUnits(lista)" type="button" class="btn btn-outline-success pl-1 pr-1">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center p-0">
+                  <span class="form-control control-disabled">
+                    {{lista.FinalValueProx | currency}}
+                  </span>
+                </td>
+                <td class="text-center p-0">
+                  <div class="input-group">
+                    <!-- <div class="input-group-prepend">
+                      <span class="input-group-text  pl-1 pr-1">
+                        <i class="fas fa-hand-holding-usd"></i>
+                      </span>
+                    </div> -->
+                    <span class="form-control control-disabled">{{lista.FinalValue | currency}}</span>
+                    <!-- <input type="number" max="{{lista.FinalValueProx}}" min="0" step="0.05" id="FinalValue{{i}}" name="FinalValue{{i}}" #FinalValue=ngModel [(ngModel)]="lista.FinalValue" class="form-control"> -->
+                    <div *ngIf="!(lista.FinalValue == lista.FinalValueProx)" title="Guardar la Entrega de estas Unidades" class="input-group-append pl-1 pr-1">
+                      <button [disabled]="role != 'Admin' && role != 'Secretario' && role != 'Motorizado'" (click)="lista.FinalValue = lista.FinalValueProx; ReceiveUnits(lista)" type="button" class="btn btn-outline-success pl-1 pr-1">
+                        <i class="fa fa-check"></i>
+                      </button>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center p-0">
+                  <span *ngIf="lista.Received" class="badge"
+                  [class.badge-danger]="lista.Received == 'Pendiente'"
+                  [class.badge-warning]="lista.Received == 'Incompleto' || (lista.Received == 'Completado' && !(lista.FinalValue == lista.FinalValueProx))"
+                  [class.badge-success]="lista.Received == 'Completado' && lista.FinalValue == lista.FinalValueProx">
+                    {{lista.Received}}
+                    <span *ngIf="!(lista.FinalValue == lista.FinalValueProx)"> y Sin Cobrar</span>
+                    <span *ngIf="(lista.FinalValue == lista.FinalValueProx)"> y Cobrado</span>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="col-md-4 offset-md-8 col-sm-6 offset-sm-6 pr-0">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th class="text-right">Sub Total</th>
+                  <td colspan="2">{{SelectedPedido.SubTotal | currency}}</td>
+                </tr>
+                <tr>
+                  <th class="text-right">Descuentos</th>
+                  <td colspan="2">{{SelectedPedido.TotalDiscount | currency}}</td>
+                </tr>
+                <tr>
+                  <th class="text-right">Costo de Envío</th>
+                  <td colspan="2">{{SelectedPedido.SendCost | currency}}</td>
+                </tr>
+                <tr>
+                  <th class="text-right">Total</th>
+                  <td>{{SelectedPedido.Total | currency}}</td>
+                  <td>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" *ngIf="pedidoToDelete" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label">
+          Confirmación de Cancelación del pedido {{pedidoToDelete.Number}}
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Esta seguro de que desea cancelar este pedido {{pedidoToDelete.Number}}? 
+        <br>
+        Ingresar Contraseña: 
+        <input type="password" class="form-control" [(ngModel)]="confirmPassword.Password">
+        <br>
+        <span *ngIf="delMsg && delMsg.class" class="badge badge-{{delMsg.class}}">
+          {{delMsg.message}}
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button (click)="deletePedido(pedidoToDelete)"  class="btn btn-success">
+          Confirmar Cancelación
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

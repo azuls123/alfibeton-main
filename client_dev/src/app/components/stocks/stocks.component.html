@@ -1,0 +1,209 @@
+<div class="row" [dragula]="'bag-container'">
+  <div *ngFor="let stockByBodega of StockByBodegas" [hidden]="usuario.Role == 'Encargado de Bodega' && usuario.Bodega._id != stockByBodega.Bodega._id" 
+  class="col-sm-12 mb-4 draggable"
+  [class.col-md-12.col-lg-12]="(usuario.Role == 'Encargado de Bodega')"
+  [class.col-md-6.col-lg-4]="(usuario.Role != 'Encargado de Bodega')"
+  >
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Inventario de {{stockByBodega.Bodega.Name}}</h5>
+        <div class="widget-controls"> 
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
+          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
+        </div>  
+      </div>
+      <div class="card-body widget-body">
+        <table *ngIf="stockByBodega.Variantes && stockByBodega.Variantes.length >= 1 " class="table table-bordered table-responsive-sm table-sm table-hover table-striped">
+          <thead>
+            <tr>
+              <th class="text-center p-0" title="Nombre y Descripción del Producto">Producto</th>
+              <th class="text-center p-0" title="Unidades Ingresadas" class="text-center">
+                <i class="fas fa-arrow-alt-circle-down text-warning"></i>
+              </th>
+              <th class="text-center p-0" title="Unidades Repartidas" class="text-center">
+                <i class="fas fa-arrow-alt-circle-up text-danger"></i>
+              </th>
+              <th class="text-center p-0" title="Unidades En Inventario" class="text-center">
+                <i class="fas fa-boxes text-success"></i>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of stockByBodega.Variantes" >
+              <td class="text-center p-0">
+                <button class="btn btn-info btn-sm pull-left" (click)="SelectedBodega = stockByBodega.Bodega; SelectedVariante = stock" data-toggle="modal" data-target="#info-modal" >
+                  <i class="fa fa-info"></i>
+                </button>
+                &nbsp;
+                <span *ngIf="stock.Variante.Variante && stock.Variante.Variante != '' && stock.Variante.Variante != 'Sin Variantes' ">
+                  {{stock.Variante.Variante}} -
+                </span>
+                {{stock.Variante.Producto.Name}}
+                <strong *ngIf="stock.Variante.Producto.Brand != '' && stock.Variante.Producto.Brand != 'Alfibeton'">
+                  {{stock.Variante.Producto.Brand}}
+                </strong>
+              </td>
+              <td class="text-center p-0">
+                <strong>
+                  {{stock.Ins}}
+                </strong>
+                <span *ngIf="(stock.InsProx - stock.Ins ) >=1"> 
+                  <i class="fas fa-angle-double-up text-warning"></i>
+                  {{stock.InsProx - stock.Ins}}
+                </span>
+              </td>
+              <td class="text-center p-0">
+                <strong>
+                  {{stock.Outs}}
+                </strong>
+                <span *ngIf="(stock.OutsProx - stock.Outs ) >=1">
+                  <i class="fas fa-angle-double-up text-danger"></i>
+                  {{stock.OutsProx - stock.Outs}}
+                </span>
+              </td>
+              <td class="text-center p-0">
+                <strong *ngIf="!(stock.Variante.Producto.Brand != '' && stock.Variante.Producto.Brand != 'Alfibeton')">
+                  {{stock.Units}}
+                </strong>
+                <strong title="El producto no es Alfibeton" *ngIf="stock.Variante.Producto.Brand != '' && stock.Variante.Producto.Brand != 'Alfibeton'">
+                  S/N
+                </strong>
+                <span *ngIf="(stock.UnitsProx - stock.Units ) >=1">
+                  <i class="fas fa-angle-double-up text-success"></i>
+                  {{stock.UnitsProx - stock.Units}}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="!stockByBodega.Variantes || stockByBodega.Variantes.length < 1" role="alert" class="alert alert-dismissible fade show alert-danger">
+          <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <strong>Sin Inventario!</strong> Al parecer no hay Existencias en el Inventario del {{stockByBodega.Bodega.Name}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="SelectedBodega && SelectedVariante" class="modal fade" id="info-modal" tabindex="-1" role="dialog"
+  aria-labelledby="modal-info-label" >
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label">
+          <i class="fa fa-info-circle"></i>
+          Histórioco de: 
+          <span *ngIf="SelectedVariante.Variante.Variante && SelectedVariante.Variante.Variante != '' && SelectedVariante.Variante.Variante != 'Sin Variantes' ">
+            {{SelectedVariante.Variante.Variante}} -
+          </span>
+          {{SelectedVariante.Variante.Producto.Name}}<strong>, En: </strong>
+          {{SelectedBodega.Name}}
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-responsive-sm table-sm table-hover table-striped">
+          <thead>
+            <tr>
+              <th class="text-center" rowspan="2">
+                Detalles
+              </th>
+              <th class="text-center" rowspan="2">
+                Fecha y Hora
+              </th>
+              <th colspan="2" title="Ingresos" class="text-center">
+                <i class="fas fa-arrow-alt-circle-down text-warning"></i>
+              </th>
+              <th colspan="2" title="Traslados" class="text-center">
+                <i class="fas fa-exchange-alt text-info"></i>
+              </th>
+              <th colspan="2" title="Repartos" class="text-center">
+                <i class="fas fa-arrow-alt-circle-up text-danger"></i>
+              </th>
+              <th hidden colspan="2" title="Unidades En Inventario" class="text-center">
+                <i class="fas fa-boxes text-success"></i>
+              </th>
+            </tr>
+            <tr>
+              <th class="text-center">
+                Actu
+              </th>
+              <th class="text-center">
+                Pend
+              </th>
+              <th class="text-center">
+                Actu
+              </th>
+              <th class="text-center">
+                Pend
+              </th>
+              <th class="text-center">
+                Actu
+              </th>
+              <th class="text-center">
+                Pend
+              </th>
+              <th hidden class="text-center">
+                Actu
+              </th>
+              <th hidden class="text-center">
+                Pend
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of SelectedVariante.Historico">
+              <td>
+                {{item.Description}}
+              </td>
+              <td>
+                {{(item.Date | amFromUnix) | date: 'EEEE, dd MMMM yyyy - HH:mm:ss' }}
+
+              </td>
+              <td class="text-right ingresos">
+                {{item.Ins}}
+              </td>
+              <td class="text-right ingresos pendiente">
+                {{item.InsProx - item.Ins}}
+                <i class="fas fa-angle-double-up text-warning" *ngIf="(item.InsProx - item.Ins ) >=1"></i>
+              </td>
+              <td class="text-right traslados">
+                {{item.Moved}}
+              </td>
+              <td class="text-right traslados pendiente">
+                {{item.MovedProx - item.Moved}}
+                <i class="fas fa-angle-double-down text-info" *ngIf="(item.MovedProx - item.Moved ) >=1"></i>
+              </td>
+              <td class="text-right repartos">
+                {{item.Outs}}
+              </td>
+              <td class="text-right repartos pendiente">
+                {{item.OutsProx - item.Outs}}
+                <i class="fas fa-angle-double-up text-danger" *ngIf="(item.OutsProx - item.Outs ) >=1"></i>
+              </td>
+              <td hidden class="text-right inventario">
+                {{item.Units}}
+              </td>
+              <td hidden class="text-right inventario pendiente">
+                {{item.UnitsProx - item.Units}}
+                <i class="fas fa-angle-double-up text-success" *ngIf="(item.UnitsProx - item.Units ) >=1"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-warning">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

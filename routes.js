@@ -5,7 +5,7 @@ const BodyParser = require('body-parser');
 
 
 const App = Express();
-
+const port = 3700;
 const path = require('path');
 const ServerHTTP = require('http').Server(App);
 const io = require('socket.io')(ServerHTTP);
@@ -148,8 +148,8 @@ io.on('connection', async function (socket) {
     })
 })
 
-ServerHTTP.listen(3799, function () {
-    console.log('listening on localhost:3799');
+ServerHTTP.listen(port, function () {
+    console.log('listening on localhost:'+port);
 });
 
 // const mongo = require('mongodb').MongoClient;

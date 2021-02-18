@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-lg-3 col-md-5">
+      <div class="card border-0 box-shadow mb-4">
+        <img class="card-img-top w-100" src="assets/img/users/default-user.jpg" alt="user">
+        <div class="card-body" *ngIf="identity"> 
+            <h4 class="card-title text-center">{{identity.Persona.FirstName + ' ' + identity.Persona.LastName}}</h4>
+            <h5 class="card-title text-center text-info">{{identity.Role}}</h5>
+            <h6 class="card-subtitle text-muted">Detalles:</h6>
+            <div class="dropdown-divider w-100"></div>
+            <table class="table-striped ">
+              <tbody  class="card-text">
+                <tr>
+                  <th>Correo Electr&oacute;nico</th>
+                  <td> {{identity.Email}} </td>
+                </tr>
+                <tr *ngIf="identity.Persona.Ci">
+                  <th>C&eacute;dula de Identidad</th>
+                  <td> {{identity.Persona.Ci}} </td>
+                </tr>
+                <tr *ngIf="identity.Persona.Phone">
+                  <th>Tel&eacute;fono</th>
+                  <td> {{identity.Persona.Phone}} </td>
+                </tr>
+                <tr *ngIf="identity.Persona.City">
+                  <th>Ciudad</th>
+                  <td> {{identity.Persona.City}} </td>
+                </tr>
+                <tr *ngIf="identity.Persona.Address">
+                  <th>Direcci&oacute;n</th>
+                  <td> {{identity.Persona.Address}} </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <button class="btn btn-outline-info btn-sm btn-rounded float-right mb-3 px-4">More <i class="fa fa-long-arrow-right"></i></button>                                        -->
+           <!-- <div class="dropdown-divider w-100"></div>
+            <div class="row">
+              <div class="col-md-8 text-left">Followers:</div>
+              <div class="col-md-4 text-right"><strong class="d-inline-block">675</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 text-left">Following:</div>
+              <div class="col-md-4 text-right"><strong class="d-inline-block">428</strong></div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 text-left">Songs:</div>
+              <div class="col-md-4 text-right"><strong class="d-inline-block">27</strong></div>
+            </div>
+            <div class="dropdown-divider w-100"></div> -->
+            <div class="d-flex flex-row justify-content-center align-items-center w-100 mt-4">
+              <a href="javascript:void(0);" class="mx-2 text-gray">
+                <span class="fa-stack">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+              <a href="javascript:void(0);" class="mx-2 text-gray">
+                <span class="fa-stack">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+              <a href="javascript:void(0);" class="mx-2 text-gray">
+                <span class="fa-stack">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-google fa-stack-1x"></i>
+                </span>
+              </a>
+            </div>
+
+        </div>
+      </div>
+  </div>
+  <div class="col-lg-9 col-md-7">
+    <router-outlet></router-outlet>    
+  </div>
+</div>
+
+
+  

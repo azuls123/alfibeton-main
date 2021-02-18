@@ -1,0 +1,103 @@
+<div class="side-chat h-100 transition" [class.hoverable]="settings.theme.sideChatIsHoverable" [class.show]="settings.theme.showSideChat" [class.show-chat-item]="showHoverableChatItem" [class.show-chat-window]="showChatWindow">
+    <div [hidden]="showChatWindow" class="media p-1 rounded-left transition person-search-media align-items-center" (mouseenter)="showHoverableChatItem = true" (mouseleave)="showHoverableChatItem = false">
+        <i class="fa fa-search mr-1" aria-hidden="true"></i>
+        <div class="media-body">
+            <input type="text" [(ngModel)]="searchText" class="form-control form-control-sm person-search" placeholder="Search person...">      
+        </div>
+    </div>      
+       
+    <!-- <div class="chat-list h-100" [hidden]="showChatWindow" perfectScrollbar>
+        <div *ngFor="let chat of chats | ChatPersonSearchPipe : searchText" class="media p-1 rounded-left transition" (mouseenter)="showHoverableChatItem = true" (mouseleave)="showHoverableChatItem = false" (click)="getChat(chat)">
+            <img class="d-flex mr-3 rounded" [src]="chat.image">
+            <div class="media-body">
+                <h6 class="mb-1 mt-1 text-white">{{chat.author}}</h6>
+                <span [ngSwitch]="chat.authorStatus">
+                    <i *ngSwitchCase="'Online'" class="fa fa-check-circle text-success" aria-hidden="true"></i>
+                    <i *ngSwitchCase="'Offline'" class="fa fa-times-circle text-danger" aria-hidden="true"></i> 
+                    <i *ngSwitchCase="'Away'" class="fa fa-clock-o text-info" aria-hidden="true"></i> 
+                    <i *ngSwitchCase="'Do not disturb'" class="fa fa-minus-circle text-warning" aria-hidden="true"></i>   
+                </span>              
+                <span class="status ml-1">{{chat.authorStatus}}</span>
+            </div>
+        </div>
+    </div>       -->
+    <div class="chat-list h-100" [hidden]="showChatWindow" perfectScrollbar>
+        <div *ngFor="let usuario of Usuarios" [hidden]="!checkUsers(usuario)" class="media p-1 rounded-left transition" (mouseenter)="showHoverableChatItem = true" (mouseleave)="showHoverableChatItem = false" (click)="getChat(usuario)">
+            <!-- <img class="d-flex mr-3 rounded" [src]="chat.image"> -->
+            <!-- <span class="d-flex mr-3 pr-2 bg-success">
+
+            </span> -->
+            <span [ngSwitch]="usuario.Role" class="d-flex mr-3 m-1 fa-image-md">
+                <i *ngSwitchCase="'Admin'" class="fas fa-user-secret text-danger" aria-hidden="true"></i>
+                <i *ngSwitchCase="'Administrador'" class="fa fa-user-tie text-info" aria-hidden="true"></i>
+                <i *ngSwitchCase="'Secretario'" class="fa fa-user text-info" aria-hidden="true"></i> 
+                <i *ngSwitchCase="'Encargado de Bodega'" class="fa fa-industry text-info" aria-hidden="true"></i> 
+                <i *ngSwitchCase="'Encargado de Repartidores'" class="fas fa-building text-success" aria-hidden="true"></i>   
+                <i *ngSwitchCase="'Motorizado'" class="fa fa-truck text-success" aria-hidden="true"></i>   
+            </span>              
+            <div class="media-body">
+                <h6 class="mb-1 mt-1 text-white">{{usuario.Persona.FirstName}} {{usuario.Persona.LastName}}</h6>
+                <small class="text-muted">&nbsp;{{usuario.Role}}</small>
+                <span class="status ml-1">{{usuario.authorStatus}}</span>
+            </div>
+        </div>
+    </div>      
+
+    <div class="chat-window w-100" [hidden]="!showChatWindow" *ngIf="interlocutor && interlocutor.Persona">
+        <div class="d-flex justify-content-between align-items-center header"> 
+                <span class="pl-2 pr-2 back" (click)="back()"> 
+                <i class="fa fa-angle-left" aria-hidden="true"></i> 
+            </span>               
+            <h6 class="text-white mb-0 mr-2">{{interlocutor.Persona.FirstName }}</h6>                
+        </div>
+
+        <div class="chat-talk-list pt-2" perfectScrollbar>
+            <div *ngFor="let message of myMessages" [hidden]="!checkOrigin(message.To, message.From)" class="media p-1 mb-1 border-0">
+                <span [ngSwitch]="interlocutor.Role" *ngIf="message.From._id == interlocutor._id" class="d-flex mr-3 rounded fa-image-md">
+                    <img *ngSwitchCase="'Admin'"                        class="pl-2 fas fa-user-secret text-danger" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Administrador'"                class="pl-2 fa fa-user-tie text-info" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Secretario'"                   class="pl-2 fa fa-user text-info" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Encargado de Bodega'"          class="pl-2 fa fa-industry text-info" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Encargado de Repartidores'"    class="pl-2 fas fa-building text-success" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Motorizado'"                   class="pl-2 fa fa-truck text-success" aria-hidden="true" src="">
+                </span>
+                <div 
+                    class="media-body rounded pl-2 pr-2"
+                    [class.left]="message.From._id == interlocutor._id"
+                    [class.right]="message.From._id == identity._id">
+                    <span class="d-block talk-text">
+                        {{message.Message}}
+                    </span>
+                    <small class="mt-2 mb-1 pull-right">{{(message.At | amFromUnix) | date:"dd MMMM, yyyy 'a las' HH:mm"}}</small>  
+
+                </div>
+                <span [ngSwitch]="identity.Role" *ngIf="message.From._id == identity._id" class="d-flex ml-3 rounded ">
+                    <img *ngSwitchCase="'Admin'"                  	class=" pr-2 fa-image-md fas fa-user-secret text-danger" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Administrador'"          	class=" pr-2 fa-image-md fa fa-user-tie text-info" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Secretario'"             	class=" pr-2 fa-image-md fa fa-user text-info" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Encargado de Bodega'"      class=" pr-2 fa-image-md fa fa-industry text-info" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Encargado de Repartidores'"class=" pr-2 fa-image-md fas fa-building text-success" aria-hidden="true" src="">
+                    <img *ngSwitchCase="'Motorizado'"               class=" pr-2 fa-image-md fa fa-truck text-success" aria-hidden="true" src="">
+                </span>  
+            </div>
+            <!-- <div *ngFor="let talk of talks" class="media p-1 mb-1 border-0"> 
+                <img *ngIf="talk.side=='left'" class="d-flex mr-3 rounded" src="{{ talk.image }}">        
+                <div class="media-body rounded pl-2 pr-2 {{talk.side}}">
+                    <span class="d-block talk-text">{{talk.text}}</span>
+                    <small class="mt-2 mb-1 pull-right">{{talk.date | date:"dd MMMM, yyyy 'at' HH:mm"}}</small>  
+                </div>
+                <img *ngIf="talk.side=='right'" class="d-flex ml-3 rounded" src="{{ talk.image }}">
+            </div> -->
+        </div>        
+        
+        <div class="d-flex align-items-center pl-1 pr-1 footer">
+            <div class="input-group">                    
+                <input type="text" value="" class="form-control" placeholder="Escribe un Mensaje..."
+                [(ngModel)]="NewMessage.Message">
+                <div class="input-group-append" (click)="sendMessage()">
+                    <span class="input-group-text"><i class="fa fa-paper-plane"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>     
+</div>
