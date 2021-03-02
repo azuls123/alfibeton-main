@@ -8,13 +8,22 @@ import {Location} from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { } from 'googlemaps';
 import { Form } from '@angular/forms';
+import { MapStyles } from '../../../assets/map/mapStyle.service';
+
+import { ImageOptions, jsPDF } from "jspdf";
+import "jspdf-autotable";
+import { UserOptions } from "jspdf-autotable";
+
+interface jsPDFWithPlugin extends jsPDF {
+  autoTable: (options: UserOptions) => jsPDF;
+}
 
 @Component({
   selector: 'app-personas',
   templateUrl: './personas.component.html',
   styleUrls: ['./personas.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [PersonaService, ProvinciaService]
+  providers: [PersonaService, ProvinciaService, MapStyles]
 })
 export class PersonasComponent implements OnInit {
   public currPosition;
@@ -31,6 +40,16 @@ export class PersonasComponent implements OnInit {
   public ci_unica: boolean;
   public cedulas: any[];
 
+  public Filters = {
+    type: 'all',
+    searchText: '',
+    raw: false
+  }
+  public PaginationData = {
+    Page: 1,
+    ItemsPerPage: 5,
+    Pages: 1
+  } 
   // public Provincias: any[];
   // public Cantones: any[] = [];
   // public Parroquias: any[] = [];
@@ -51,19 +70,17 @@ export class PersonasComponent implements OnInit {
     private _router: Router,
     private _PersonaService: PersonaService,
     public _ToasterService: ToastrService,
-    // private _ProvinciaService: ProvinciaService,
     private location: Location,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private MapStyles: MapStyles
   ) {
     const usuario = JSON.parse(localStorage.getItem('Identity'));
     if (usuario && usuario.Role) this.role = usuario.Role;
     if (this.role == 'Encargado de Bodega' || this.role == 'Encargado de Repartidores' || this.role == 'Motorizado') {
       this.location.back();
     }
-    // this.options = this._ToasterService.toastrConfig;
     this.Read();
     this.initCliente();
-    // this.LoadLocations();
   }
   initInfoMap() {
     const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -73,86 +90,7 @@ export class PersonasComponent implements OnInit {
       {
         zoom: 8,
         center: { lat: -1.482292789730304, lng: -77.99914699292728 },
-        styles: [
-          { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-          {
-            featureType: "administrative.locality",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "geometry",
-            stylers: [{ color: "#263c3f" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#6b9a76" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [{ color: "#38414e" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#212a37" }],
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#9ca5b3" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry",
-            stylers: [{ color: "#746855" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#1f2835" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#f3d19c" }],
-          },
-          {
-            featureType: "transit",
-            elementType: "geometry",
-            stylers: [{ color: "#2f3948" }],
-          },
-          {
-            featureType: "transit.station",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#17263c" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#515c6d" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.stroke",
-            stylers: [{ color: "#17263c" }],
-          },
-        ]
+        styles: this.MapStyles.Dark()
       }
     )
     map.setZoom(15);
@@ -217,96 +155,10 @@ export class PersonasComponent implements OnInit {
       {
         zoom: 8,
         center: { lat: -1.482292789730304, lng: -77.99914699292728 },
-        styles: [
-          { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-          {
-            featureType: "administrative.locality",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "geometry",
-            stylers: [{ color: "#263c3f" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#6b9a76" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [{ color: "#38414e" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#212a37" }],
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#9ca5b3" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry",
-            stylers: [{ color: "#746855" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#1f2835" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#f3d19c" }],
-          },
-          {
-            featureType: "transit",
-            elementType: "geometry",
-            stylers: [{ color: "#2f3948" }],
-          },
-          {
-            featureType: "transit.station",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#17263c" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#515c6d" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.stroke",
-            stylers: [{ color: "#17263c" }],
-          },
-        ]
+        styles: this.MapStyles.Dark()
       }
     )
     directionsRenderer.setMap(map);
-    // llamado a rutas
-    // (document.getElementById("GetRoute") as HTMLElement).addEventListener(
-    //   "click",
-    //   () => {
-    //     this.calculateAndDisplayRoute(directionsService, directionsRenderer);
-    //   }
-    // );
     // llamado a buscar direccion
     (document.getElementById("GetAddress") as HTMLElement).addEventListener(
       "click",
@@ -354,7 +206,6 @@ export class PersonasComponent implements OnInit {
     (document.getElementById("setCurrentPosition") as HTMLElement).addEventListener(
       "click",
       () => {
-        // this.MyAddressMarker.setMap = null;
         for (let i = 0; i < markers.length; i++) {
           markers[i].setMap(null);
         }
@@ -370,7 +221,6 @@ export class PersonasComponent implements OnInit {
     )
     // click en el mapa
     map.addListener("click", (e) => {
-      // this.placeMarkerAndPanTo(e.latLng, map, infowindow);
       console.log(e);
 
       this.geocodeLatLng(e.latLng, geocoder, map, infowindow);
@@ -395,10 +245,6 @@ export class PersonasComponent implements OnInit {
         console.log(results);
         this.currPosition = results[0]
         infowindow.open(map);
-        // new google.maps.Marker({
-        //   map: resultsMap,
-        //   position: results[0].geometry.location,
-        // });
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
@@ -412,11 +258,6 @@ export class PersonasComponent implements OnInit {
     infowindow: google.maps.InfoWindow
   ) {
     const input = latLng;
-    // const latlngStr = input.split(",", 2);
-    // const latlng = {
-    //   lat: parseFloat(latlngStr[0]),
-    //   lng: parseFloat(latlngStr[1]),
-    // };
     const latlng = input
     geocoder.geocode(
       { location: latlng },
@@ -426,19 +267,13 @@ export class PersonasComponent implements OnInit {
       ) => {
         if (status === "OK") {
           if (results[0]) {
-            // map.setZoom(11);
             infowindow.close();
-            // const marker = new google.maps.Marker({
-            //   position: latlng,
-            //   map: map,
-            // });
             infowindow.setPosition(latlng);
             infowindow.setContent(results[0].formatted_address + ' - ' + JSON.stringify(input));
             console.log(results);
             this.currPosition = results[0];
             this.currPosition.geometry.location = input;
             infowindow.open(map);
-            // infowindow.open(map, marker);
           } else {
             window.alert("No results found");
           }
@@ -452,115 +287,41 @@ export class PersonasComponent implements OnInit {
     const Object = JSON.parse(str);
     return Object
   }
-  // LoadLocations() {
-  //   this._ProvinciaService.ReadOnlyProv().subscribe(
-  //     response => {
-  //       this.Provincias = response.Provincias;
-  //       this.BufferCantones = response.Cantones;
-  //       this.BufferParroquias = response.Parroquias;
-  //     }
-  //   )
-  // }
-  // LoadCantones() {
-  //   this.Cantones = [];
-  //   this.Parroquias = [];
-  //   // this.cliente.City = '';
-  //   for (const canton of this.BufferCantones) {
-  //     if (canton.Provincia == this.Provincia) this.Cantones.push(canton);
-  //   }
-  //   this.Canton = '';
-  //   if (this.Cantones.length == 1){
-  //     this.Canton = this.Cantones[0]._id;
-  //     this.LoadParroquias();
-
-  //   }
-  // }
-  // LoadParroquias() {
-  //   this.Parroquias = [];
-  //   for (const parroquia of this.BufferParroquias) {
-  //     if (parroquia.Canton == this.Canton) this.Parroquias.push(parroquia);
-  //   }
-  //   if (this.Parroquias.length == 1) this.cliente.City = this.Parroquias[0]._id;
-  // }
-  define() {
-    this.clientes = [];
-    // console.log(this.searchText);
-
-    if (this.searchText !== '' && this.searchText != undefined) {
-      for (const item of this.bufferCliente) {
-        const nombre = item.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        const apellido = item.LastName.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Phone.replace(/'[ ]'/g, '');
-        const cedula = item.Ci.replace(/'[ ]'/g, '');
-        // let ciudad = item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        let direccion = item.Address.toLowerCase().replace(/'[ ]'/g, '');
-        let myAddress = this.JSONParse(item.GPS);
-
-        if (myAddress && myAddress.address_components.length >=1 ) {
-          direccion = direccion + myAddress.address_components[0].long_name;
-          direccion = direccion + myAddress.address_components[1].long_name;
-          direccion = direccion + myAddress.address_components[2].long_name;
-          direccion = direccion + myAddress.address_components[3].long_name;
-          if (myAddress.address_components[4]) direccion = direccion + myAddress.address_components[4].long_name;
-          if (myAddress.address_components[5]) direccion = direccion + myAddress.address_components[5].long_name;
-          if (myAddress.address_components[6]) direccion = direccion + myAddress.address_components[6].long_name;
-        }
-
-        let termino = '';
-        switch (this.type) {
-          case 'name':
-            this.searchTitle = 'Buscar Nombres...';
-            termino = nombre;
-            break;
-          case 'ci':
-            this.searchTitle = 'Buscar Cédula...';
-            termino = cedula;
-            break;
-          case 'lastname':
-            this.searchTitle = 'Buscar Apellidos...';
-            termino = apellido;
-            break;
-          case 'phone':
-            this.searchTitle = 'Buscar Teléfono...';
-            termino = telefono;
-            break;
-          case 'address':
-            this.searchTitle = 'Buscar Dirección...';
-            termino = direccion;
-            break;
-          default:
-            this.searchTitle = 'Buscar Algo...';
-            termino = nombre + apellido + telefono + direccion + cedula;
-            break;
-        }
-        if (termino.indexOf(this.searchText.toLowerCase().replace(/' '/g, '')) > -1) {
-          this.clientes.push(item);
-        }
-      }
-    } else {
-      this.clientes = this.bufferCliente;
-      switch (this.type) {
-        case 'name':
-          this.searchTitle = 'Buscar Nombres...';
-          break;
-        case 'lastname':
-          this.searchTitle = 'Buscar Apellidos...';
-          break;
-        case 'ci':
-          this.searchTitle = 'Buscar Cédula...';
-          break;
-        case 'phone':
-          this.searchTitle = 'Buscar Teléfono...';
-          break;
-        case 'address':
-          this.searchTitle = 'Buscar Dirección...';
-          break;
-        default:
-          this.searchTitle = 'Buscar Algo...';
-          break;
-      }
+  Read(raw = false) {
+    switch (this.Filters.type) {
+      case 'name':
+        this.searchTitle = 'Nombres';
+        break;
+      case 'lastname':
+        this.searchTitle = 'Apellidos';
+        break;
+      case 'ci':
+        this.searchTitle = 'Cédula';
+        break;
+      case 'phone':
+        this.searchTitle = 'Teléfono';
+        break;
+      case 'address':
+        this.searchTitle = 'Dirección';
+        break;
+      default:
+        this.searchTitle = 'Todo';
+        break;
     }
-
+    this.Filters.raw = raw;
+    this._PersonaService.ComplexRead({
+      Filters: this.Filters,
+      PaginationData: this.PaginationData
+    }, true).subscribe(
+      response => {
+        console.log('Respuesta: ', response);
+        this.PaginationData.Pages = response.Personas.Pages;
+        this.clientes = response.Personas.List;
+        this.Filters.raw = false;
+        this.bufferCliente = response.Raw;
+      }
+    );
+    
   }
   infoCliente(cliente) {
     this.viewedCliente = cliente;
@@ -591,20 +352,6 @@ export class PersonasComponent implements OnInit {
   
   reset(): void {
     this.reset();
-  }
-  Read() {
-    this._PersonaService.Read().subscribe(
-      response => {
-        const temp = JSON.stringify(response.Personas);
-        this.clientes = JSON.parse(temp);
-        this.bufferCliente = this.clientes;
-        // console.log(this.clientes);
-
-      },
-      error => {
-        console.error(error as any);
-      }
-    );
   }
 
 
@@ -770,6 +517,42 @@ export class PersonasComponent implements OnInit {
   }
   ngOnInit() {
     // this.initMap();
+  }
+
+  getReport() {
+    const doc = new jsPDF('portrait', 'px', 'a4') as jsPDFWithPlugin;
+    let fecha = new Date();
+    let Reporte = 'Personas';
+
+    const logoSqr: ImageOptions = {
+      imageData: '../../../assets/img/logos/alfibeton-large-no-foot.png',
+      // format: 'png',
+      x: 25,
+      y: 30,
+      width: 87,
+      height: 30,
+      alias: '',
+      compression: 'MEDIUM',
+      rotation: 45
+    };
+    doc.setFont('Helvetica', 'bold');
+    
+    // Cabecera y Pie de Pagina
+    for (let i = 0; i < doc.getNumberOfPages(); i++) {
+      doc.setPage(i);
+      // Cabecera >>
+      doc.setFont('Helvetica', 'bold')
+      doc.setFontSize(20);
+      doc.text("ALFIBETON", doc.internal.pageSize.width / 2, 35, {align: 'center'});
+      doc.setFontSize(12);
+      // doc.text("TE OFRECEMOS LOS MAS INNOVADORES, PRACTICOS Y EXCLUSIVOS PRODUCTOS PARA LLENAR LOS ESPACIOS QUE SIEMPRE BUSCAS EN TU VIDA.", doc.internal.pageSize.width / 2, 45, {align: 'center'});
+      doc.text("Todo lo que Necesitas para llenar ese espacio en tu vida.", doc.internal.pageSize.width / 2, 45, {align: 'center'});
+      doc.addImage(logoSqr)
+      // << Cabecera
+    }
+
+
+    doc.save(Reporte + ".pdf");
   }
 
 }

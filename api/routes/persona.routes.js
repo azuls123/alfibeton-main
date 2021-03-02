@@ -8,7 +8,7 @@ const Authenticate = require('../middleware/authenticate');
 // rutas
     Api.post('/create', Authenticate.ensureAuth , Controller.Create);
     Api.get('/read/:active?',Authenticate.ensureAuth , Controller.Read);
-    Api.get('/sudo-read/:active?' , Controller.Read);
+    Api.post('/complex-read/:active?' , Controller.ComplexRead);
     Api.put('/update/:id',Authenticate.ensureAuth , Controller.Update);
     Api.put('/delete/:id',Authenticate.ensureAuth , Controller.Delete);
 

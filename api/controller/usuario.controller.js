@@ -72,11 +72,12 @@ function Login(req, res) {
             }
         }
     }).exec((Error, usuario) => {
-        if (Error) return res.status(500).send({ Message: 'Error while login process', Error });
+        if (Error) return res.status(500).send({ Message: 'Error al intentar Iniciar Sesión', Error });
        //  console.log(usuario);
         if (usuario) {
+            console.log(Password, usuario.Password);
             Bcrypt.compare(Password, usuario.Password, (ErrorPassword, check) => {
-                if (ErrorPassword) return res.status(500).send({ Message: 'Error while comparing passwords!!', ErrorPassword });
+                if (ErrorPassword) return res.status(500).send({ Message: 'Error al Comparar las Contraseñas!!', ErrorPassword });
                 if (check) {
                     usuario.Password = 'Private';
                     usuario.Expiration = Moment().add(15, 'days').unix();
@@ -87,11 +88,11 @@ function Login(req, res) {
                     // return empleado data
                     // return res.status(200).send({Message: 'empleado Logged Succeful', empleado, ErrorPassword});
                 } else {
-                    return res.status(401).send({ Message: 'Wrong Password' });
+                    return res.status(401).send({ Message: 'Contraseña Incorrecta' });
                 }
             });
         } else {
-            return res.status(404).send({ Message: 'Wrong Account or unregistered usuario' });
+            return res.status(404).send({ Message: 'Error en el correo electrónico, o no existe' });
         }
     });
 }

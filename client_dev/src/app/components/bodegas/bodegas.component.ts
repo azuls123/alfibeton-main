@@ -541,8 +541,8 @@ export class BodegasComponent implements OnInit {
       // console.error('dentro de busqueda');
 
       for (const item of this.bufferBodegas) {
-        const nombre = item.Name.toLowerCase().replace(/'[ ]'/g, '');
-        let direccion = item.Address.toLowerCase().replace(/'[ ]'/g, '');
+        const nombre = item.Name.toLowerCase().replace(/[^\w]/gi, '');
+        let direccion = item.Address.toLowerCase().replace(/[^\w]/gi, '');
         let myAddress = this.JSONParse(item.GPS);
 
         if (myAddress && myAddress.address_components.length >=1 ) {
@@ -555,9 +555,9 @@ export class BodegasComponent implements OnInit {
           if (myAddress.address_components[6]) direccion = direccion + myAddress.address_components[6].long_name;
         }
         let Usuario = 'sinUsuarioacargo';
-        if (item.By) Usuario = item.By.Account.toLowerCase().replace(/'[ ]'/g, '') + item.By.Email.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Phone.replace(/'[ ]'/g, '');
-        // const ciudad = item.City.toLowerCase().replace(/'[ ]'/g, '');
+        if (item.By) Usuario = item.By.Account.toLowerCase().replace(/[^\w]/gi, '') + item.By.Email.toLowerCase().replace(/[^\w]/gi, '');
+        const telefono = item.Phone.replace(/[^\w]/gi, '');
+        // const ciudad = item.City.toLowerCase().replace(/[^\w]/gi, '');
         let termino = '';
         switch (this.type) {
           case 'name':
@@ -615,11 +615,11 @@ export class BodegasComponent implements OnInit {
       // console.error('dentro de busqueda');
 
       for (const item of this.bufferUsuarios) {
-        const correo = item.Email.toLowerCase().replace(/'[ ]'/g, '');
-        const nombre = item.Persona.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        const apellido = item.Persona.LastName.toLowerCase().replace(/'[ ]'/g, '');
-        const cedula = item.Persona.Ci.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Persona.Phone.replace(/'[ ]'/g, '');
+        const correo = item.Email.toLowerCase().replace(/[^\w]/gi, '');
+        const nombre = item.Persona.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+        const apellido = item.Persona.LastName.toLowerCase().replace(/[^\w]/gi, '');
+        const cedula = item.Persona.Ci.toLowerCase().replace(/[^\w]/gi, '');
+        const telefono = item.Persona.Phone.replace(/[^\w]/gi, '');
         let termino = '';
         switch (this.type) {
           case 'name':

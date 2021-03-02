@@ -11,7 +11,6 @@
             <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
             <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
             <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
-            <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
           </div> 
         </div>
         <div class="card-body widget-body bg-light">
@@ -70,30 +69,6 @@
                 </span>
                 
             </div>
-            <!-- <br>
-            <div class="row">
-              <label class="col-md-4 label-form col-sm-12" for="CurrProvincia">Provincia*</label>
-              <select id="CurrProvincia" name="CurrProvincia" #CurrProvincia=ngModel (click)="LoadCantones()" (change)="LoadCantones()" [(ngModel)]="Provincia" class="col-md-8 col-sm-12 form-control">
-                <option value="" selected disabled>Seleccionar Provincia</option>
-                <option *ngFor="let provincia of Provincias" value="{{provincia._id}}"> {{provincia.Name}} </option>
-              </select>
-            </div>
-            <br>
-            <div class="row">
-              <label class="col-md-4 col-sm-12 label-form" for="CurrCanton">Cat&oacute;n*</label>
-              <select [disabled]="!Provincia" id="CurrCanton" name="CurrCanton" (click)="LoadParroquias()" (change)="LoadParroquias()" #CurrCanton=ngModel [(ngModel)]="Canton" class="col-md-8 col-sm-12 form-control">
-                <option value="" selected disabled>Seleccionar Cat&oacute;n</option>
-                <option *ngFor="let canton of Cantones" value="{{canton._id}}"> {{canton.Name}} </option>
-              </select>
-            </div>
-            <br>
-            <div class="row">
-              <label class="col-md-4 col-sm-12 label-form" for="CurrParr">Parroquia*</label>
-              <select [disabled]="!Canton" id="CurrParr" name="CurrParr"  #CurrParr=ngModel [(ngModel)]="cliente.City" class="col-md-8 col-sm-12 form-control">
-                <option value="" selected disabled>Seleccionar Parroquia</option>
-                <option *ngFor="let parroquia of Parroquias" value="{{parroquia._id}}"> {{parroquia.Name}} </option>
-              </select>
-            </div> -->
             <br>
             <div class="row">
               <label class="col-md-4 label-form col-sm-12" for="">Dirección</label>
@@ -103,10 +78,6 @@
                 <span *ngIf="!cliente.GPS">Elegir Dirección</span>
                 <span *ngIf="cliente.GPS">{{JSONParse(cliente.GPS).formatted_address}}</span>
               </button>
-              <!-- <input class="col-md-8 col-sm-12 form-control" required placeholder="Dirección de la Bodega*" type="text"
-                name="Address" id=Address #Address=ngModel pattern="[A-Za-z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{3,65}"
-                [class.is-invalid]="Address.touched && !Address.valid" [class.is-valid]="Address.touched && Address.valid"
-                minlength="3" maxlength="65" [(ngModel)]=bodega.Address> -->
             </div>
             <br>
             <div class="text-center">
@@ -131,7 +102,6 @@
             <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
             <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
             <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
-            <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
           </div> 
         </div>
         <div class="card-body widget-body bg-light">
@@ -139,46 +109,116 @@
             <span class="input-group-prepend">
               <span class="input-group-text bg-transparent border-0"><i class="fa fa-search ml-2 mr-1"></i></span>
             </span>
-            <input class="form-control border-0" type="text" id=searchText name=searchText (change)="define();"
-              (keyup)="define();" [(ngModel)]="searchText" placeholder="{{searchTitle}}">
+            <input class="form-control border-0" type="text" id=searchText name=searchText (change)="Read();"
+              (keyup)="Read();" [(ngModel)]="Filters.searchText" placeholder="{{searchTitle}}">
             <div class="btn-group">
-              <button type="button" class="btn dropdown-toggle no-caret bg-transparent border-0 box-shadow-none"
+              <button type="button" class="btn btn-secondary dropdown-toggle"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-ellipsis-v"></i>
+                {{searchTitle}}
+                <!-- <i class="fa fa-ellipsis-v"></i> -->
               </button>
               <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
-                <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'all'; define();">Todo</a>
-                <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'phone'; define();">Tel&eacute;fono</a>
-                <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'name'; define();">Nombres</a>
-                <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'lastname'; define();">Apellidos</a>
-                <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'ci'; define();">C&eacute;dula</a>
-                <!-- <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'city'; define();">Ciudad</a> -->
-                <a class="dropdown-item" href="javascript:void(0);" (click)="type = 'address'; define();">Direcci&oacute;n</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="Filters.type = 'all'; Read();">Todo</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="Filters.type = 'phone'; Read();">Tel&eacute;fono</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="Filters.type = 'name'; Read();">Nombres</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="Filters.type = 'lastname'; Read();">Apellidos</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="Filters.type = 'ci'; Read();">C&eacute;dula</a>
+                <a class="dropdown-item" href="javascript:void(0);" (click)="Filters.type = 'address'; Read();">Direcci&oacute;n</a>
+              </div>
+              <div class="input-group-append ml-1">
+                <button class="btn btn-info pull-rigth" (click)="getReport();">
+                  <i class="fas fa-file-pdf"></i>
+                  Generar Reporte
+                </button>
               </div>
             </div>
           </div>
 
           <table *ngIf="clientes && clientes.length >=1 " class="table table-responsive-sm table-striped table-sm table-hover">
+            <tbody  *ngIf="PaginationData.ItemsPerPage >= 15">
+              <tr>
+                <td colspan="9">
+                  <nav>
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item" [class.disabled]="PaginationData.Page == 1">
+                        <button class="page-link" [disabled]="PaginationData.Page == 1" (click)="PaginationData.Page = (PaginationData.Page - 1); Read();" >Anterior</button>
+                      </li>
+                      <li class="page-item"  (click)="PaginationData.Page = 1; Read()" *ngIf="PaginationData.Page - 4 >=1">
+                        <button class="page-link">1</button>
+                      </li>
+                      <li class="page-item" *ngIf="PaginationData.Page - 4 >= 1 &&  PaginationData.Page - 4 != 1">
+                        <button class="page-link">...</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 3; Read()" *ngIf="PaginationData.Page - 3 >=1" >
+                        <button class="page-link">{{PaginationData.Page - 3}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 2; Read()" *ngIf="PaginationData.Page - 2 >=1" >
+                        <button class="page-link">{{PaginationData.Page - 2}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 1; Read()" *ngIf="PaginationData.Page - 1 >=1">
+                        <button class="page-link">{{PaginationData.Page - 1}}</button>
+                      </li>
+                      <li class="page-item active">
+                        <span class="page-link">{{PaginationData.Page}}</span>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 1; Read()" *ngIf="PaginationData.Page + 1 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Page + 1}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 2; Read()" *ngIf="PaginationData.Page + 2 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Page + 2}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 3; Read()" *ngIf="PaginationData.Page + 3 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Page + 3}}</button>
+                      </li>
+                      <li class="page-item" *ngIf="PaginationData.Page + 4 <= PaginationData.Pages && PaginationData.Page + 4 != PaginationData.Pages">
+                        <span class="page-link">...</span>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Pages; Read()" *ngIf="PaginationData.Page + 4 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Pages}}</button>
+                      </li>
+                      <li class="page-item" [class.disabled]="PaginationData.Page >=  PaginationData.Pages">
+                        <button class="page-link" [disabled]="PaginationData.Page >=  PaginationData.Pages" (click)="PaginationData.Page = PaginationData.Page + 1; Read()">Siguiente</button>
+                      </li>
+                    </ul>
+                  </nav>
+                </td>
+              </tr>
+            </tbody>
+            <thead *ngIf="PaginationData.ItemsPerPage >= 15">
+              <tr>
+                <th colspan="5"></th>
+                <th class="text-right">Items Por Página</th>
+                <td colspan="2">
+                  <select class="form-control" name="ItemsPerPage" id="ItemsPerPage" #ItemsPerPage [(ngModel)]="PaginationData.ItemsPerPage" (change)="PaginationData.Page = 1;Read();" >
+                    <option>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>50</option>
+                    <option>100</option>
+                  </select></td>
+              </tr>
+            </thead>
             <thead>
               <tr>
                 <th>#</th>
-                <th [class.gray-highlight]="type != 'all' && type !='phone'"    >Télefono</th>
-                <th [class.gray-highlight]="type != 'all' && type !='name'"     >Nombres</th>
-                <th [class.gray-highlight]="type != 'all' && type !='lastname'" >Apellidos</th>
-                <th [class.gray-highlight]="type != 'all' && type !='ci'"       >Cédula</th>
-                <th [class.gray-highlight]="type != 'all' && type !='address'"     >Dirección</th>
-                <!-- <th [class.gray-highlight]="type != 'all' && type !='address'"  >Dirección</th> -->
+                <th [class.gray-highlight]="Filters.type != 'all' && Filters.type !='phone'"    >Télefono</th>
+                <th [class.gray-highlight]="Filters.type != 'all' && Filters.type !='name'"     >Nombres</th>
+                <th [class.gray-highlight]="Filters.type != 'all' && Filters.type !='lastname'" >Apellidos</th>
+                <th [class.gray-highlight]="Filters.type != 'all' && Filters.type !='ci'"       >Cédula</th>
+                <th [class.gray-highlight]="Filters.type != 'all' && Filters.type !='address'"  >Dirección</th>
                 <th  width="10%" colspan="3">Opciones</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let personaItem of clientes; let i=index">
                 <th  [class.bg-deleted]="!personaItem.Active" scope="row">{{i+1}}</th>
-                <td [class.gray-highlight]="type != 'all' && type !='phone'"     [class.bg-deleted]="!personaItem.Active">{{personaItem.Phone}}</td>
-                <td [class.gray-highlight]="type != 'all' && type !='name'"      [class.bg-deleted]="!personaItem.Active">{{personaItem.FirstName}}</td>
-                <td [class.gray-highlight]="type != 'all' && type !='lastname'"  [class.bg-deleted]="!personaItem.Active">{{personaItem.LastName}}</td>
-                <td [class.gray-highlight]="type != 'all' && type !='ci'"        [class.bg-deleted]="!personaItem.Active">{{personaItem.Ci}}</td>
-                <td [class.gray-highlight]="type != 'all' && type !='address'"      [class.bg-deleted]="!personaItem.Active">
+                <td [class.gray-highlight]="Filters.type != 'all' && Filters.type !='phone'"     [class.bg-deleted]="!personaItem.Active">{{personaItem.Phone}}</td>
+                <td [class.gray-highlight]="Filters.type != 'all' && Filters.type !='name'"      [class.bg-deleted]="!personaItem.Active">{{personaItem.FirstName}}</td>
+                <td [class.gray-highlight]="Filters.type != 'all' && Filters.type !='lastname'"  [class.bg-deleted]="!personaItem.Active">{{personaItem.LastName}}</td>
+                <td [class.gray-highlight]="Filters.type != 'all' && Filters.type !='ci'"        [class.bg-deleted]="!personaItem.Active">{{personaItem.Ci}}</td>
+                <td [class.gray-highlight]="Filters.type != 'all' && Filters.type !='address'"      [class.bg-deleted]="!personaItem.Active">
                   {{personaItem.Address}}. 
                   <br>
                   {{JSONParse(personaItem.GPS).address_components[1].long_name}} -
@@ -188,7 +228,6 @@
                   <span *ngIf="JSONParse(personaItem.GPS).address_components[5]"> - {{JSONParse(personaItem.GPS).address_components[5].long_name}}</span>
                   <span *ngIf="JSONParse(personaItem.GPS).address_components[6]"> - {{JSONParse(personaItem.GPS).address_components[6].long_name}}</span>
                 </td>
-                <!-- <td [class.gray-highlight]="type != 'all' && type !='address'"   [class.bg-deleted]="!personaItem.Active">{{personaItem.Address}}</td> -->
                 <td  [class.bg-deleted]="!personaItem.Active" class="text-center">
                   <button data-toggle="tooltip" data-html="true" title="Editar Cliente"
                     class="btn btn-sm btn-primary" (click)="toUpdate(personaItem)"><i
@@ -211,16 +250,81 @@
                 </td>
               </tr>
             </tbody>
+            <thead>
+              <tr>
+                <th colspan="5"></th>
+                <th class="text-right">Items Por Página</th>
+                <td colspan="2">
+                  <select class="form-control" name="ItemsPerPage" id="ItemsPerPage" #ItemsPerPage [(ngModel)]="PaginationData.ItemsPerPage" (change)="PaginationData.Page = 1;Read();" >
+                    <option>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>50</option>
+                    <option>100</option>
+                  </select></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="9">
+                  <nav>
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item" [class.disabled]="PaginationData.Page == 1">
+                        <button class="page-link" [disabled]="PaginationData.Page == 1" (click)="PaginationData.Page = (PaginationData.Page - 1); Read();" >Anterior</button>
+                      </li>
+                      <li class="page-item"  (click)="PaginationData.Page = 1; Read()" *ngIf="PaginationData.Page - 4 >=1">
+                        <button class="page-link">1</button>
+                      </li>
+                      <li class="page-item" *ngIf="PaginationData.Page - 4 >= 1 &&  PaginationData.Page - 4 != 1">
+                        <button class="page-link">...</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 3; Read()" *ngIf="PaginationData.Page - 3 >=1" >
+                        <button class="page-link">{{PaginationData.Page - 3}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 2; Read()" *ngIf="PaginationData.Page - 2 >=1" >
+                        <button class="page-link">{{PaginationData.Page - 2}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 1; Read()" *ngIf="PaginationData.Page - 1 >=1">
+                        <button class="page-link">{{PaginationData.Page - 1}}</button>
+                      </li>
+                      <li class="page-item active">
+                        <span class="page-link">{{PaginationData.Page}}</span>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 1; Read()" *ngIf="PaginationData.Page + 1 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Page + 1}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 2; Read()" *ngIf="PaginationData.Page + 2 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Page + 2}}</button>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 3; Read()" *ngIf="PaginationData.Page + 3 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Page + 3}}</button>
+                      </li>
+                      <li class="page-item" *ngIf="PaginationData.Page + 4 <= PaginationData.Pages && PaginationData.Page + 4 != PaginationData.Pages">
+                        <span class="page-link">...</span>
+                      </li>
+                      <li class="page-item" (click)="PaginationData.Page = PaginationData.Pages; Read()" *ngIf="PaginationData.Page + 4 <= PaginationData.Pages">
+                        <button class="page-link">{{PaginationData.Pages}}</button>
+                      </li>
+                      <li class="page-item" [class.disabled]="PaginationData.Page >=  PaginationData.Pages">
+                        <button class="page-link" [disabled]="PaginationData.Page >=  PaginationData.Pages" (click)="PaginationData.Page = PaginationData.Page + 1; Read()">Siguiente</button>
+                      </li>
+                    </ul>
+                  </nav>
+                </td>
+              </tr>
+            </tbody>
           </table>
           <div *ngIf="!clientes || clientes.length < 1" role="alert" class="alert alert-dismissible fade show"
-          [class.alert-danger]="searchText == ''" [class.alert-warning]="searchText != ''">
+          [class.alert-danger]="Filters.searchText == ''" [class.alert-warning]="Filters.searchText != ''">
             <button type="button" data-dismiss="alert" aria-label="Close" class="close">
               <span aria-hidden="true">×</span>
             </button>
-            <span *ngIf="searchText != ''">
+            <span *ngIf="Filters.searchText != ''">
               <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
             </span>
-            <span *ngIf="searchText == ''">
+            <span *ngIf="Filters.searchText == ''">
               <strong>Sin Personas!</strong> Al parecer no se han Registrado Personas en el Sistema o hubo un Error en el Servidor
             </span>
           </div>
@@ -229,7 +333,7 @@
 
     </div>
   </div>
-  <!-- Modal -->
+  <!-- Modals -->
   <div class="modal fade" id="info-modal" *ngIf="viewedCliente" tabindex="-1" role="dialog"
     aria-labelledby="modal-info-label">
     <div class="modal-dialog modal-lg" role="document">
@@ -241,10 +345,8 @@
               aria-hidden="true">×</span></button>
         </div>
         <div name=MyGoogleMapInfo id=MyGoogleMapInfo style="width: 100%; height: 500px;" class="modal-body">
-          <!-- <div></div> -->
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button> -->
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -278,16 +380,12 @@
             </div>
             <input id="address" type="textbox" class="form-control"
               placeholder="Buscar dirección, ciudad, cantón, provincia o pais" />
-            <!-- <input id="GetAddress" type="button" value="Geocode" /> -->
           </div>
           <div class="col-12 mb-2">
             <div name=MyGoogleMap id=MyGoogleMap style="width: 100%; height: 500px; border-radius: 5px;"></div>
           </div>
           <div class="col-12">
             <div *ngIf="currPosition && currPosition.address_components && currPosition.address_components[0]" role="alert" class="alert alert-success alert-dismissible fade show">
-              <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                <span aria-hidden="true">×</span>
-              </button> -->
               <strong>Ubicación Localizada!</strong>
               {{currPosition.address_components[0].long_name}} -
               {{currPosition.address_components[1].long_name}} -
@@ -301,9 +399,6 @@
               </span>
             </div>
             <div *ngIf="!currPosition" role="alert" class="alert alert-danger alert-dismissible fade show">
-              <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                <span aria-hidden="true">×</span>
-              </button> -->
               <strong>Alerta!</strong> 
               No se ha encontrado la Dirección, prueba ingresandola en el buscador o seleccionandola manualmente. 
             </div>

@@ -7,6 +7,7 @@ import { Config } from './global.service';
 @Injectable()
 export class MessageService{
     public url : string;
+    public SocketUrl: string;
     public Token : string;
     socket: any;
     port=3700;
@@ -14,7 +15,8 @@ export class MessageService{
         this.url = Config.Url + 'message/';
         this.Token = localStorage.getItem('Token');
         this.port = 3700;
-        this.socket = io('http://167.172.149.195:'+this.port);
+        this.SocketUrl = Config.SocketUrl;
+        this.socket = io(this.SocketUrl+this.port);
     }
     
     listen(eventName: string) {

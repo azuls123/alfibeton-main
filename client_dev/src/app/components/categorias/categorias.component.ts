@@ -74,8 +74,8 @@ export class CategoriasComponent {
 
     if (this.searchText !== '' && this.searchText != undefined) {
       for (const item of this.bufferCategorias) {
-        const nombre = item.Name.toLowerCase().replace(/'[ ]'/g, '');
-        const description = item.Description.replace(/'[ ]'/g, '');
+        const nombre = item.Name.toLowerCase().replace(/[^\w]/gi, '');
+        const description = item.Description.replace(/[^\w]/gi, '');
         let termino = '';
 
         switch (this.type) {

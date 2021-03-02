@@ -635,15 +635,15 @@ export class CrearPedidoComponent implements OnInit {
 
     if (this.searchTextClient !== '' && this.searchTextClient != undefined) {
       for (const item of this.bufferClientes) {
-        const nombre = item.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        const apellido = item.LastName.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Phone.replace(/'[ ]'/g, '');
-        const cedula = item.Ci.replace(/'[ ]'/g, '');
-        // let ciudad = item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        // let direccion = item.Address.toLowerCase().replace(/'[ ]'/g, '');
-        // direccion = direccion + item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        // direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/'[ ]'/g, '');
-        // direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/'[ ]'/g, '');
+        const nombre = item.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+        const apellido = item.LastName.toLowerCase().replace(/[^\w]/gi, '');
+        const telefono = item.Phone.replace(/[^\w]/gi, '');
+        const cedula = item.Ci.replace(/[^\w]/gi, '');
+        // let ciudad = item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        // let direccion = item.Address.toLowerCase().replace(/[^\w]/gi, '');
+        // direccion = direccion + item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        // direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/[^\w]/gi, '');
+        // direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/[^\w]/gi, '');
         let termino = '';
         switch (this.typeClient) {
           case 'name':

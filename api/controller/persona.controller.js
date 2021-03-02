@@ -2,6 +2,7 @@
 
 const Persona = require('../model/persona.model');
 const Moment = require('moment');
+const Pagination = require('../services/pagination');
 // funciones
     // CREATE
     function Create(req, res) {
@@ -61,6 +62,80 @@ const Moment = require('moment');
         })
     }
 
+    
+    async function Find(Query, Filters) {
+        const Raw = await Query.sort('_id').exec();
+        let Filtered = [];
+        for (const item of Raw) {
+            const nombre = item.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+            const apellido = item.LastName.toLowerCase().replace(/[^\w]/gi, '');
+            const telefono = item.Phone.replace(/[^\w]/gi, '');
+            const cedula = item.Ci.replace(/[^\w]/gi, '');
+            let direccion = item.Address.toLowerCase().replace(/[^\w]/gi, '');
+
+            let myAddress = JSON.parse(item.GPS);
+            
+            if (myAddress && myAddress.address_components.length >=1 ) {
+                direccion = direccion + myAddress.address_components[0].long_name;
+                direccion = direccion + myAddress.address_components[1].long_name;
+                direccion = direccion + myAddress.address_components[2].long_name;
+                direccion = direccion + myAddress.address_components[3].long_name;
+                if (myAddress.address_components[4]) direccion = direccion + myAddress.address_components[4].long_name;
+                if (myAddress.address_components[5]) direccion = direccion + myAddress.address_components[5].long_name;
+                if (myAddress.address_components[6]) direccion = direccion + myAddress.address_components[6].long_name;
+            }
+
+            let termino = '';
+
+            switch (Filters.type.toLowerCase()) {
+                case 'name':
+                    termino = nombre;
+                    break;
+                  case 'ci':
+                    termino = cedula;
+                    break;
+                  case 'lastname':
+                    termino = apellido;
+                    break;
+                  case 'phone':
+                    termino = telefono;
+                    break;
+                  case 'address':
+                    termino = direccion;
+                    break;
+                  default:
+                    termino = nombre + apellido + telefono + direccion + cedula;
+                    break;
+            }
+            
+        if (termino.indexOf(Filters.searchText.toLowerCase().replace(/[^\w]/gi, '')) > -1) {
+            Filtered.push(item);
+          }
+        }
+        return Filtered;
+
+    }
+
+    // COMPLEX READ
+    function ComplexRead(req, res) {
+        const Active     = req.params.active;
+        let Query        = Persona.find({Active});
+        const PaginationData = req.body.PaginationData;
+        const Filters = req.body.Filters;
+        if (!Active || (Active != 'true' && Active != 'false')) Query = Persona.find();
+        if (!Filters.searchText || Filters.searchText == null || Filters.searchText == undefined) Filters.searchText = '';
+
+        Find(Query, Filters).then((Array) => {
+            let Raw = [];
+            if (PaginationData.raw && PaginationData.raw == true) Raw = Array;
+            return res.status(200).send({
+                Message: 'Query Succeful', 
+                Personas: Pagination.paginate(Array, PaginationData),
+                Raw
+            })
+        })
+    }
+
     // UPDATE
     function Update(req,res) {
         const Id = req.params.id;
@@ -93,5 +168,6 @@ module.exports = {
     Create,
     Read,
     Update,
-    Delete
+    Delete,
+    ComplexRead
 }

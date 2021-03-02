@@ -707,15 +707,15 @@ export class EmpresasComponent implements OnInit {
 
     if (this.searchTextPer !== '' && this.searchTextPer != '') {
       for (const item of this.BufferPersonas) {
-        const nombre = item.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        const apellido = item.LastName.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Phone.replace(/'[ ]'/g, '');
-        const cedula = item.Ci.replace(/'[ ]'/g, '');
-        let ciudad = item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        let direccion = item.Address.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/'[ ]'/g, '');
+        const nombre = item.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+        const apellido = item.LastName.toLowerCase().replace(/[^\w]/gi, '');
+        const telefono = item.Phone.replace(/[^\w]/gi, '');
+        const cedula = item.Ci.replace(/[^\w]/gi, '');
+        let ciudad = item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        let direccion = item.Address.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/[^\w]/gi, '');
         let termino = '';
         switch (this.typePer) {
           case 'name':
@@ -927,17 +927,17 @@ export class EmpresasComponent implements OnInit {
 
     if (this.searchTextEmp !== '' && this.searchTextEmp != '') {
       for (const item of this.BufferEmpresas) {
-        const nombre = item.Name.toLowerCase().replace(/'[ ]'/g, '');
-        let nombreRep = item.Representante.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        nombreRep = nombreRep + item.Representante.LastName.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Phone.replace(/'[ ]'/g, '');
-        let cedula = item.Representante.Ci.replace(/'[ ]'/g, '');
-        cedula = cedula + item.RUC.replace(/'[ ]'/g, '');
-        let ciudad = item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        let direccion = item.Address.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/'[ ]'/g, '');
+        const nombre = item.Name.toLowerCase().replace(/[^\w]/gi, '');
+        let nombreRep = item.Representante.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+        nombreRep = nombreRep + item.Representante.LastName.toLowerCase().replace(/[^\w]/gi, '');
+        const telefono = item.Phone.replace(/[^\w]/gi, '');
+        let cedula = item.Representante.Ci.replace(/[^\w]/gi, '');
+        cedula = cedula + item.RUC.replace(/[^\w]/gi, '');
+        let ciudad = item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        let direccion = item.Address.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/[^\w]/gi, '');
         let termino = '';
         switch (this.typeEmp) {
           case 'name':
@@ -1024,18 +1024,18 @@ export class EmpresasComponent implements OnInit {
 
     if (this.searchTextUsers !== '' && this.searchTextUsers != '') {
       for (const item of this.BufferUsuarios) {
-        const mail = item.Email.toLowerCase().replace(/'[ ]'/g, '')
-        const nombre = item.Persona.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        // let nombreRep = item.Persona.FirstName.toLowerCase().replace(/'[ ]'/g, '');
-        const apellido = item.Persona.LastName.toLowerCase().replace(/'[ ]'/g, '');
-        const telefono = item.Persona.Phone.replace(/'[ ]'/g, '');
-        let cedula = item.Persona.Ci.replace(/'[ ]'/g, '');
-        // cedula = cedula + item.Persona.Ci.replace(/'[ ]'/g, '');
-        let ciudad = item.Persona.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        let direccion = item.Persona.Address.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.Persona.City.Name.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.Persona.City.Canton.Name.toLowerCase().replace(/'[ ]'/g, '');
-        direccion = direccion + item.Persona.City.Canton.Provincia.Name.toLowerCase().replace(/'[ ]'/g, '');
+        const mail = item.Email.toLowerCase().replace(/[^\w]/gi, '')
+        const nombre = item.Persona.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+        // let nombreRep = item.Persona.FirstName.toLowerCase().replace(/[^\w]/gi, '');
+        const apellido = item.Persona.LastName.toLowerCase().replace(/[^\w]/gi, '');
+        const telefono = item.Persona.Phone.replace(/[^\w]/gi, '');
+        let cedula = item.Persona.Ci.replace(/[^\w]/gi, '');
+        // cedula = cedula + item.Persona.Ci.replace(/[^\w]/gi, '');
+        let ciudad = item.Persona.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        let direccion = item.Persona.Address.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.Persona.City.Name.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.Persona.City.Canton.Name.toLowerCase().replace(/[^\w]/gi, '');
+        direccion = direccion + item.Persona.City.Canton.Provincia.Name.toLowerCase().replace(/[^\w]/gi, '');
         let termino = '';
         switch (this.typeUsers) {
           case 'name':

@@ -224,9 +224,9 @@ export class ProductosComponent implements OnInit {
 
     if (this.searchText !== '' && this.searchText != undefined) {
       for (const item of this.bufferProductos) {
-        const nombre = item.Name.toLowerCase().replace(/'[ ]'/g, '');
-        const description = item.Description.replace(/'[ ]'/g, '');
-        const color = item.Color.replace(/'[ ]'/g, '');
+        const nombre = item.Name.toLowerCase().replace(/[^\w]/gi, '');
+        const description = item.Description.replace(/[^\w]/gi, '');
+        const color = item.Color.replace(/[^\w]/gi, '');
         let termino = '';
 
         switch (this.type) {

@@ -20,6 +20,12 @@ export class PersonaService{
 
         return this._Http.post(this.url + 'create', params, {headers});
     }
+    ComplexRead(Params, active) : Observable<any> {
+        let params = JSON.stringify(Params);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                         .set('Authorization', this.Token);
+        return this._Http.post(this.url + 'complex-read/'+active, params, {headers});
+    }
     Read() : Observable<any> {
         const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                          .set('Authorization', this.Token);
