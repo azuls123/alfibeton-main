@@ -127,10 +127,10 @@
     <div class="content p-2">
       <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
         <i class="fa fa-trash arrow"></i>&nbsp; 
-        Limpiar Datos
+        Limpiar
       </button>
       <button class="btn btn-success pull-right" (click)="loadSelectedData(); SelectedIngreso = undefined" data-target="#confirm-modal" data-toggle="modal" >
-          <i class="fa fa-save arrow"></i> Guardar Datos
+          <i class="fa fa-save arrow"></i> Guardar
       </button>
     </div>
   </div>
@@ -243,7 +243,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success"  data-dismiss="modal"> <i class="fa fa-save"></i> Guardar Datos</button>
+        <button type="button" class="btn btn-success"  data-dismiss="modal"> <i class="fa fa-save"></i> Guardar</button>
         <button class="btn btn-warning pull-right" (click)="SelectedReceived = undefined">
           <i class="fa fa-trash"></i> Quitar Seleccionado
         </button>
@@ -345,7 +345,7 @@
           <i class="fa fa-times"></i>Cerrar
         </button>
         <button class="btn btn-success pull-right"  *ngIf="!(SelectedIngreso && SelectedIngreso.Number)" (click)="onSubmit()">
-          <i class="fa fa-save"></i> Guardar Datos
+          <i class="fa fa-save"></i> Guardar
         </button>
       </div>
     </div>

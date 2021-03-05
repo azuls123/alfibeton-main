@@ -314,7 +314,7 @@ export class PersonasComponent implements OnInit {
       PaginationData: this.PaginationData
     }, true).subscribe(
       response => {
-        console.log('Respuesta: ', response);
+        // console.log('Respuesta: ', response);
         this.PaginationData.Pages = response.Personas.Pages;
         this.clientes = response.Personas.List;
         this.Filters.raw = false;

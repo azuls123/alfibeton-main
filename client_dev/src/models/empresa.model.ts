@@ -5,7 +5,7 @@ export class Empresa {
         public Address      : string,
         // public City         : string,
         public Name         : string,
-        public GPS           : string,
+        public GPS          : string,
         public Admin        : string,
         public Representante: string,
         public Active       : boolean

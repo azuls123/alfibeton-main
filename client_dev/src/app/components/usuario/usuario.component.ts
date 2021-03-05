@@ -1,103 +1,229 @@
-import { Component, OnInit, PipeTransform, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { PersonaService } from '../../../services/persona.service';
-import { UsuarioService } from '../../../services/usuario.service';
-import { Usuario } from '../../../models/usuario.model';
-import { ActivatedRoute, Router } from '@angular/router';
-// import { RoleService } from '../../.././../services/roles.service';
+import { Component, OnInit } from '@angular/core';
 import { Persona } from '../../../models/persona.model';
-import { PasswordValidators, EmailValidators, CreditCardValidators, UniversalValidators } from 'ngx-validators';
-// import { ProvinciaService } from 'src/services/provincia.service';
-import { EmpresaService } from 'src/services/empresa.service';
-import { BodegaService } from 'src/services/bodega.service';
-import { Location } from '@angular/common';
-
-import { DatePipe } from '@angular/common';
+import { Usuario } from '../../../models/usuario.model';
+import { PersonaService } from '../../../services/persona.service';
 import { } from 'googlemaps';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { MapStyles } from '../../../assets/map/mapStyle.service';
+import { DatePipe } from '@angular/common';
+import { EmpresaService } from '../../../services/empresa.service';
+import { BodegaService } from '../../../services/bodega.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
   styleUrls: ['./usuario.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [PersonaService, UsuarioService, EmpresaService, BodegaService]
-
+  providers: [PersonaService, MapStyles, EmpresaService, BodegaService, UsuarioService]
 })
 export class UsuarioComponent implements OnInit {
-  public role: string;
+
+  public ci_correcta: boolean;
+  public ph_correcta: boolean;
+  public no: boolean;
+  public ci_unica: boolean;
+  public mail_unico: boolean;
+
+  public Filters = {
+    type: 'all',
+    searchText: '',
+    raw: false
+  }
+  public PaginationData = {
+    Page: 1,
+    ItemsPerPage: 5,
+    Pages: 1
+  } 
+  public searchTitle: string = 'Todo';
+
+  public newUsuario: Usuario;
+  public newPersona: Persona;
+  public SelectedPersona;
+  public isNew: boolean = true;
+  public ViewedUsuario;
+
+  public router: Router;
+  public form: FormGroup;
+  public Personas: any[] = [];
 
   public currPosition;
   public viewedCurrPosition;
 
-  public steps: any[];
-  public accountForm: FormGroup;
-  public personalForm: FormGroup;
-  public paymentForm: FormGroup;
-  public details: any = {};
-  public showConfirm: boolean;
-  public confirmed: boolean;
-
-  public isPrev: boolean = false;
-
-  public NewPersona;
-  public Personas: any[];
-  public BufferPersonas: any[];
-
-  public Usuario: Usuario;
-  public ViewedUsuario;
-  public SelectedPersona;
-
-  public Usuarios: any[];
-  public BufferUsuarios: any[];
-
-  public Password: string = '';
-  public ConfirmPassword: string = '';
-
-  public type: string = 'all';
-  public searchTitle: string = 'Buscar Algo...';
-  public searchText: string;
-
-  public typePer: string = 'all';
-  public searchTitlePer: string = 'Buscar Algo...';
-  public searchTextPer: string;
-
   public Empresas: any[] = [];
-  public BufferEmpresas: any[] = [];
-
-  public currEmpresa;
+  public EmpresaInput: string = '';
 
   public Bodegas: any[] = [];
-  public BufferBodegas: any[] = [];
+  public BodegaInput: string = '';
 
-  public currBodega;
-
+  public Usuarios: any[] = [];
+  public BufferUsuarios: any[] = [];
   constructor(
-    private formBuilder: FormBuilder,
-    private _usuarioService: UsuarioService,
-    private _personaService: PersonaService,
-    // private _ProvinciaService: ProvinciaService,
-    private _empresaService: EmpresaService,
-    private _bodegaService: BodegaService,
-    private location: Location,
-    private datePipe: DatePipe
+    router: Router,
+    fb: FormBuilder,
+    private _PersonaService: PersonaService,
+    private MapStyles: MapStyles,
+    private datePipe: DatePipe,
+    private _EmpresaService: EmpresaService,
+    private _BodegaService: BodegaService,
+    private _UsuarioService: UsuarioService
   ) {
-    const usuario = JSON.parse(localStorage.getItem('Identity'));
-    if (usuario && usuario.Role) this.role = usuario.Role;
-    if (this.role == 'Encargado de Bodega' || this.role == 'Encargado de Repartidores' || this.role == 'Motorizado' || this.role == 'Secretario') {
-      this.location.back();
-    }
-    this.loadUsuarios();
-    this.initSteps();
-    this.initUser();
-    // this.LoadLocations();
+    this.loadPersonas();
     this.initNewPersona();
+    this.initNewUsuario();
     this.loadEmpresas();
-    this.LoadBodegas();
+    this.loadBodegas();
+    this.Read();
+  }	
+
+  Read(raw = false) {
+    switch (this.Filters.type) {
+      case 'name':
+        this.searchTitle = 'Nombres';
+        break;
+      case 'ci':
+        this.searchTitle = 'Cédula';
+        break;
+      case 'lastname':
+        this.searchTitle = 'Apellidos';
+        break;
+      case 'phone':
+        this.searchTitle = 'Teléfono';
+        break;
+      case 'address':
+        this.searchTitle = 'Dirección';
+        break;
+      case 'mail':
+        this.searchTitle = 'Correo Electrónico';
+        break;
+      case 'role':
+        this.searchTitle = 'Rol de Usuario';
+        break;
+      default:
+        this.searchTitle = 'Todo';
+        break;
+    }
+    this.Filters.raw = raw;
+    let admin = null;
+    this._UsuarioService.ComplexRead({
+      Filters: this.Filters,
+      PaginationData: this.PaginationData
+    }, admin).subscribe(
+      response => {
+        this.PaginationData.Pages = response.Usuarios.Pages;
+        this.Usuarios = response.Usuarios.List;
+        this.Filters.raw = false;
+        this.BufferUsuarios = response.Raw;
+      }
+    );
   }
-  ngOnInit() {
-    // this.initMap();
+
+  disableUsuario(usuario) {
+    (usuario.Active) ? usuario.Active = false : usuario.Active = true;
+    this._UsuarioService.Update(usuario).subscribe(
+      response => {
+        // console.log(response);
+        this.Read();
+      }
+    )
   }
-  initInfoMap() {
+  loadEmpresas() {
+    this._EmpresaService.Read().subscribe(
+      response => {
+        this.Empresas = response.Empresas;
+      }
+    )
+  }
+
+  infoUsuario(usuario) {
+    this.ViewedUsuario = usuario;
+    this.viewedCurrPosition = JSON.parse(usuario.Persona.GPS);    
+    setTimeout(() => {
+      this.initInfoMap();
+      // console.log('launching info map');
+      
+    }, 250);
+  }
+  public SelectedEmpresa;
+  toUpdateUser(usuario) {
+    const tempString = JSON.stringify(usuario);
+    const temp = JSON.parse(tempString);
+    this.SelectedPersona = temp.Persona;
+    this.newUsuario = temp;
+    this.PhonePer = this.SelectedPersona.Phone;
+    console.log(this.newUsuario);
+    this.isNew = false;
+    if (temp.Empresa) {
+      this.SelectedEmpresa = temp.Empresa;
+      this.newUsuario.Empresa = temp.Empresa._id;
+      this.EmpresaInput = temp.Empresa.Name;
+    }
+    if (temp.Bodega) {
+      console.log('Bodeguero', temp.Bodega);
+      this.SelectedBodega = temp.Bodega;
+      this.BodegaInput = temp.Bodega.Name;
+      this.newUsuario.Bodega = temp.Bodega._id;
+      
+    }
+  }
+  setEmpresa(Name) {
+    this.newUsuario.Empresa = undefined;
+    this.SelectedEmpresa    = this.Empresas.find(empresa => empresa.Name == Name);
+    this.newUsuario.Empresa =  this.Empresas.find(empresa => empresa.Name == Name);
+  }
+  public PhonePer = '';
+  setPersona(Phone): any {
+    this.SelectedPersona = undefined;
+    this.SelectedPersona = this.Personas.find( persona => persona.Phone == Phone);
+  }
+  public SelectedBodega;
+  setBodega(Name) {
+    this.newUsuario.Bodega = undefined;
+    this.SelectedBodega    = this.Bodegas.find(bodega => bodega.Name == Name);
+    this.newUsuario.Bodega = this.Bodegas.find(bodega => bodega.Name == Name);
+  }
+  loadBodegas() {
+    this._BodegaService.Read().subscribe(
+      response => {
+        this.Bodegas = response.Bodegas;
+      }
+    )
+  }
+
+
+  // buscar direccion
+  geocodeAddress(
+    geocoder: google.maps.Geocoder,
+    map: google.maps.Map,
+    infowindow: google.maps.InfoWindow
+  ) {
+    const address = (document.getElementById("address") as HTMLInputElement)
+      .value;
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK") {
+        infowindow.close();
+        console.log(results);
+        this.currPosition = results[0];
+        map.setCenter(results[0].geometry.location);
+        infowindow.setPosition(results[0].geometry.location);
+        infowindow.setContent(results[0].formatted_address + ' - ' + JSON.stringify(results[0].geometry.location));
+        console.log(results);
+        this.currPosition = results[0]
+        infowindow.open(map);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+   loadPersonas() {
+    this._PersonaService.ReadActive().subscribe(
+      response => {
+        this.Personas = response.Personas
+      }
+    )
+   }
+
+   initInfoMap() {
     const directionsRenderer = new google.maps.DirectionsRenderer();
     // const infowindow = new google.maps.InfoWindow();
     const map = new google.maps.Map(
@@ -105,86 +231,7 @@ export class UsuarioComponent implements OnInit {
       {
         zoom: 8,
         center: { lat: -1.482292789730304, lng: -77.99914699292728 },
-        styles: [
-          { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-          {
-            featureType: "administrative.locality",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "geometry",
-            stylers: [{ color: "#263c3f" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#6b9a76" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [{ color: "#38414e" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#212a37" }],
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#9ca5b3" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry",
-            stylers: [{ color: "#746855" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#1f2835" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#f3d19c" }],
-          },
-          {
-            featureType: "transit",
-            elementType: "geometry",
-            stylers: [{ color: "#2f3948" }],
-          },
-          {
-            featureType: "transit.station",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#17263c" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#515c6d" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.stroke",
-            stylers: [{ color: "#17263c" }],
-          },
-        ]
+        styles: this.MapStyles.Dark()
       }
     )
     map.setZoom(15);
@@ -206,6 +253,7 @@ export class UsuarioComponent implements OnInit {
       "<p><i class='fa fa-save'></i>&nbsp;<i class='fas fa-calendar-alt'></i>&nbsp;  <b>Ingresado El: </b> "+ this.datePipe.transform((parseInt(this.ViewedUsuario.Created.At) * 1000), 'medium') +" <p>";
     }
     if (this.ViewedUsuario.Updated.By) {
+      console.log(this.ViewedUsuario);
       UpdatedBy = 
       "<hr><p><i class='fa fa-edit'></i>&nbsp;<i class='fa fa-user'></i>&nbsp; <b>Actualizado por: </b> " + this.ViewedUsuario.Updated.By.Persona.FirstName + " " + this.ViewedUsuario.Updated.By.Persona.LastName + " - (" + this.ViewedUsuario.Updated.By.Email + ") <p>"+
       "<p><i class='fa fa-edit'></i>&nbsp;<i class='fas fa-calendar-alt'></i>&nbsp;  <b>Actualizado El: </b> "+ this.datePipe.transform((parseInt(this.ViewedUsuario.Updated.At) * 1000), 'medium') +" <p>";
@@ -246,103 +294,16 @@ export class UsuarioComponent implements OnInit {
     const directionsRenderer = new google.maps.DirectionsRenderer();
     const geocoder = new google.maps.Geocoder();
     const infowindow = new google.maps.InfoWindow();
-//  console.log('cargando mapa');
  
     const map = new google.maps.Map(
       document.getElementById("MyGoogleMap") as HTMLDivElement,
       {
         zoom: 8,
         center: { lat: -1.482292789730304, lng: -77.99914699292728 },
-        styles: [
-          { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-          { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-          {
-            featureType: "administrative.locality",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "geometry",
-            stylers: [{ color: "#263c3f" }],
-          },
-          {
-            featureType: "poi.park",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#6b9a76" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [{ color: "#38414e" }],
-          },
-          {
-            featureType: "road",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#212a37" }],
-          },
-          {
-            featureType: "road",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#9ca5b3" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry",
-            stylers: [{ color: "#746855" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "geometry.stroke",
-            stylers: [{ color: "#1f2835" }],
-          },
-          {
-            featureType: "road.highway",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#f3d19c" }],
-          },
-          {
-            featureType: "transit",
-            elementType: "geometry",
-            stylers: [{ color: "#2f3948" }],
-          },
-          {
-            featureType: "transit.station",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#d59563" }],
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#17263c" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.fill",
-            stylers: [{ color: "#515c6d" }],
-          },
-          {
-            featureType: "water",
-            elementType: "labels.text.stroke",
-            stylers: [{ color: "#17263c" }],
-          },
-        ]
+        styles: this.MapStyles.Dark()
       }
     )
     directionsRenderer.setMap(map);
-    // llamado a rutas
-    // (document.getElementById("GetRoute") as HTMLElement).addEventListener(
-    //   "click",
-    //   () => {
-    //     this.calculateAndDisplayRoute(directionsService, directionsRenderer);
-    //   }
-    // );
     // llamado a buscar direccion
     (document.getElementById("GetAddress") as HTMLElement).addEventListener(
       "click",
@@ -400,8 +361,8 @@ export class UsuarioComponent implements OnInit {
         });
         map.setCenter(marker.getPosition() as google.maps.LatLng);
         markers.push(marker)
-        this.NewPersona.GPS = JSON.stringify(this.currPosition);
-        this.NewPersona.Address = this.currPosition.formatted_address;
+        this.newPersona.GPS = JSON.stringify(this.currPosition);
+        this.newPersona.Address = this.currPosition.formatted_address;
       }
     )
     // click en el mapa
@@ -411,34 +372,6 @@ export class UsuarioComponent implements OnInit {
 
       this.geocodeLatLng(e.latLng, geocoder, map, infowindow);
     })
-  }
-  // buscar direccion
-  geocodeAddress(
-    geocoder: google.maps.Geocoder,
-    map: google.maps.Map,
-    infowindow: google.maps.InfoWindow
-  ) {
-    const address = (document.getElementById("address") as HTMLInputElement)
-      .value;
-    geocoder.geocode({ address: address }, (results, status) => {
-      if (status === "OK") {
-        infowindow.close();
-        console.log(results);
-        this.currPosition = results[0];
-        map.setCenter(results[0].geometry.location);
-        infowindow.setPosition(results[0].geometry.location);
-        infowindow.setContent(results[0].formatted_address + ' - ' + JSON.stringify(results[0].geometry.location));
-        console.log(results);
-        this.currPosition = results[0]
-        infowindow.open(map);
-        // new google.maps.Marker({
-        //   map: resultsMap,
-        //   position: results[0].geometry.location,
-        // });
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
   }
   // visualizar coordenadas
   geocodeLatLng(
@@ -484,455 +417,68 @@ export class UsuarioComponent implements OnInit {
       }
     );
   }
-  LoadBodegas() {
-    this._bodegaService.Read().subscribe(
-      response => {
-        this.BufferBodegas = response.Bodegas;
-        this.Bodegas = response.Bodegas;
-      }
-    )
-  }
-  public bodegaFilter: string = 'canton';
-  loadBodegasPerFilter() {
-    this.Bodegas = [];
-    if (this.bodegaFilter == 'todo') {
-      this.Bodegas = this.BufferBodegas;
-    } else {
-      for (const bodega of this.BufferBodegas) {
-        switch (this.bodegaFilter) {
-          case 'parroquia':
-            if (bodega.City._id == this.SelectedPersona.City._id) this.Bodegas.push(bodega)
-            break;
-          case 'canton':
-            if (bodega.City.Canton._id == this.SelectedPersona.City.Canton._id) this.Bodegas.push(bodega)
-            break;
-          case 'provincia':
-            if (bodega.City.Canton.Provincia._id == this.SelectedPersona.City.Canton.Provincia._id) this.Bodegas.push(bodega)
-            break;
-        }
-      }
+  initNewPersona() {
+    this.newPersona = {
+      _id: '',
+      Active: false,
+      Address: '',
+      Ci: '',
+      Created: {
+        At: '',
+        By: ''
+      },
+      Updated: {
+        At: '',
+        By: ''
+      },
+      FirstName: '',
+      GPS: '',
+      HasAccount: true,
+      LastName: '',
+      Phone: '',
+      isDueno: false
     }
   }
-  loadEmpresas() {
-    this._empresaService.Read().subscribe(
-      response => {
-        this.Empresas = response.Empresas;
-        this.BufferEmpresas = response.Empresas;
-      }
-    )
-  }
-  loadPersonas() {
-    this._personaService.Read().subscribe(
-      response => {
-        this.Personas = [];
-        let temp = response.Personas;
-        for (const persona of temp) {
-          if (!persona.HasAccount) {
-            this.Personas.push(persona);
-          }
-        }
-        this.BufferPersonas = this.Personas;
-      }
-    )
-  }
-  selectPersona(persona) {
-    this.SelectedPersona = persona;
-    this.SelectedPersona.HasAccount = true;
-    this.Usuario.Persona = persona._id;
-    // console.log(persona.HasAccount)
-  }
-  cleanSelectedPersona() {
-    if (this.isPrev) this.SelectedPersona = undefined;
-  }
-  loadUsuarios() {
-    this._usuarioService.Read().subscribe(
-      response => {
-        // console.log(response);
-        this.Usuarios = response.Usuarios;
-        this.BufferUsuarios = this.Usuarios;
-        this.loadPersonas();
-      }
-    )
-  }
-  disableUsuario(usuario) {
-    (usuario.Active) ? usuario.Active = false : usuario.Active = true;
-    this._usuarioService.Update(usuario).subscribe(
-      response => {
-        // console.log(response);
-        this.loadUsuarios();
-      }
-    )
-  }
-  initUser() {
-    this.Usuario = new Usuario(
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      false,
-      {
-        Placa: '',
-        Tipo: ''
-      },
-      true,
-      {
-        By: null,
-        At: null
-      },
-      {
-        By: null,
-        At: null
-      }
-    )
-  }
-  initSteps() {
-    this.steps = [
-      { name: 'Detalles', icon: 'fa-user', active: true, valid: false, hasError: false },
-      { name: 'Cuenta', icon: 'fa-id-badge', active: false, valid: false, hasError: false },
-    ]
-  }
-  public next() {
 
-    if (this.steps[this.steps.length - 1].active)
-      return false;
-
-    this.steps.some(function (step, index, steps) {
-      if (index < steps.length - 1) {
-        if (step.active) {
-          if (step.name == 'Cuenta') {
-            // console.log('on next');
-            // if (accountForm.valid) {
-            step.active = false;
-            step.valid = true;
-            steps[index + 1].active = true;
-            return true;
-            // }
-            // else {
-            // step.hasError = true;
-            // }
-          }
-          if (step.name == 'Detalles') {
-            // if (personalForm.valid) {
-            step.active = false;
-            step.valid = true;
-            steps[index + 1].active = true;
-            return true;
-            // }
-            // else {
-            // step.hasError = true;
-            // }
-          }
-        }
-      }
-    });
-  }
-
-  public prev() {
-    if (this.steps[0].active)
-      return false;
-    this.steps.some(function (step, index, steps) {
-      if (index != 0) {
-        if (step.active) {
-          step.active = false;
-          steps[index - 1].active = true;
-          return true;
-        }
-      }
-    });
-  }
-
-  public confirm() {
-    this.steps.forEach(step => step.valid = true);
-    this.confirmed = true;
-  }
-
-
-  checkRole() {
-    (this.Usuario.Role == 'Motorizado') ? this.Usuario.Repartidor = true : this.Usuario.Repartidor = false;
-  }
-
-
-  /**
-   * Busqueda de Persona
-   */
-
-  defineUser() {
-    this.Usuarios = [];
-    // console.log(this.BufferUsuarios);
-
-    if (this.searchText !== '' && this.searchText != undefined) {
-      for (const item of this.BufferUsuarios) {
-        const nombre = item.Persona.FirstName.toLowerCase().replace(/[^\w]/gi, '');
-        const apellido = item.Persona.LastName.toLowerCase().replace(/[^\w]/gi, '');
-        const telefono = item.Persona.Phone.replace(/[^\w]/gi, '');
-        const cedula = item.Persona.Ci.replace(/[^\w]/gi, '');
-        let ciudad = item.Persona.City.Name.toLowerCase().replace(/[^\w]/gi, '');
-        let direccion = item.Persona.Address.toLowerCase().replace(/[^\w]/gi, '');
-        direccion = direccion + item.Persona.City.Name.toLowerCase().replace(/[^\w]/gi, '');
-        direccion = direccion + item.Persona.City.Canton.Name.toLowerCase().replace(/[^\w]/gi, '');
-        direccion = direccion + item.Persona.City.Canton.Provincia.Name.toLowerCase().replace(/[^\w]/gi, '');
-
-        const rol = item.Role.toLowerCase().replace(/[^\w]/gi, '');
-        const mail = item.Email.toLowerCase().replace(/[^\w]/gi, '');
-        let termino = '';
-        switch (this.type) {
-          case 'name':
-            this.searchTitle = 'Buscar Nombres...';
-            termino = nombre;
-            break;
-          case 'ci':
-            this.searchTitle = 'Buscar Cédula...';
-            termino = cedula;
-            break;
-          case 'lastname':
-            this.searchTitle = 'Buscar Apellidos...';
-            termino = apellido;
-            break;
-          case 'phone':
-            this.searchTitle = 'Buscar Teléfono...';
-            termino = telefono;
-            break;
-          case 'city':
-            this.searchTitle = 'Buscar Ciudad...';
-            termino = ciudad;
-            break;
-          case 'address':
-            this.searchTitle = 'Buscar Dirección...';
-            termino = direccion;
-            break;
-          case 'mail':
-            this.searchTitle = 'Buscar Correo Electrónico...';
-            termino = mail;
-            break;
-          case 'role':
-            this.searchTitle = 'Buscar Rol de Usuario...';
-            termino = rol;
-            break;
-          default:
-            this.searchTitle = 'Buscar Algo...';
-            termino = nombre + apellido + telefono + direccion + cedula + mail + rol;
-            break;
-        }
-        if (termino.indexOf(this.searchText.toLowerCase().replace(/' '/g, '')) > -1) {
-          this.Usuarios.push(item);
-        }
-      }
-    } else {
-      this.Usuarios = this.BufferUsuarios;
-      switch (this.type) {
-        case 'name':
-          this.searchTitle = 'Buscar Nombres...';
-          break;
-        case 'lastname':
-          this.searchTitle = 'Buscar Apellidos...';
-          break;
-        case 'ci':
-          this.searchTitle = 'Buscar Cédula...';
-          break;
-        case 'phone':
-          this.searchTitle = 'Buscar Teléfono...';
-          break;
-        case 'city':
-          this.searchTitle = 'Buscar Ciudad...';
-          break;
-        case 'address':
-          this.searchTitle = 'Buscar Dirección...';
-          break;
-        case 'mail':
-          this.searchTitle = 'Buscar Correo Electrónico...';
-          break;
-        case 'role':
-          this.searchTitle = 'Buscar Rol de Usuario...';
-          break;
-        default:
-          this.searchTitle = 'Buscar Algo...';
-          break;
-      }
-    }
-
-  }
   JSONParse(str): any {
     const Object = JSON.parse(str);
     return Object
   }
-  definePer() {
-    this.Personas = [];
-    // console.log(this.BufferPersonas);
 
-    if (this.searchTextPer !== '' && this.searchTextPer != undefined) {
-      for (const item of this.BufferPersonas) {
-        const nombre = item.FirstName.toLowerCase().replace(/[^\w]/gi, '');
-        const apellido = item.LastName.toLowerCase().replace(/[^\w]/gi, '');
-        const telefono = item.Phone.replace(/[^\w]/gi, '');
-        const cedula = item.Ci.replace(/[^\w]/gi, '');
-        let ciudad = item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
-        let direccion = item.Address.toLowerCase().replace(/[^\w]/gi, '');
-        direccion = direccion + item.City.Name.toLowerCase().replace(/[^\w]/gi, '');
-        direccion = direccion + item.City.Canton.Name.toLowerCase().replace(/[^\w]/gi, '');
-        direccion = direccion + item.City.Canton.Provincia.Name.toLowerCase().replace(/[^\w]/gi, '');
-        let termino = '';
-        switch (this.typePer) {
-          case 'name':
-            this.searchTitlePer = 'Buscar Nombres...';
-            termino = nombre;
-            break;
-          case 'ci':
-            this.searchTitlePer = 'Buscar Cédula...';
-            termino = cedula;
-            break;
-          case 'lastname':
-            this.searchTitlePer = 'Buscar Apellidos...';
-            termino = apellido;
-            break;
-          case 'phone':
-            this.searchTitlePer = 'Buscar Teléfono...';
-            termino = telefono;
-            break;
-          case 'city':
-            this.searchTitlePer = 'Buscar Ciudad...';
-            termino = ciudad;
-            break;
-          case 'address':
-            this.searchTitlePer = 'Buscar Dirección...';
-            termino = direccion;
-            break;
-          default:
-            this.searchTitlePer = 'Buscar Algo...';
-            termino = nombre + apellido + telefono + direccion + cedula;
-            break;
-        }
-        if (termino.indexOf(this.searchTextPer.toLowerCase().replace(/' '/g, '')) > -1) {
-          this.Personas.push(item);
-        }
-      }
-    } else {
-      this.Personas = this.BufferPersonas;
-      switch (this.typePer) {
-        case 'name':
-          this.searchTitlePer = 'Buscar Nombres...';
-          break;
-        case 'lastname':
-          this.searchTitlePer = 'Buscar Apellidos...';
-          break;
-        case 'ci':
-          this.searchTitlePer = 'Buscar Cédula...';
-          break;
-        case 'phone':
-          this.searchTitlePer = 'Buscar Teléfono...';
-          break;
-        case 'city':
-          this.searchTitlePer = 'Buscar Ciudad...';
-          break;
-        case 'address':
-          this.searchTitlePer = 'Buscar Dirección...';
-          break;
-        default:
-          this.searchTitlePer = 'Buscar Algo...';
-          break;
+  initNewUsuario() {
+    this.newUsuario = {
+      _id: '',
+      Active: true,
+      Bodega: null,
+      Created: {
+        At: '',
+        By: ''
+      },
+      Email: '',
+      Empresa: null,
+      Password: '',
+      Persona: '',
+      RepData: {
+        Placa: '',
+        Tipo: ''
+      },
+      Repartidor: false,
+      Role: '',
+      Updated: {
+        At: '',
+        By: ''
       }
     }
-
   }
 
-
-  /**
-   * Ingreso de Persona
-   */
-
-  public ci_unica: boolean;
-  public ci_correcta: boolean;
-  public ph_correcta: boolean;
-  public no: boolean;
-
-  // public Provincias: any[];
-  // public Cantones: any[] = [];
-  // public Parroquias: any[] = [];
-  // public BufferCantones: any[];
-  // public BufferParroquias: any[];
-
-  // public Provincia: string;
-  // public Canton: string;
-
-  // LoadLocations() {
-  //   this._ProvinciaService.ReadOnlyProv().subscribe(
-  //     response => {
-  //       this.Provincias = response.Provincias;
-  //       this.BufferCantones = response.Cantones;
-  //       this.BufferParroquias = response.Parroquias;
-  //     }
-  //   )
-  // }
-  // LoadCantones() {
-  //   this.Cantones = [];
-  //   this.Parroquias = [];
-  //   this.NewPersona.City = undefined;
-  //   for (const canton of this.BufferCantones) {
-  //     if (canton.Provincia == this.Provincia) this.Cantones.push(canton);
-  //   }
-  //   this.Canton = undefined;
-  // }
-  // LoadParroquias() {
-  //   this.Parroquias = [];
-  //   for (const parroquia of this.BufferParroquias) {
-  //     if (parroquia.Canton == this.Canton) this.Parroquias.push(parroquia);
-  //   }
-  // }
-  initNewPersona() {
-    this.NewPersona = new Persona(
-      '',
-      '',
-      '',
-      '',
-      // '',
-      '',
-      '',
-      '',
-      true,
-      false,
-      false,
-      null,
-      null);
+  ngOnInit() {
   }
 
-  onSubmitPersona() {
-    (this.NewPersona._id != null && this.NewPersona._id !== '') ? this.UpdatePer() : this.CreatePer();
-  }
-  CreatePer() {
-    this._personaService.Create(this.NewPersona).subscribe(
-      response => {
-        if (response) {
-          this.SelectedPersona = response.Persona;
-          this.Usuario.Persona = response.Persona._id;
-          this.loadPersonas();
-          this.initNewPersona();
-        }
-      },
-      error => {
-        console.warn(error as any);
-      }
-    );
-  }
-  UpdatePer() {
-    this._personaService.Update(this.NewPersona).subscribe(
-      response => {
-        this.SelectedPersona = response.Persona;
-        this.Usuario.Persona = response.Persona._id;
-        this.loadPersonas();
-        this.initNewPersona();
-      },
-      error => {
-        console.error(error as any);
-      }
-    );
-  }
 
   cedulaUnica(Ci) {
     this.ci_unica = true;
     if (Ci.length >= 1) {
-      if (this.NewPersona._id == '') {
+      if (this.newPersona._id == '') {
         for (const clientes of this.Personas) {
           const cedulaBD = clientes.Ci;
           if (cedulaBD == Ci) {
@@ -944,15 +490,26 @@ export class UsuarioComponent implements OnInit {
   }
   telfUnica(Phone) {
     this.ph_correcta = true;
-    if (this.NewPersona._id == '') {
+    if (this.newPersona._id == '') {
       for (const clientes of this.Personas) {
         const phoneBD = clientes.Phone;
-        // console.log(phoneBD);
         if (phoneBD == Phone) {
           this.ph_correcta = false;
         }
       }
     }
+  }
+  mailUnico(mail) {
+    this.mail_unico = true;
+    if (this.newPersona._id == '') {
+      for (const clientes of this.Personas) {
+        const mailBD = clientes.Email;
+        if (mailBD == mail) this.mail_unico = false;
+      }
+    }
+  }
+  checkRole() {
+    (this.newUsuario.Role == 'Motorizado') ? this.newUsuario.Repartidor = true : this.newUsuario.Repartidor = false;
   }
   comprobar_ci(Ci) {
     if (Ci.length >= 1) {
@@ -999,142 +556,135 @@ export class UsuarioComponent implements OnInit {
       this.ci_correcta = false;
     }
   }
-  /**
-   * Fin Ingreso de Persona
-   */
-  public SelectedEmpresa;
-  SetEmpresaData() {
-    this.currEmpresa = {};
-    for (const emp of this.Empresas) {
-      if (this.Usuario.Empresa && this.Usuario.Empresa == emp._id) this.currEmpresa = emp;
-    }
+  onPersonaReady() {
+    (this.newUsuario._id && this.newUsuario._id != '') ? this.onUpdate() : this.onCreate() ; 
   }
-  SetPersonaData() {
-    for (const persona of this.Personas) {
-      if (this.Usuario.Persona == persona._id) this.SelectedPersona = persona;
-    }
-  }
-  SetBodegaData() {
-    for (const bodega of this.BufferBodegas) {
-      if (bodega._id == this.Usuario.Bodega) this.currBodega = bodega;
-    }
-  }
-  setDatas() {
-    this.SetEmpresaData();
-    this.SetPersonaData();
-    this.SetBodegaData();
-  }
-  onSubmitUser() {
-    if (this.Usuario.Role == 'Motorizado') this.Usuario.Repartidor = true;
-    (this.Usuario._id != '') ? this.updateUser() : this.createUser();
-
-  }
-  cleanData() {
-    // this.Canton = '';
-    // this.Provincia = '';
-    this.currEmpresa = null;
-    this.currBodega = null;
-    this.SelectedPersona = null;
-    this.initNewPersona();
-    this.initUser();
-  }
-  updateUser() {
-    this._usuarioService.Update(this.Usuario).subscribe(
-      response => {
-        this.loadUsuarios();
-        switch (response.Usuario.Role) {
-          case "Encargado de Bodega":
-            this.updateBodega(response.Usuario);
-            break;
-          case "Encargado de Repartidores":
-            this.updateEmpresa(response.Usuario);
-            break;
-          case "Motorizado":
-            break;
+  onSubmit() {
+    
+    if (this.SelectedPersona && this.SelectedPersona._id && this.SelectedPersona != '') {
+      this.SelectedPersona.HasAccount = true;
+      this._PersonaService.Update(this.SelectedPersona).subscribe(
+        response => {
+          // console.log(response);
+          this.newUsuario.Persona = response.Persona._id;
+          this.newUsuario.Password = response.Persona.Ci;
+          this.onPersonaReady();
         }
+      )
+    } else {
+      console.log('Guardar la Nueva Persona', this.newPersona);
+      this.newPersona.HasAccount = true;
+      this._PersonaService.Create(this.newPersona).subscribe(
+        response => {
+          this.newUsuario.Persona = response.Persona._id;
+          this.newUsuario.Password = response.Persona.Ci;
+          this.newPersona = response.Persona;
+          this.onPersonaReady();
+        }
+      )
+    }
+  }
+  onCreate() {
+    console.log('Creando: ', this.newUsuario);
+    this.newUsuario.Password;
+    this._UsuarioService.Create(this.newUsuario).subscribe(
+      response => {
+        this.checkChildrens(response.Usuario.Role, response.Usuario._id, response.Usuario.Persona);
       }
     )
   }
-  createUser() {
-    this._usuarioService.Create(this.Usuario).subscribe(
+  onUpdate()  {
+    console.log('editando: ', this.newUsuario);
+    this._UsuarioService.Update(this.newUsuario).subscribe(
       response => {
-        this.loadUsuarios();
-        switch (response.Usuario.Role) {
-          case "Encargado de Bodega":
-            this.updateBodega(response.Usuario);
-            break;
-          case "Encargado de Repartidores":
-            this.updateEmpresa(response.Usuario);
-            break;
-          case "Motorizado":
-            break;
-        }
+        this.checkChildrens(response.Usuario.Role, response.Usuario._id, response.Usuario.Persona);
       }
     )
   }
-
-  updateEmpresaRepartidor(usuario) {
+  checkChildrens(Role, user, persona) {
+    let per = {
+      _id: persona,
+      isDueno: false,
+      HasAccount: true,
+      Updated: {
+        By: '',
+        At: ''
+      }
+    }
+    switch (Role) {
+      case 'Administrador' || 'Admin' || 'Secretario':
+        this.UpdatePersona(per);
+        break;
+      case 'Encargado de Bodega':
+        this.UpdatePersona(per);
+        this.SelectedBodega.By = user;
+        this.UpdateBodega(this.SelectedBodega);
+        break;
+      case 'Encargado de Repartidores':
+        per.isDueno = true;
+        this.UpdatePersona(per);
+        this.SelectedEmpresa.Admin = user;
+        this.UpdateEmpresa(this.SelectedEmpresa);
+        break;
+      case 'Motorizado':
+        this.UpdatePersona(per);
+        break;
+    }
     this.cleanData();
   }
-
-  updateEmpresa(usuario) {
-    this.currEmpresa.Admin = usuario._id;
-    this._empresaService.Update(this.currEmpresa).subscribe(
+  UpdateEmpresa(Empresa) {
+    this._EmpresaService.Update(Empresa).subscribe(
       response => {
-        this.cleanData();
+        console.log(response);
       }
     )
   }
-
-  updateBodega(usuario) {
-    this.currBodega.By = usuario._id;
-    this._bodegaService.Update(this.currBodega).subscribe(
+  UpdateBodega(Bodega) {
+    this._BodegaService.Update(Bodega).subscribe(
       response => {
-        this.cleanData();
+        console.log(response);
       }
     )
   }
-
-  checkUserData(): boolean {
-    let check = true;
-    if (this.Password == this.ConfirmPassword) this.Usuario.Password = this.Password;
-    const usuario = this.Usuario;
-    if (!usuario.Email) check = false;
-    if (!usuario.Password) check = false;
-    if (!usuario.Persona) check = false;
-    if (!usuario.Role) check = false;
-    if (usuario.Role) {
-      if ((usuario.Role == 'Motorizado' || usuario.Role == 'Encargado de Repartidores') && !usuario.Empresa) check = false;
-      if (usuario.Role == 'Motorizado' && !usuario.RepData.Placa) check = false;
-      if (usuario.Role == 'Motorizado' && !usuario.RepData.Tipo) check = false;
+  UpdatePersona(Persona) {
+    this._PersonaService.Update(Persona).subscribe(
+      response => {
+        console.log(response);
+      }
+    )
+  }
+  getPersona(): string {
+    if (this.SelectedPersona && this.SelectedPersona._id && this.SelectedPersona != '') {
+      this.SelectedPersona.HasAccount = true;
+      this._PersonaService.Update(this.SelectedPersona).subscribe(
+        response => {
+          console.log(response);
+        }
+      )
+      return this.SelectedPersona._id;
+    } else {
+      console.log('Guardar la Nueva Persona', this.newPersona);
+      this.newPersona.HasAccount = true;
+      this._PersonaService.Create(this.newPersona).subscribe(
+        response => {
+          this.newPersona = response.Persona;
+          return response.Persona._id;
+        }
+      )
     }
-    // if (!usuario.Persona) check = false; 
-
-    return check;
   }
 
-  toUpdateUser(usuario) {
-    const tempString = JSON.stringify(usuario);
-    const temp = JSON.parse(tempString);
-    this.SelectedPersona = temp.Persona;
-    this.bodegaFilter = 'todo';
-    this.Usuario = temp;
-    if (temp.Empresa) {
-      this.currEmpresa = temp.Empresa;
-      this.Usuario.Empresa = temp.Empresa._id;
-    }
-    if (temp.Bodega) {
-      this.currBodega = temp.Bodega;
-      this.Usuario.Bodega = temp.Bodega._id;
-    }
-  }
-  infoUsuario(usuario) {
-    this.ViewedUsuario = usuario;
-    this.viewedCurrPosition = JSON.parse(usuario.Persona.GPS);    
+  cleanData() {
+    this.initNewUsuario();
+    this.isNew = true;
     setTimeout(() => {
-      this.initInfoMap();
-      // console.log('launching info map');
-      
-    }, 500);
+      this.initNewPersona();
+      this.loadPersonas();
+      this.loadBodegas();
+      this.loadEmpresas();
+      this.SelectedPersona = null;
+      this.SelectedBodega = null;
+      this.SelectedEmpresa = null;
+    }, 350);
   }
 }

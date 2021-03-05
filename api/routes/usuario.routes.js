@@ -13,5 +13,6 @@ const Authenticate = require('../middleware/authenticate');
     Api.put('/update/:id', Authenticate.ensureAuth , Controller.Update);
     Api.put('/change-password', Authenticate.ensureAuth , Controller.changePassword);
     Api.put('/delete/:id', Authenticate.ensureAuth , Controller.Delete);
+    Api.post('/complex-read/:active?' , Controller.ComplexRead);
 
 module.exports = Api;

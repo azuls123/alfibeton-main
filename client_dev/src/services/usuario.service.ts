@@ -49,6 +49,12 @@ export class UsuarioService{
 
         return this._Http.put(this.url + 'change-password', params, {headers});
     }
+    ComplexRead(Params, active) : Observable<any> {
+        let params = JSON.stringify(Params);
+        const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                         .set('Authorization', this.Token);
+        return this._Http.post(this.url + 'complex-read/'+active, params, {headers});
+    }
     Delete(Object) : Observable<any> {
         if (Object.Active == true) Object.Active = false; else
         if (Object.Active == false) Object.Active = true;

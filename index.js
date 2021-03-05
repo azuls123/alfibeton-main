@@ -5,7 +5,9 @@ const Routes = require('./routes')
 const Port = 3800;
 
 Mongoose.Promise = global.Promise;
-Mongoose.connect('mongodb://localhost:27017/inventario', {
+Mongoose.connect('mongodb://localhost:27017/alfibeton', {
+// Mongoose.connect('mongodb://localhost:27017/test', {
+// Mongoose.connect('mongodb://localhost:27017/inventario', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

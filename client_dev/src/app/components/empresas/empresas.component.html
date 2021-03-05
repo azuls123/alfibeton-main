@@ -346,7 +346,7 @@
             </button>
             <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
               <i class="fa fa-trash arrow"></i>&nbsp; 
-              Limpiar Datos
+              Limpiar
             </button>
             <button *ngIf="!steps[steps.length-1].active" [disabled]="!checkDetalles() || ( steps[1].active == true && !checkData()) || nemp_correcta === false"
               class="btn btn-primary pull-right" (click)="next()">
@@ -622,13 +622,13 @@
         </div>
       </div>
       <div class="modal-footer">
-        <small class="text-danger justify text-justify">*Al Hacer click en "Guardar Datos de la Empresa" esta aceptando
+        <small class="text-danger justify text-justify">*Al Hacer click en "Guardar de la Empresa" esta aceptando
           que la información anteriormente mostrada y/o registrada concuerda con los datos Reales de la Empresa</small>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" [disabled]="!checkRuc()" data-dismiss="modal"
           (click)="onSubmit()">
-          <span *ngIf="empresa._id != ''">Guardar Datos de la Empresa</span>
+          <span *ngIf="empresa._id != ''">Guardar de la Empresa</span>
           <span *ngIf="!empresa._id || empresa._id == ''">Editar Datos de la Empresa</span>
         </button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

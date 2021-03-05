@@ -440,7 +440,7 @@
     <div class="content p-2">
       <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
         <i class="fa fa-trash arrow"></i>&nbsp; 
-        Limpiar Datos
+        Limpiar
       </button>
       <button class="btn btn-success pull-right" (click)="loadSelectedData()" data-target="#confirm-modal" data-toggle="modal" [disabled]="!SelectedBodega || !NewPedido.GPS || !NewPedido.Deliverer || !SelectedClient || !NewPedido.OrderTime || !NewPedido.OrderDate">
           <i class="fa fa-save arrow"></i> Confirmar
@@ -545,7 +545,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success"  data-dismiss="modal"> <i class="fa fa-save"></i> Guardar Datos</button>
+        <button type="button" class="btn btn-success"  data-dismiss="modal"> <i class="fa fa-save"></i> Guardar</button>
         <button class="btn btn-warning pull-right" (click)="SelectedClient = undefined; NewPedido.Client = undefined">
           <i class="fa fa-trash"></i> Quitar Seleccionado
         </button>
@@ -681,7 +681,7 @@
               Cancelar
             </button>
             <button class="btn btn-success pull-right" *ngIf="!(SelectedPedido && SelectedPedido.Number)" (click)="onSubmit()">
-                <i class="fa fa-save arrow"></i> Guardar Datos
+                <i class="fa fa-save arrow"></i> Guardar
             </button>
           </div>
         </div>

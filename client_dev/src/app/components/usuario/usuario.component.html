@@ -1,426 +1,16 @@
-<div class="row">
-  <div class="col-md-6 col-sm-12">
+<div class="col-lg-12 row">
+  <div class="col-lg-5 mb-3">
     <div widget class="card border-0 box-shadow">
       <div class="card-header transparent border-0 text-muted">
-        <h5 class="mb-0">Formulario de Usuarios
-          <span *ngIf="Usuario._id && Usuario._id != ''"> - [Edición]</span>
-          <span *ngIf="!Usuario._id || Usuario._id == ''"> - [Ingreso]</span></h5>
-        <div class="widget-controls">
-          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
-          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
-          <!-- <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a> -->
-        </div>
-      </div>
-      <div class="card-body widget-body">
-        <div class="row">
-          <div *ngFor="let step of steps; let last = last" class="col-sm-12 col-md-6 col-lg-6 step text-center">
-            <div class="d-flex justify-content-center align-items-center text-white pl-2 pr-2 mb-2 rounded step-content"
-              [class.bg-success]="step.valid" [class.bg-danger]="step.active" [class.confirmed]="confirmed">
-              <i class="fa {{ step.icon }} mr-2" aria-hidden="true"></i>
-              <span class="step-name">{{step.name}}</span>
-            </div>
-          </div>
-        </div>
-
-        <div *ngFor="let step of steps" [hidden]="!step.active" class="col">
-          <div class="row">
-            <h4 class="mt-3 mb-3"><i class="fa {{ step.icon }}"></i> {{step.name}}</h4>
-          </div>
-          <form *ngIf="step.name=='Detalles'" class="row bg-light pt-2">
-            <div class="container p-2">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input checkbox-info" id="isPrev" [checked]="isPrev" (change)="isPrev = !isPrev">
-                <label class="custom-control-label" for="isPrev">El Usuario ya estaba registrado como Persona en el sistema</label>
-              </div>
-            </div>
-            <div *ngIf="isPrev" class="container p-2">
-              <div class="input-group mb-2">
-                <span class="input-group-prepend">
-                  <span class="input-group-text bg-transparent border-0">
-                    <i class="fa fa-search"></i>
-                  </span>
-                </span>
-                <input type="text" id=searchTextPer name=searchTextPer (change)="definePer();"
-                (keyup)="definePer();" [(ngModel)]="searchTextPer" placeholder="{{searchTitlePer}}"
-                  class="form-control border-0">
-                <div class="btn-group">
-                  <button class="btn dropdown-toggle no-caret bg-transparent border-0 shadow-none" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-ellipsis-v"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
-                    <a href="javascript:void(0);" class="dropdown-item" (click)="typePer = 'all'; definePer();" >Todo</a>
-                    <a href="javascript:void(0);" class="dropdown-item" (click)="typePer = 'phone'; definePer();" >Télefono</a>
-                    <a href="javascript:void(0);" class="dropdown-item" (click)="typePer = 'name'; definePer();" >Nombres</a>
-                    <a href="javascript:void(0);" class="dropdown-item" (click)="typePer = 'lastname'; definePer();" >Apellidos</a>
-                    <a href="javascript:void(0);" class="dropdown-item" (click)="typePer = 'ci'; definePer();" >C&eacute;dula</a>
-                    <a href="javascript:void(0);" class="dropdown-item" (click)="typePer = 'address'; definePer();" >Direcci&oacute;n</a>
-                  </div>
-                </div>
-              </div>
-              <table *ngIf="Personas && Personas.length >= 1" class="table table-striped table-hover table-bordered  table-responsive-sm">
-                <thead>
-                  <tr>
-                    <th>Selecci&oacute;n</th>
-                    <th>
-                      Nombres
-                    </th>
-                    <th>
-                      Tel&eacute;fono
-                    </th>
-                    <th>
-                      C&eacute;dula
-                    </th>
-                    <th>
-                      Direcci&oacute;n
-                    </th>
-                  </tr>
-                </thead>
-                <tbody *ngIf="Personas.length >= 1">
-                  <tr class="selectable" *ngFor="let persona of Personas; let i = index" [class.bg-success-ligth]="SelectedPersona && SelectedPersona._id == persona._id" (click)="selectPersona(persona)">
-                    <td>
-                      <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons"> -->
-                        <label class="btn"
-                          (click)="selectPersona(persona)">
-                          <!-- <input type="radio" name="options" id="option1" [checked]="persona.HasAccount"" autocomplete="off">  -->
-                          <i *ngIf="SelectedPersona && SelectedPersona._id == persona._id" class="fa fa-check-square-o text-success"></i>
-                          <i *ngIf="!SelectedPersona || SelectedPersona._id != persona._id" class="fa fa-square-o text-primary"></i>
-                          <!-- <span *ngIf="SelectedPersona && SelectedPersona._id == persona._id">
-                            Seleccionado
-                          </span> -->
-                          <!-- <span *ngIf="!SelectedPersona || SelectedPersona._id != persona._id">
-                            Seleccionar
-                          </span> -->
-                        </label>
-                      <!-- </div> -->
-                    </td>
-                    <td>
-                      {{persona.FirstName + ' ' + persona.LastName}}
-                    </td>
-                    <td>
-                      {{persona.Phone}}
-                    </td>
-                    <td>
-                      {{persona.Ci}}
-                    </td>
-                    <td>
-                      {{persona.Address}}.
-                      <br>
-                      {{JSONParse(persona.GPS).address_components[1].long_name}} -
-                      {{JSONParse(persona.GPS).address_components[2].long_name}} -
-                      {{JSONParse(persona.GPS).address_components[3].long_name}}
-                      <span *ngIf="JSONParse(persona.GPS).address_components[4]"> - {{JSONParse(persona.GPS).address_components[4].long_name}}</span>
-                      <span *ngIf="JSONParse(persona.GPS).address_components[5]"> - {{JSONParse(persona.GPS).address_components[5].long_name}}</span>
-                      <span *ngIf="JSONParse(persona.GPS).address_components[6]"> - {{JSONParse(persona.GPS).address_components[6].long_name}}</span>
-                      <!-- {{persona.City.Name}} - {{persona.City.Canton.Name}} - {{persona.City.Canton.Provincia.Name}} -->
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div *ngIf="!Personas || Personas.length < 1" role="alert" class="alert alert-dismissible fade show"
-              [class.alert-danger]="searchTextPer == ''" [class.alert-warning]="searchTextPer != ''">
-                <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                  <span aria-hidden="true">×</span>
-                </button>
-                <span *ngIf="searchTextPer != ''">
-                  <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
-                </span>
-                <span *ngIf="searchTextPer == ''">
-                  <strong>Sin Personas!</strong> Al parecer no se han Registrado Personas en el Sistema o hubo un Error en el Servidor
-                </span>
-              </div>
-            </div>
-            <div *ngIf="!isPrev" class="container p-2">
-              <h5>
-                <span *ngIf="!SelectedPersona">Ingreso de una Nueva Persona</span>
-                <span *ngIf="SelectedPersona">Detalles de la Persona</span>
-              </h5>
-              <br>
-              <form *ngIf="!SelectedPersona" action="" class="pr-4 pl-4" #Form=ngForm name="Form" id="Form">
-                <div class="row">
-                  <label class="col-md-4 col-sm-12 label-form" for="">Nombres*</label>
-                  <input class="col-md-8 col-sm-12 form-control"  placeholder="Nombres de la Persona" pattern="[A-Za-z ñÑáÁéÉíÍóÓúÚüÜ]{3,25}" name=FirstName id=FirstName
-                    [class.is-invalid]="FirstName.touched && !FirstName.valid"
-                    [class.is-valid]="FirstName.touched && FirstName.valid"
-                    minlength="3" maxlength="25"
-                    required
-                    #FirstName=ngModel [(ngModel)]=NewPersona.FirstName type="text">
-                </div>
-                <br>
-                <div class="row">
-                  <label class="col-md-4 col-sm-12 label-form" for="">Apellidos</label>
-                  <input class="col-md-8 col-sm-12 form-control" pattern="[A-Za-z ñÑáÁéÉíÍóÓúÚüÜ]{3,25}" placeholder="Apellidos de la Persona" name=LastName id=LastName #LastName=ngModel
-                    minlength="3" maxlength="25"
-                    [class.is-invalid]="LastName.touched && !LastName.valid"
-                    [class.is-valid]="LastName.touched && LastName.valid  && LastName.value != ''"
-                    [(ngModel)]=NewPersona.LastName type="text">
-                </div>
-                <br>
-                <div class="row">
-                  <label class="col-md-4 col-sm-12 label-form" for="">Cédula</label>
-                  <input class="col-md-8 col-sm-12 form-control" placeholder="Cédula de la Persona" name=Ci id=Ci #Ci=ngModel
-                    pattern="[0-9]{10,10}" (change)="comprobar_ci(Ci.value); cedulaUnica(Ci.value)"
-                    (keyup)="comprobar_ci(Ci.value) ;cedulaUnica(Ci.value)"
-                    [class.is-invalid]="ci_correcta === false && ci_unica === false"
-                    [class.is-valid]="ci_correcta === true && ci_unica === true" minlength="10" maxlength="10"
-                    [disabled]="NewPersona._id != ''" [(ngModel)]=NewPersona.Ci type="text">
-                  <span *ngIf="ci_correcta === false && no === true" class="col-lg-8 offset-4 badge badge-danger">
-                    | La c&eacute;dula Ingresada es Incorrecta
-                  </span>
-                  <span *ngIf="ci_unica === false" class="col-lg-8 offset-4 badge badge-danger">
-                    | La c&eacute;dula Ingresada es ya Existe!
-                  </span>
-                  <span *ngIf="ci_correcta === true && ci_unica == true" class="col-lg-8 offset-4 badge badge-success">
-                    C&eacute;dula Correcta!!
-                  </span>
-                  <span *ngIf="no === false" class="col-lg-8 offset-4 badge badge-success">
-                    C&eacute;dula no es obligatoria!!
-                  </span>
-                </div>
-                <br>
-                <div class="row">
-                  <label class="col-md-4 col-sm-12 label-form" for="">Teléfono*</label>
-                  <input class="col-md-8 col-sm-12 form-control" placeholder="Teléfono de la Persona" pattern="[0-9]{9,13}" name=Phone
-                    id=Phone #Phone=ngModel [class.is-invalid]="Phone.touched && !Phone.valid && ph_correcta === false"
-                    [class.is-valid]="(Phone.touched && Phone.valid && ph_correcta === true)" (change)="telfUnica(Phone.value)"
-                    (keyup)="telfUnica(Phone.value)" minlength="9" maxlength="10" required [(ngModel)]=NewPersona.Phone type="text">
-                    <span *ngIf="ph_correcta === false" class="col-lg-8 offset-4 badge badge-danger">
-                      | El telefono ingresado ya Existe!
-                    </span>
-                </div>
-                <!-- <br>
-                <div class="row">
-                  <label class="col-md-4 col-sm-12 label-form col-sm-12" for="CurrProvincia">Provincia*</label>
-                  <select id="CurrProvincia" name="CurrProvincia" #CurrProvincia=ngModel (click)="LoadCantones()" (change)="LoadCantones()" [(ngModel)]="Provincia" class="col-md-8 col-sm-12 form-control">
-                    <option *ngFor="let provincia of Provincias" value="{{provincia._id}}"> {{provincia.Name}} </option>
-                  </select>
-                </div>
-                <br>
-                <div class="row">
-                  <label class="col-lg-4 label-form" for="CurrCanton">Canton*</label>
-                  <select [disabled]="!Provincia" id="CurrCanton" name="CurrCanton" (click)="LoadParroquias()" (change)="LoadParroquias()" #CurrCanton=ngModel [(ngModel)]="Canton" class="col-md-8 col-sm-12 form-control">
-                    <option *ngFor="let canton of Cantones" value="{{canton._id}}"> {{canton.Name}} </option>
-                  </select>
-                </div>
-                <br>
-                <div class="row">
-                  <label class="col-lg-4 label-form" for="CurrParr">Parroquia*</label>
-                  <select [disabled]="!Canton" id="CurrParr" name="CurrParr"  #CurrParr=ngModel [(ngModel)]="NewPersona.City" class="col-md-8 col-sm-12 form-control">
-                    <option *ngFor="let parroquia of Parroquias" value="{{parroquia._id}}"> {{parroquia.Name}} </option>
-                  </select>
-                </div> -->
-                <br>
-                <div class="row">
-                  <label class="col-md-4 label-form col-sm-12" for="">Dirección*</label>
-                  <button class="btn col-md-8 btn-block" (click)="initMap()" [class.btn-info]="!NewPersona.GPS" [class.btn-success]="NewPersona.GPS" id="toEdit" data-toggle="modal" data-target="#maps-modal">
-                    <i class="fas fa-map-marker-alt"></i>
-                    &nbsp;
-                    <span *ngIf="!NewPersona.GPS">Elegir Dirección</span>
-                    <span *ngIf="NewPersona.GPS">{{JSONParse(NewPersona.GPS).formatted_address}}</span>
-                  </button>
-                  <!-- <input class="col-md-8 col-sm-12 form-control" required placeholder="Dirección de la Bodega*" type="text"
-                    name="Address" id=Address #Address=ngModel pattern="[A-Za-z0-9 ñÑáÁéÉíÍóÓúÚüÜ]{3,65}"
-                    [class.is-invalid]="Address.touched && !Address.valid" [class.is-valid]="Address.touched && Address.valid"
-                    minlength="3" maxlength="65" [(ngModel)]=bodega.Address> -->
-                </div>
-                <br>
-                <div class="text-center">
-                  <button class="btn btn-warning pull-left" (click)="initNewPersona()"><i class="fa fa-trash arrow"></i>&nbsp; 
-                    Limpiar Datos
-                  </button>
-                  <button class="btn btn-success pull-right" [disabled]="!Form.form.valid || ci_correcta === false || ci_unica === false || ph_correcta === false" (click)="onSubmitPersona()">
-                    <i class="fa fa-save arrow"></i> Guardar Datos
-                  </button>
-                </div>
-              </form>
-              <!-- Vista de los datos de la Persona -->
-              <!-- Vista de los datos de la Persona -->
-              <!-- Vista de los datos de la Persona -->
-              <!-- Vista de los datos de la Persona -->
-              <!-- Vista de los datos de la Persona -->
-              <div *ngIf="SelectedPersona" class="row pr-4 pl-4">
-                <label for="" class="col-md-4 col-sm-12 label-form">Nombres: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.FirstName}}</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Apellidos: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.LastName}}</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Cédula: </label>
-                <span *ngIf="SelectedPersona.Ci" class="col-md-8 col-sm-12 form-control">{{SelectedPersona.Ci}}</span>
-                <span *ngIf="!SelectedPersona.Ci" class="col-md-8 col-sm-12 form-control">Sin Cédula</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Teléfono: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.Phone}}</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Provincia: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.City.Canton.Provincia.Name}}</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Canton: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.City.Canton.Name}}</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Parroquia: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.City.Name}}</span>
-                <label for="" class="col-md-4 col-sm-12 label-form">Dirección: </label>
-                <span class="col-md-8 col-sm-12 form-control">{{SelectedPersona.Address}}</span>
-              </div>
-              <div  *ngIf="SelectedPersona" class="text-center mt-2">
-                <button class="btn btn-danger option-button pull-left" (click)="SelectedPersona = undefined">
-                  <i class="fa fa-plus"></i>
-                  Ingresar Nueva Persona
-                </button>
-                <button class="btn btn-primary option-button pull-right" (click)="isPrev = !isPrev" >
-                  <i class="fa fa-edit"></i>
-                  Cambiar de Persona
-                </button>
-              </div>
-            </div>
-          </form>
-
-          <form *ngIf="step.name=='Cuenta'" class="row col-12 bg-light pt-2">
-            <label for="" class="label-form col-md-4 col-sm-12">Correo Electr&oacute;nico:</label>
-            <div class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fa fa-envelope"></i>
-                </span>
-              </div>
-              <input type="email" placeholder="afibeton@mail.com" class="form-control" id="Email" name="Email"
-                #Email=ngModel [(ngModel)]="Usuario.Email">
-            </div>
-            <label for="" class="label-form col-md-4 col-sm-12">Rol de Usuario:</label>
-            <div class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-user-shield"></i>
-                </span>
-              </div>
-              <select name="Rol" id="Rol" #Rol=ngModel [(ngModel)]="Usuario.Role" (click)="checkRole()"
-                (change)="checkRole()" class="form-control ">
-                <!-- <option value="Admin">Administrador</option> -->
-                <option value="Administrador">Administrador</option>
-                <option value="Secretario">Secretario</option>
-                <option value="Encargado de Bodega">Encargado de Bodega</option>
-                <option value="Encargado de Repartidores">Encargado de Repartidores</option>
-                <option value="Motorizado">Motorizado</option>
-              </select>
-            </div>
-            <label for="" class="label-form col-md-4 col-sm-12">Contraseña:</label>
-            <div class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </div>
-              <input id="password" name="password" #password=ngModel [(ngModel)]="Password" placeholder="Contraseña"
-                type="password" class="form-control">
-            </div>
-            <label for="" class="label-form col-md-4 col-sm-12">Confirmación:</label>
-            <div class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-lock"></i>
-                </span>
-              </div>
-              <input id="confirmPassword" name="confirmPassword" #confirmPassword=ngModel [(ngModel)]="ConfirmPassword"
-                placeholder="Confirmar Contraseña" type="password" class="form-control">
-            </div>
-            <label *ngIf="Usuario.Role == 'Motorizado' || Usuario.Role == 'Encargado de Repartidores'" for="" class="label-form col-md-4 col-sm-12">Empresa:</label>
-            <div  *ngIf="Usuario.Role == 'Motorizado' || Usuario.Role == 'Encargado de Repartidores'" class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-building"></i>
-                </span>
-              </div>
-              <select name="Empresa" id="Empresa" #Empresa=ngModel [(ngModel)]="Usuario.Empresa" class="form-control ">
-                <!-- <option value="Admin">Administrador</option> -->
-                <option value="" selected disabled>AlfiBeton [no disponible] </option>
-                <option *ngFor="let empresa of Empresas" value="{{empresa._id}}">{{empresa.Name}}</option>
-              </select>
-            </div>
-            <!-- <label *ngIf="Usuario.Role == 'Encargado de Bodega'" for="bodegasFilter" class="label-form col-md-4 col-sm-12">
-              Proximidad de Bodegas:
-            </label>
-            <div *ngIf="Usuario.Role == 'Encargado de Bodega'" class="btn-group col-md-8 col-sm-12 mb-2">
-              <label class="btn" (click)="bodegaFilter = 'parroquia'; loadBodegasPerFilter()" [class.btn-primary]="bodegaFilter != 'parroquia'" [class.btn-success]="bodegaFilter == 'parroquia'">
-                Parroquia
-              </label>
-              <label class="btn" (click)="bodegaFilter = 'canton'; loadBodegasPerFilter()" [class.btn-primary]="bodegaFilter != 'canton'" [class.btn-success]="bodegaFilter == 'canton'">
-                Canton
-              </label>
-              <label class="btn" (click)="bodegaFilter = 'provincia'; loadBodegasPerFilter()" [class.btn-primary]="bodegaFilter != 'provincia'" [class.btn-success]="bodegaFilter == 'provincia'">
-                Provincia
-              </label>
-              <label class="btn" (click)="bodegaFilter = 'todo'; loadBodegasPerFilter()" [class.btn-primary]="bodegaFilter != 'todo'" [class.btn-success]="bodegaFilter == 'todo'">
-                Todo
-              </label>
-            </div> -->
-            <label *ngIf="Usuario.Role == 'Encargado de Bodega'" for="bodega" class="label-form col-md-4 col-sm-12">Bodegas:</label>
-            <div *ngIf="Usuario.Role == 'Encargado de Bodega'" class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fa fa-industry"></i>
-                </span>
-              </div>
-              <select *ngIf="Bodegas.length >= 1" name="bodega" id="bodega" #Bodega=ngModel [(ngModel)]="Usuario.Bodega" class="form-control">
-                <option *ngFor="let bodega of Bodegas" value="{{bodega._id}}"> {{bodega.Name}} </option>
-              </select>
-              <span  *ngIf="!Bodegas || Bodegas.length <= 0" class="form-control disabled">
-                No se Encontraron Bodegas
-              </span>
-              <!-- <input type="text" class="form-control"> -->
-            </div>
-            <label *ngIf="Usuario.Repartidor" for="Tipo" class="label-form col-md-4 col-sm-12">Tipo de
-              Veh&iacute;culo:</label>
-            <div *ngIf="Usuario.Repartidor" class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-truck"></i>
-                </span>
-              </div>
-              <select name="Tipo" id="Tipo" #Tipo=ngModel [(ngModel)]="Usuario.RepData.Tipo" class="form-control">
-                <option value="Camion">Camion</option>
-                <option value="Motocicleta">Motocicleta</option>
-                <option value="Automovil">Automovil</option>
-                <option value="Camioneta">Camioneta</option>
-              </select>
-              <!-- <input type="text" class="form-control"> -->
-            </div>
-            <label *ngIf="Usuario.Repartidor" for="" class="label-form col-md-4 col-sm-12">Placa del
-              Veh&iacute;culo:</label>
-            <div *ngIf="Usuario.Repartidor" class="input-group col-md-8 col-sm-12 mb-2 ">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-ad"></i>
-                </span>
-              </div>
-              <input placeholder="No. de placa [ABC0000]" name="placa" id="placa" #placa=ngModel [(ngModel)]="Usuario.RepData.Placa" type="text" class="form-control">
-            </div>
-          </form>
-        </div>
-        <div class="row mt-3">
-          <div class="col">
-            <button [hidden]="steps[0].active == true" class="btn btn-primary pull-left" (click)="prev()">
-              <i class="fa fa-chevron-left arrow"></i>
-              &nbsp; Regresar
-            </button>
-            <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
-              <i class="fa fa-trash arrow"></i>&nbsp; 
-              Limpiar Datos
-          </button>
-            <button *ngIf="!steps[steps.length-1].active" [disabled]="steps[0].active == true && !SelectedPersona" class="btn btn-primary pull-right" (click)="next()">
-              Siguiente &nbsp;
-              <i class="fa fa-chevron-right arrow"></i>
-            </button>
-            <button *ngIf="steps[steps.length-1].active" [disabled]="!checkUserData()" (click)="setDatas()" data-toggle="modal" data-target="#warning-modal" class="btn btn-primary pull-right" >
-              Confirmar &nbsp;
-              <i class="fa fa-check arrow"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
-  <div class="col-md-6 col-sm-12">
-    <div widget class="card border-0 box-shadow">
-      <div class="card-header transparent border-0 text-muted">
-        <h5 class="mb-0">Listado de Usuarios</h5>
+        <h5 class="mb-0">
+          Formulario de
+          <ng-container *ngIf="newUsuario && newUsuario._id && newUsuario._id != ''; else EditingTemplate">
+            Ingreso de Usuarios
+          </ng-container>
+          <ng-template #EditingTemplate>
+            Edición de Usuarios
+          </ng-template>
+        </h5>
         <div class="widget-controls">
           <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
           <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
@@ -430,32 +20,456 @@
         </div>
       </div>
       <div class="card-body widget-body bg-light">
+
+        <span >
+          <button class="btn btn-block mb-2" [class.btn-success]="isNew" [class.btn-info]="!isNew"
+            (click)="isNew = !isNew; SelectedPersona = null;  newUsuario.Persona = ''; PhonePer = ''">
+            <span *ngIf="isNew">Cambiar a Seleccion de Persona</span>
+            <span *ngIf="!isNew">Cambiar a Ingreso de Nueva Persona</span>
+          </button>
+          <form *ngIf="!isNew" class="container row">
+            <label for="" class="label-form col-md-4">
+              <ng-container *ngIf="SelectedPersona && SelectedPersona._id != ''; else SelectedTemplate">
+                Teléfono:
+              </ng-container>
+              <ng-template #SelectedTemplate>
+                Persona:
+              </ng-template>
+            </label>
+            <div class="input-group col-md-8 mb-2">
+              <input type="text" list="PersonasDataList" placeholder="Buscar Persona" class="form-control"
+                [class.is-valid]="SelectedPersona && SelectedPersona._id != ''"
+                [class.is-invalid]="!SelectedPersona || SelectedPersona._id == ''"
+                (change)="setPersona(PhonePersona.value)" (keyup)="setPersona(PhonePersona.value)" id="PhonePersona"
+                name="PhonePersona" #PhonePersona [(ngModel)]="PhonePer">
+              <span
+                *ngIf="PhonePersona.touched && (!SelectedPersona || !SelectedPersona._id || SelectedPersona._id == '')"
+                class="col-12 text-sm text-danger">
+                Seleccionar una Persona
+              </span>
+              <datalist id="PersonasDataList">
+                <option *ngFor="let persona of Personas" value="{{persona.Phone}}">
+                  {{persona.FirstName + ' ' + persona.LastName}}
+                  <span *ngIf="persona.Ci">{{' - ' + persona.Ci}}</span>
+                </option>
+              </datalist>
+            </div>
+            <label *ngIf="SelectedPersona && SelectedPersona._id" for="" class="label-form col-md-4">Cédula:</label>
+            <div *ngIf="SelectedPersona && SelectedPersona._id" class="input-group col-md-8 mb-2">
+              <span class="form-control disabled">
+                {{SelectedPersona.Ci}}
+              </span>
+            </div>
+            <label *ngIf="SelectedPersona && SelectedPersona._id" for="" class="label-form col-md-4">Nombres:</label>
+            <div *ngIf="SelectedPersona && SelectedPersona._id" class="input-group col-md-8 mb-2">
+              <span class="form-control disabled">
+                {{SelectedPersona.FirstName}}
+              </span>
+            </div>
+            <label *ngIf="SelectedPersona && SelectedPersona._id" for="" class="label-form col-md-4">Apellidos:</label>
+            <div *ngIf="SelectedPersona && SelectedPersona._id" class="input-group col-md-8 mb-2">
+              <span class="form-control disabled">
+                {{SelectedPersona.LastName}}
+              </span>
+            </div>
+            <label *ngIf="SelectedPersona && SelectedPersona._id" for="" class="label-form col-md-4">Dirección:</label>
+            <div *ngIf="SelectedPersona && SelectedPersona._id" class="input-group col-md-8 mb-2">
+              <span class="form-control disabled">
+                {{JSONParse(SelectedPersona.GPS).address_components[1].long_name}} -
+                {{JSONParse(SelectedPersona.GPS).address_components[2].long_name}} -
+                {{JSONParse(SelectedPersona.GPS).address_components[3].long_name}}
+                <span *ngIf="JSONParse(SelectedPersona.GPS).address_components[4]"> -
+                  {{JSONParse(SelectedPersona.GPS).address_components[4].long_name}}</span>
+                <span *ngIf="JSONParse(SelectedPersona.GPS).address_components[5]"> -
+                  {{JSONParse(SelectedPersona.GPS).address_components[5].long_name}}</span>
+                <span *ngIf="JSONParse(SelectedPersona.GPS).address_components[6]"> -
+                  {{JSONParse(SelectedPersona.GPS).address_components[6].long_name}}</span>
+              </span>
+            </div>
+          </form>
+          <form *ngIf="isNew" class="container row">
+            <label for="" class="label-form col-md-4"><strong>Cédula:*</strong></label>
+            <div class="input-group col-md-8 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-address-card"></i>
+                </span>
+              </div>
+              <input class="form-control" placeholder="Cédula de la Persona" name=Ci id=Ci #Ci=ngModel
+                pattern="[0-9]{10,10}" (change)="comprobar_ci(Ci.value); cedulaUnica(Ci.value)"
+                (keyup)="comprobar_ci(Ci.value) ;cedulaUnica(Ci.value)"
+                [class.is-invalid]="ci_correcta === false && ci_unica === false"
+                [class.is-valid]="ci_correcta === true && ci_unica === true" minlength="10" maxlength="10"
+                [disabled]="newPersona._id != ''" [(ngModel)]=newPersona.Ci type="text">
+              <span *ngIf="ci_correcta === false && no === true" class="text-sm text-danger col-12">
+                C&eacute;dula Incorrecta
+              </span>
+              <span *ngIf="ci_unica === false" class="text-sm text-danger col-12">
+                C&eacute;dula ya Registrada!
+              </span>
+              <!-- <span *ngIf="ci_correcta === true && ci_unica == true" class="text-sm text-success col-12">
+                C&eacute;dula Correcta!!
+              </span>
+              <span *ngIf="no === false" class="text-sm text-success col-12">
+                C&eacute;dula no es obligatoria
+              </span> -->
+            </div>
+            <label for="" class="label-form col-md-4 mt-2"><strong>Nombres:*</strong></label>
+            <div class="input-group col-md-8">
+              <input class="form-control" placeholder="Nombres de la Persona" pattern="[A-Za-z ñÑáÁéÉíÍóÓúÚüÜ]{3,25}"
+                name=FirstName id=FirstName [class.is-invalid]="FirstName.touched && !FirstName.valid"
+                [class.is-valid]="FirstName.touched && FirstName.valid" minlength="3" maxlength="25" required
+                #FirstName=ngModel [(ngModel)]=newPersona.FirstName type="text">
+              <span *ngIf="FirstName.touched && FirstName.value == ''" class="text-sm text-danger col-12">
+                Nombres Obligatorios
+              </span>
+              <span *ngIf="FirstName.touched && !FirstName.valid && FirstName.value != ''"
+                class="text-sm text-danger col-12">
+                Nombres Incorrectos
+              </span>
+            </div>
+            <label for="" class="label-form col-md-4 mt-2"><strong>Apellidos:*</strong></label>
+            <div class="input-group col-md-8">
+              <input class="form-control" pattern="[A-Za-z ñÑáÁéÉíÍóÓúÚüÜ]{3,25}" placeholder="Apellidos de la Persona"
+                name=LastName id=LastName #LastName=ngModel minlength="3" maxlength="25" required
+                [class.is-invalid]="LastName.touched && !LastName.valid"
+                [class.is-valid]="LastName.touched && LastName.valid  && LastName.value != ''"
+                [(ngModel)]=newPersona.LastName type="text">
+              <span *ngIf="LastName.touched && LastName.value == ''" class="text-sm text-danger col-12">
+                Apellidos Obligatorios
+              </span>
+              <span *ngIf="LastName.touched && !LastName.valid && !(LastName.value == '')"
+                class="text-sm text-danger col-12">
+                Apellidos Incorrectos
+              </span>
+            </div>
+            <label for="" class="label-form col-md-4 mt-2"><strong>Teléfono:*</strong></label>
+            <div class="input-group col-md-8">
+              <input class="form-control col-12" placeholder="Teléfono de la Persona" pattern="[0-9]{9,13}" name=Phone
+                id=Phone #Phone=ngModel [class.is-invalid]="Phone.touched && !Phone.valid && ph_correcta === false"
+                [class.is-valid]="(Phone.touched && Phone.valid && ph_correcta === true)"
+                (change)="telfUnica(Phone.value)" (keyup)="telfUnica(Phone.value)" minlength="9" maxlength="10" required
+                [(ngModel)]=newPersona.Phone type="text">
+              <span *ngIf="Phone.touched && Phone.value == ''" class="text-sm text-danger col-12">
+                Teléfono Obligatorio
+              </span>
+              <span *ngIf="Phone.touched && !Phone.valid && !(Phone.value == '')" class="text-sm text-danger col-12">
+                Teléfono Incorrecto
+              </span>
+              <span *ngIf="ph_correcta === false" class="text-sm text-danger col-12">
+                El teléfono ingresado ya Existe!
+              </span>
+            </div>
+            <label for="" class="label-form col-md-4 mt-2"><strong>Dirección:*</strong></label>
+            <div class="input-group col-md-8">
+
+              <button class="btn btn-block" (click)="initMap()" [class.btn-info]="!newPersona.GPS"
+                [class.btn-success]="newPersona.GPS" id="toEdit" data-toggle="modal" data-target="#maps-modal">
+                <i class="fas fa-map-marker-alt"></i>
+                &nbsp;
+                <ng-container *ngIf="newPersona.GPS; else GPSTemplate">
+                  {{JSONParse(newPersona.GPS).formatted_address}}
+                </ng-container>
+                <ng-template #GPSTemplate>
+                  Elegir Dirección
+                </ng-template>
+              </button>
+            </div>
+
+          </form>
+          <hr>
+          <form class="container row">
+            <label for="" class="label-form col-md-4"><strong>Correo Electrónico:*</strong></label>
+            <div class="input-group col-md-8">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+              <input type="email" placeholder="afibeton@mail.com" class="form-control" id="Email" name="Email"
+                [class.is-invalid]="Email.touched && !Email.valid"
+                [class.is-valid]="(Email.touched && Email.valid && mail_unico === true)"
+                (change)="mailUnico(Email.value)" (keyup)="mailUnico(Email.value)" required
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #Email=ngModel [(ngModel)]="newUsuario.Email">
+              <span *ngIf="!Email.touched || Email.valid" class="text-sm text-danger col-12">
+                &nbsp;
+              </span>
+              <span *ngIf="Email.touched && Email.value == ''" class="text-sm text-danger col-12">
+                Correo Electrónico Obligatorio
+              </span>
+              <span *ngIf="Email.touched && !Email.valid && !(Email.value == '')" class="text-sm text-danger col-12">
+                Correo Electrónico Incorrecto
+              </span>
+              <span *ngIf="mail_unico === false" class="text-sm text-danger col-12">
+                Este Correo ya Existe!
+              </span>
+            </div>
+            <label for="" class="label-form col-md-4"><strong>Rol:*</strong></label>
+            <div class="input-group col-md-8 col-sm-12 mb-2 ">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-user-shield"></i>
+                </span>
+              </div>
+              <input type="text" list="RolesList" minlength="3" required class="form-control" name="Rol" id="Rol"
+                #Rol=ngModel [(ngModel)]="newUsuario.Role" (click)="checkRole()" (change)="checkRole()">
+              <datalist id="RolesList">
+                <!-- <option>Administrador</option> -->
+                <option>Secretario</option>
+                <option>Encargado de Bodega</option>
+                <option>Encargado de Repartidores</option>
+                <option>Motorizado</option>
+              </datalist>
+              <span *ngIf="Rol.touched && Rol.value == ''" class="text-sm text-danger col-12">
+                Rol del Usuario Obligatorio
+              </span>
+              <span *ngIf="Rol.touched && !Rol.valid && !(Rol.value == '')" class="text-sm text-danger col-12">
+                Rol del Usuario Incorrecto
+              </span>
+            </div>
+            <hr
+              *ngIf="newUsuario.Role.toString() == 'Motorizado' || newUsuario.Role.toString() == 'Encargado de Repartidores' || newUsuario.Role.toString() == 'Encargado de Bodega'"
+              class="col-12">
+            <label *ngIf="newUsuario.Role == 'Motorizado' || newUsuario.Role == 'Encargado de Repartidores'" for=""
+              class="label-form col-md-4"><strong>Empresa:*</strong></label>
+            <div *ngIf="newUsuario.Role == 'Motorizado' || newUsuario.Role == 'Encargado de Repartidores'"
+              class="input-group col-md-8 mb-2 ">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-building"></i>
+                </span>
+              </div>
+              <ng-container *ngIf="Empresas && Empresas.length >= 1; else EmpresasTemplate">
+                <input list="EmpresasList" type="text" (change)="setEmpresa(Empresa.value)"
+                  (keyup)="setEmpresa(Empresa.value)"
+                  [class.is-invalid]="Empresa.touched && (!SelectedEmpresa || !SelectedEmpresa._id || SelectedEmpresa._id == '' )"
+                  [class.is-valid]="(Empresa.touched && SelectedEmpresa && SelectedEmpresa._id && SelectedEmpresa._id != '')"
+                  class="form-control" name="Empresa" id="Empresa" #Empresa=ngModel [(ngModel)]="EmpresaInput">
+                <span
+                  *ngIf="Empresa.touched && (!SelectedEmpresa || !SelectedEmpresa._id || SelectedEmpresa._id == '' )"
+                  class="text-sm col-12 text-danger">
+                  Seleccionar una Empresa Válida!
+                </span>
+                <datalist id="EmpresasList">
+                  <option *ngFor="let empresa of Empresas" value="{{empresa.Name}}">{{empresa.Address}}</option>
+                </datalist>
+              </ng-container>
+              <ng-template #EmpresasTemplate>
+                <a class="btn btn-warning  form-control " [routerLink]="['/empresas']"
+                  routerLinkActive="router-link-active">
+                  Sin Empresas, Ingresar?
+                </a>
+              </ng-template>
+            </div>
+            <label *ngIf="newUsuario.Role == 'Encargado de Bodega'" for="bodega"
+              class="label-form col-md-4 col-sm-12"><strong>Bodegas:</strong></label>
+            <div *ngIf="newUsuario.Role == 'Encargado de Bodega'" class="input-group col-md-8 col-sm-12 mb-2 ">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-industry"></i>
+                </span>
+              </div>
+              <ng-container *ngIf="Bodegas && Bodegas.length >= 1; else BodegaTemplate">
+                <input list="BodegasList" type="text" (change)="setBodega(Bodega.value)"
+                  (keyup)="setBodega(Bodega.value)"
+                  [class.is-invalid]="Bodega.touched && (!SelectedBodega || !SelectedBodega._id || SelectedBodega._id == '' )"
+                  [class.is-valid]="(Bodega.touched && SelectedBodega && SelectedBodega._id && SelectedBodega._id != '')"
+                  class="form-control" name="Bodega" id="Bodega" #Bodega=ngModel [(ngModel)]="BodegaInput">
+                <span *ngIf="Bodega.touched && (!SelectedBodega || !SelectedBodega._id || SelectedBodega._id == '' )"
+                  class="text-sm col-12 text-danger">
+                  Seleccionar una Bodega Válida!
+                </span>
+                <datalist id="BodegasList">
+                  <option *ngFor="let bodega of Bodegas" value="{{bodega.Name}}">
+                    <span *ngIf="bodega.By" class="badge">[con Encargado]</span>
+                    {{bodega.Phone + ' - ' + bodega.Address}}
+                  </option>
+                </datalist>
+              </ng-container>
+              <ng-template #BodegaTemplate>
+                <a class="btn btn-warning  form-control " [routerLink]="['/bodegas']"
+                  routerLinkActive="router-link-active">
+                  Sin Bodegas, Ingresar?
+                </a>
+              </ng-template>
+            </div>
+            <span *ngIf="newUsuario.Repartidor" class="col-12 text-center">
+              <strong>Vehículo de Reparto</strong>
+            </span>
+            <label *ngIf="newUsuario.Repartidor" for="Tipo"
+              class="label-form col-md-4 col-sm-12"><strong>Tipo:*</strong></label>
+            <div *ngIf="newUsuario.Repartidor" class="input-group col-md-8 mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-truck"></i>
+                </span>
+              </div>
+              <select name="Tipo" id="Tipo" #Tipo=ngModel [(ngModel)]="newUsuario.RepData.Tipo" class="form-control">
+                <option value="Camión">Camión</option>
+                <option value="Motocicleta">Motocicleta</option>
+                <option value="Automóvil">Automóvil</option>
+                <option value="Camioneta">Camioneta</option>
+              </select>
+              <span *ngIf="Tipo.touched && newUsuario.RepData.Tipo.toString() == ''" class="text-sm text-danger col-12">
+                Tipo de Vehículo Obligatorio
+              </span>
+            </div>
+            <label *ngIf="newUsuario.Repartidor" for="" class="label-form col-md-4 col-sm-12">
+              <strong>
+                Placa:*
+              </strong>
+            </label>
+            <div *ngIf="newUsuario.Repartidor" class="input-group col-md-8 col-sm-12 mb-2 ">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-ad"></i>
+                </span>
+              </div>
+              <input placeholder="No. de placa [ABC0000]" name="placa" id="placa" #placa=ngModel
+                [(ngModel)]="newUsuario.RepData.Placa" type="text" class="form-control">
+              <span *ngIf="placa.touched && !placa.valid && placa.value != ''" class="text-sm text-danger">
+                Placa Incorrecta
+              </span>
+              <span *ngIf="placa.touched && !placa.valid && placa.value == ''" class="text-sm text-danger">
+                Ingresar Placa
+              </span>
+            </div>
+          </form>
+          <hr>
+          <div class="col-12">
+            <button class="btn btn-warning pull-left ml-1" (click)="cleanData()">
+              <i class="fa fa-trash arrow"></i>&nbsp;
+              Limpiar
+            </button>
+            <button class="btn btn-success pull-right" (click)="onSubmit()">
+              <i class="fa fa-save"> </i>
+              Guardar
+            </button>
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7 mb-3">
+    <div widget class="card border-0 box-shadow">
+      <div class="card-header transparent border-0 text-muted">
+        <h5 class="mb-0">Listado de Usuarios</h5>
+        <div class="widget-controls">
+          <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+          <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+          <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+          <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
+        </div>
+      </div>
+      <div class="card-body widget-body bg-light">
         <div class="input-group mb-2">
           <span class="input-group-prepend">
             <span class="input-group-text bg-transparent border-0">
               <i class="fa fa-search"></i>
             </span>
           </span>
-          <input type="text" id=searchText name=searchText [(ngModel)]="searchText" placeholder="{{searchTitle}}" (change)="defineUser();"
-            (keyup)="defineUser();" class="form-control border-0">
+          <input type="text" id=searchText name=searchText [(ngModel)]="Filters.searchText"
+            placeholder="{{searchTitle}}" (change)="Read();" (keyup)="Read();" class="form-control border-0">
           <div class="btn-group">
             <button class="btn dropdown-toggle no-caret bg-transparent border-0 shadow-none" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <i class="fa fa-ellipsis-v"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right box-shadow rounded-0">
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'all'; defineUser()" >Todo</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'role'; defineUser()" >Rol</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'mail'; defineUser()" >Correo Electr&oacute;nico</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'ci'; defineUser()" >C&eacute;dula</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'name'; defineUser()" >Nombre</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'lastname'; defineUser()" >Apellido</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'phone'; defineUser()" >Télefono</a>
-              <a href="javascript:void(0);" class="dropdown-item" (click)="type = 'address'; defineUser()" >Direcci&oacute;n</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="Filters.type = 'all'; Read()">Todo</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="Filters.type = 'role'; Read()">Rol</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="Filters.type = 'mail'; Read()">Correo
+                Electr&oacute;nico</a>
+              <a href="javascript:void(0);" class="dropdown-item"
+                (click)="Filters.type = 'ci'; Read()">C&eacute;dula</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="Filters.type = 'name'; Read()">Nombre</a>
+              <a href="javascript:void(0);" class="dropdown-item"
+                (click)="Filters.type = 'lastname'; Read()">Apellido</a>
+              <a href="javascript:void(0);" class="dropdown-item" (click)="Filters.type = 'phone'; Read()">Télefono</a>
+              <a href="javascript:void(0);" class="dropdown-item"
+                (click)="Filters.type = 'address'; Read()">Direcci&oacute;n</a>
             </div>
           </div>
         </div>
-        <table *ngIf="Usuarios && Usuarios.length >= 1" class="table table-hover table-bordered table-striped table-responsive-sm">
+        <table *ngIf="Usuarios && Usuarios.length >= 1"
+          class="table table-hover table-bordered table-striped table-responsive-sm">
+          <tbody *ngIf="PaginationData.ItemsPerPage >= 15">
+            <tr>
+              <td colspan="9">
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="PaginationData.Page == 1">
+                      <button class="page-link" [disabled]="PaginationData.Page == 1"
+                        (click)="PaginationData.Page = (PaginationData.Page - 1); Read();">Anterior</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = 1; Read()" *ngIf="PaginationData.Page - 4 >=1">
+                      <button class="page-link">1</button>
+                    </li>
+                    <li class="page-item" *ngIf="PaginationData.Page - 4 >= 1 &&  PaginationData.Page - 4 != 1">
+                      <button class="page-link">...</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 3; Read()"
+                      *ngIf="PaginationData.Page - 3 >=1">
+                      <button class="page-link">{{PaginationData.Page - 3}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 2; Read()"
+                      *ngIf="PaginationData.Page - 2 >=1">
+                      <button class="page-link">{{PaginationData.Page - 2}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 1; Read()"
+                      *ngIf="PaginationData.Page - 1 >=1">
+                      <button class="page-link">{{PaginationData.Page - 1}}</button>
+                    </li>
+                    <li class="page-item active">
+                      <span class="page-link">{{PaginationData.Page}}</span>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 1; Read()"
+                      *ngIf="PaginationData.Page + 1 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Page + 1}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 2; Read()"
+                      *ngIf="PaginationData.Page + 2 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Page + 2}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 3; Read()"
+                      *ngIf="PaginationData.Page + 3 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Page + 3}}</button>
+                    </li>
+                    <li class="page-item"
+                      *ngIf="PaginationData.Page + 4 <= PaginationData.Pages && PaginationData.Page + 4 != PaginationData.Pages">
+                      <span class="page-link">...</span>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Pages; Read()"
+                      *ngIf="PaginationData.Page + 4 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Pages}}</button>
+                    </li>
+                    <li class="page-item" [class.disabled]="PaginationData.Page >=  PaginationData.Pages">
+                      <button class="page-link" [disabled]="PaginationData.Page >=  PaginationData.Pages"
+                        (click)="PaginationData.Page = PaginationData.Page + 1; Read()">Siguiente</button>
+                    </li>
+                  </ul>
+                </nav>
+              </td>
+            </tr>
+          </tbody>
+          <thead *ngIf="PaginationData.ItemsPerPage >= 15">
+            <tr>
+              <th></th>
+              <th class="text-right">Items Por Página</th>
+              <td colspan="1">
+                <select class="form-control" name="ItemsPerPage" id="ItemsPerPage" #ItemsPerPage
+                  [(ngModel)]="PaginationData.ItemsPerPage" (change)="PaginationData.Page = 1;Read();">
+                  <option>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                  <option>25</option>
+                  <option>50</option>
+                  <option>100</option>
+                </select>
+              </td>
+            </tr>
+          </thead>
           <thead>
             <tr>
               <th width="30%">
@@ -467,11 +481,11 @@
               <th width="45%">
                 Datos
               </th>
-              <th width="10%" colspan="3">Opciones</th>
+              <!-- <th width="10%" colspan="3">Opciones</th> -->
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let usuario of Usuarios">
+            <tr  class="selectable" *ngFor="let usuario of Usuarios" (click)="infoUsuario(usuario)" title="Detalles del Usuario" data-toggle="modal" data-target="#info-modal">
               <td [class.bg-deleted]="!usuario.Active">
                 {{usuario.Email}}
               </td>
@@ -486,49 +500,110 @@
                 <strong>Nombres: </strong>{{usuario.Persona.FirstName}} {{usuario.Persona.LastName}}
                 <br>
                 <strong>Direcci&oacute;n: </strong>
-                  <span *ngIf="usuario.Persona">
-                    {{JSONParse(usuario.Persona.GPS).address_components[0].long_name}} -
-                    {{JSONParse(usuario.Persona.GPS).address_components[1].long_name}} -
-                    {{JSONParse(usuario.Persona.GPS).address_components[2].long_name}} -
-                    {{JSONParse(usuario.Persona.GPS).address_components[3].long_name}}
-                    <span *ngIf="JSONParse(usuario.Persona.GPS).address_components[4]"> - {{JSONParse(usuario.Persona.GPS).address_components[4].long_name}}</span>
-                    <span *ngIf="JSONParse(usuario.Persona.GPS).address_components[5]"> - {{JSONParse(usuario.Persona.GPS).address_components[5].long_name}}</span>
-                    <span *ngIf="JSONParse(usuario.Persona.GPS).address_components[6]"> - {{JSONParse(usuario.Persona.GPS).address_components[6].long_name}}</span>
-                  </span>
+                <span *ngIf="usuario.Persona">
+                  {{JSONParse(usuario.Persona.GPS).address_components[0].long_name}} -
+                  {{JSONParse(usuario.Persona.GPS).address_components[1].long_name}} -
+                  {{JSONParse(usuario.Persona.GPS).address_components[2].long_name}} -
+                  {{JSONParse(usuario.Persona.GPS).address_components[3].long_name}}
+                  <span *ngIf="JSONParse(usuario.Persona.GPS).address_components[4]"> -
+                    {{JSONParse(usuario.Persona.GPS).address_components[4].long_name}}</span>
+                  <span *ngIf="JSONParse(usuario.Persona.GPS).address_components[5]"> -
+                    {{JSONParse(usuario.Persona.GPS).address_components[5].long_name}}</span>
+                  <span *ngIf="JSONParse(usuario.Persona.GPS).address_components[6]"> -
+                    {{JSONParse(usuario.Persona.GPS).address_components[6].long_name}}</span>
+                </span>
                 <!-- {{usuario.Persona.City.Name}} - {{usuario.Persona.City.Canton.Name}} -
                 {{usuario.Persona.City.Canton.Provincia.Name}} -->
               </td>
-              <td [class.bg-deleted]="!usuario.Active" class="text-center">
-                <button data-toggle="tooltip" data-html="true" (click)="toUpdateUser(usuario)" title="Editar Usuario"
-                  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
-                </button>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th></th>
+              <th class="text-right">Items Por Página</th>
+              <td colspan="1">
+                <select class="form-control" name="ItemsPerPage" id="ItemsPerPage" #ItemsPerPage
+                  [(ngModel)]="PaginationData.ItemsPerPage" (change)="PaginationData.Page = 1;Read();">
+                  <option>5</option>
+                  <option>10</option>
+                  <option>15</option>
+                  <option>20</option>
+                  <option>25</option>
+                  <option>50</option>
+                  <option>100</option>
+                </select>
               </td>
-              <td [class.bg-deleted]="!usuario.Active" class="text-center">
-                <button class="btn btn-sm" (click)="disableUsuario(usuario)"
-                  [class.btn-warning]="usuario.Active == false" [class.btn-outline-warning]="usuario.Active==true"
-                  data-toggle="tooltip" data-html="true" title="Activar/Desactivar Usuario">
-                  <i *ngIf="usuario.Active == true" class="fa fa-eye"></i>
-                  <i *ngIf="usuario.Active == false" class="fa fa-eye-slash"></i>
-                </button>
-              </td>
-              <td [class.bg-deleted]="!usuario.Active" class="text-center">
-                <button type="button" (click)="infoUsuario(usuario)" title="Detalles del Usuario" class="btn btn-info btn-sm"
-                  data-toggle="modal" data-target="#info-modal">
-                  <i class="fa fa-info"></i>
-                </button>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="9">
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="PaginationData.Page == 1">
+                      <button class="page-link" [disabled]="PaginationData.Page == 1"
+                        (click)="PaginationData.Page = (PaginationData.Page - 1); Read();">Anterior</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = 1; Read()" *ngIf="PaginationData.Page - 4 >=1">
+                      <button class="page-link">1</button>
+                    </li>
+                    <li class="page-item" *ngIf="PaginationData.Page - 4 >= 1 &&  PaginationData.Page - 4 != 1">
+                      <button class="page-link">...</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 3; Read()"
+                      *ngIf="PaginationData.Page - 3 >=1">
+                      <button class="page-link">{{PaginationData.Page - 3}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 2; Read()"
+                      *ngIf="PaginationData.Page - 2 >=1">
+                      <button class="page-link">{{PaginationData.Page - 2}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page - 1; Read()"
+                      *ngIf="PaginationData.Page - 1 >=1">
+                      <button class="page-link">{{PaginationData.Page - 1}}</button>
+                    </li>
+                    <li class="page-item active">
+                      <span class="page-link">{{PaginationData.Page}}</span>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 1; Read()"
+                      *ngIf="PaginationData.Page + 1 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Page + 1}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 2; Read()"
+                      *ngIf="PaginationData.Page + 2 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Page + 2}}</button>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Page + 3; Read()"
+                      *ngIf="PaginationData.Page + 3 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Page + 3}}</button>
+                    </li>
+                    <li class="page-item"
+                      *ngIf="PaginationData.Page + 4 <= PaginationData.Pages && PaginationData.Page + 4 != PaginationData.Pages">
+                      <span class="page-link">...</span>
+                    </li>
+                    <li class="page-item" (click)="PaginationData.Page = PaginationData.Pages; Read()"
+                      *ngIf="PaginationData.Page + 4 <= PaginationData.Pages">
+                      <button class="page-link">{{PaginationData.Pages}}</button>
+                    </li>
+                    <li class="page-item" [class.disabled]="PaginationData.Page >=  PaginationData.Pages">
+                      <button class="page-link" [disabled]="PaginationData.Page >=  PaginationData.Pages"
+                        (click)="PaginationData.Page = PaginationData.Page + 1; Read()">Siguiente</button>
+                    </li>
+                  </ul>
+                </nav>
               </td>
             </tr>
           </tbody>
         </table>
         <div *ngIf="!Usuarios || Usuarios.length < 1" role="alert" class="alert alert-dismissible fade show"
-          [class.alert-danger]="searchText == ''" [class.alert-warning]="searchText != ''">
+          [class.alert-danger]="Filters.searchText == ''" [class.alert-warning]="Filters.searchText != ''">
           <button type="button" data-dismiss="alert" aria-label="Close" class="close">
             <span aria-hidden="true">×</span>
           </button>
-          <span *ngIf="searchText != ''">
+          <span *ngIf="Filters.searchText != ''">
             <strong>Sin Resultados!</strong> Al parecer la Busqueda no ha devuelto ningún resultado
           </span>
-          <span *ngIf="searchText == ''">
+          <span *ngIf="Filters.searchText == ''">
             <strong>Sin Usuarios!</strong> Al parecer no se han Registrado Usuarios en el Sistema
           </span>
         </div>
@@ -536,104 +611,20 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
 
-<div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header state modal-info">
-        <h4 class="modal-title" id="modal-info-label" *ngIf="ViewedUsuario"><i class="fa fa-info"></i>Informaci&oacute;n del {{ViewedUsuario.Role}}</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">×</span></button>
-      </div>
-      <div name=MyGoogleMapInfo id=MyGoogleMapInfo style="width: 100%; height: 500px;" class="modal-body">
-        <!-- <div></div> -->
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button> -->
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="modal fade" id="warning-modal" tabindex="-1" role="dialog" aria-labelledby="modal-warning-label">
-  <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-          <div class="modal-header state modal-warning">                                   
-              <h4 class="modal-title" id="modal-warning-label" *ngIf="Usuario.Role" ><i class="fa fa-exclamation"></i>Detallles del {{Usuario.Role}}</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          </div>
-          <div name=MyGoogleMapInfo id=MyGoogleMapInfo style="width: 100%; height: 500px;" class="modal-body">
-            <!-- <div></div> -->
-          </div>
-          <div *ngIf="SelectedPersona " class="modal-footer">
-            <div class="container row">
-              <h4 class="col-12">Datos Personales:</h4>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Nombres: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{SelectedPersona.FirstName + ' ' + SelectedPersona.LastName}}</label>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Cédula: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{SelectedPersona.Ci}}</label>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Teléfono: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{SelectedPersona.Phone}}</label>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Dirección: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{SelectedPersona.Address + '. En: ' + SelectedPersona.City.Name + ' - ' + SelectedPersona.City.Canton.Name  + ' - ' + SelectedPersona.City.Canton.Provincia.Name}}</label>
-            </div>
-          </div>
-          <div *ngIf="currEmpresa && ( Usuario.Role == 'Encargado de Repartidores' || Usuario.Role == 'Motorizado' )" class="modal-footer">
-            <div class="container row">
-              <h4 class="col-12">Datos de la Empresa:</h4>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Empresa: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{currEmpresa.Name               }}</label>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Direcci&oacute;n: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{currEmpresa.Address + ', En: ' + currEmpresa.City.Name + ' - ' + currEmpresa.City.Canton.Name + ' ' + currEmpresa.City.Canton.Provincia.Name          }}</label>
-            </div>
-          </div>
-          <div *ngIf="Usuario.Role == 'Motorizado'" class="modal-footer">
-            <div class="container row">
-              <h4 class="col-12">Datos del Veh&iacute;culo:</h4>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Tipo de Veh&iacute;culo: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{Usuario.RepData.Tipo}} </label>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Placa del Veh&iacute;culo: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{Usuario.RepData.Placa}} </label>
-            </div>
-          </div>
-          <div *ngIf="currBodega && ( Usuario.Role == 'Encargado de Bodega')" class="modal-footer">
-            <div class="container row">
-              <h4 class="col-12">Datos de la Bodega:</h4>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Bodega: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{currBodega.Name}}</label>
-              <label for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Direcci&oacute;n: </strong></label>
-              <label for="" class="label-form            col-md-7 col-sm-12"> {{currBodega.Address + ', En: ' + currBodega.City.Name + ' - ' + currBodega.City.Canton.Name + ' ' + currBodega.City.Canton.Provincia.Name          }}</label>
-              <label *ngIf="currBodega.By" for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Nombres del Encargado Anterior: </strong></label>
-              <label *ngIf="currBodega.By" for="" class="label-form            col-md-7 col-sm-12"> {{currBodega.By.Persona.FirstName + ' ' + currBodega.By.Persona.LastName}}</label>
-              <label *ngIf="currBodega.By" for="" class="label-form text-right col-md-5 col-sm-12"> <strong>Correo Electrónico del Encargado Anterior: </strong></label>
-              <label *ngIf="currBodega.By" for="" class="label-form            col-md-7 col-sm-12"> {{currBodega.By.Email}}</label>
-              <label *ngIf="!currBodega.By" for="" class="label-form text-center col-md-12 col-sm-12"> <strong>Sin Encargado Anterior: </strong></label>
-            </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="onSubmitUser()" data-dismiss="modal">
-                <span *ngIf="Usuario._id">Actualizar</span>
-                <span *ngIf="!Usuario._id">Guardar</span>
-                Datos del Usuario
-              </button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          </div>
-      </div>
-  </div>
-</div>
+
 <div class="modal fade" id="maps-modal" tabindex="-1" role="dialog" aria-labelledby="modal-info-label">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header state modal-info">
-        <h4 class="modal-title" id="modal-info-label">
+        <h4 class="modal-title" id="modal-info-label" *ngIf="newPersona">
           <i class="fas fa-map-marked-alt"></i>
-          <span *ngIf="!NewPersona.Address">
+          <span *ngIf="!newPersona.Address">
             Seleccionar Dirección
           </span>
-          <span *ngIf="NewPersona.Address">
-            {{NewPersona.Address}}
+          <span *ngIf="newPersona.Address">
+            {{newPersona.Address}}
           </span>
         </h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -656,7 +647,8 @@
             <div name=MyGoogleMap id=MyGoogleMap style="width: 100%; height: 500px; border-radius: 5px;"></div>
           </div>
           <div class="col-12">
-            <div *ngIf="currPosition && currPosition.address_components && currPosition.address_components[0]" role="alert" class="alert alert-success alert-dismissible fade show">
+            <div *ngIf="currPosition && currPosition.address_components && currPosition.address_components[0]"
+              role="alert" class="alert alert-success alert-dismissible fade show">
               <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
                 <span aria-hidden="true">×</span>
               </button> -->
@@ -676,8 +668,8 @@
               <!-- <button type="button" data-dismiss="alert" aria-label="Close" class="close">
                 <span aria-hidden="true">×</span>
               </button> -->
-              <strong>Alerta!</strong> 
-              No se ha encontrado la Dirección, prueba ingresandola en el buscador o seleccionandola manualmente. 
+              <strong>Alerta!</strong>
+              No se ha encontrado la Dirección, prueba ingresandola en el buscador o seleccionandola manualmente.
             </div>
           </div>
         </div>
@@ -685,16 +677,51 @@
       <div class="modal-footer widget-body">
         <div class="content row">
           <div class="col-12">
-            <button id="setCurrentPosition" data-dismiss="modal" aria-label="Close"  class="btn btn-success pull-left" [disabled]="!currPosition">
+            <button id="setCurrentPosition" data-dismiss="modal" aria-label="Close" class="btn btn-success pull-left"
+              [disabled]="!currPosition">
               <i class="fa fa-save"></i>
               Guardar
             </button>
-            <button id="clearInfowidow"  data-dismiss="modal" aria-label="Close" class="btn btn-warning pull-right ml-3" (click)="currPosition = undefined">
+            <button id="clearInfowidow" data-dismiss="modal" aria-label="Close" class="btn btn-warning pull-right ml-3"
+              (click)="currPosition = undefined">
               <i class="fa fa-trash"></i>
               Cancelar
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" *ngIf="ViewedUsuario" id="info-modal" tabindex="-1" role="dialog"
+  aria-labelledby="modal-info-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header state modal-info">
+        <h4 class="modal-title" id="modal-info-label" *ngIf="ViewedUsuario"><i class="fa fa-info"></i>Informaci&oacute;n
+          del {{ViewedUsuario.Role}}</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+      </div>
+      <div name=MyGoogleMapInfo id=MyGoogleMapInfo style="width: 100%; height: 500px;" class="modal-body">
+        <!-- <div></div> -->
+      </div>
+      <div class="modal-footer">
+        <div class="col-12">
+          <button class="btn btn-info pull-left" (click)="toUpdateUser(ViewedUsuario)" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-edit"></i>&nbsp;Editar
+          </button>
+          <button class="btn pull-right" data-dismiss="modal" aria-label="Close" (click)="disableUsuario(ViewedUsuario)"
+            [class.btn-outline-warning]="ViewedUsuario.Active" [class.btn-warning]="!ViewedUsuario.Active">
+            <i class="fa" [class.fa-eye]="!ViewedUsuario.Active" [class.fa-eye-slash]="ViewedUsuario.Active"></i>
+            &nbsp;
+            <span *ngIf="ViewedUsuario.Active">Desactivar</span>
+            <span *ngIf="!ViewedUsuario.Active">Reactivar</span>
+          </button>
+        </div>
+        <!-- <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button> -->
+        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button> -->
       </div>
     </div>
   </div>
